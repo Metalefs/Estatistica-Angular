@@ -1,5 +1,7 @@
 table {
-    width: 98%;
+    width: 100%;
     margin:0 auto;
   }
-  
+  .mat-form-field{
+      min-width: 20% !important;
+  }

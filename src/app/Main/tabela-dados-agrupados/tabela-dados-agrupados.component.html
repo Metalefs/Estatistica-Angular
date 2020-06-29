@@ -1,4 +1,4 @@
-<mat-grid-list cols="1" rowHeight="6rem">
+<mat-grid-list cols="2" rowHeight="6rem">
     <mat-grid-tile>  
         <p>
             <mat-form-field appearance="outline">
@@ -10,13 +10,24 @@
             <button mat-raised-button color="primary" href="#tabela_dados">Calcular</button>
         </p>      
     </mat-grid-tile>
+    <mat-grid-tile>  
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Valores</mat-label>
+                <input matInput placeholder="Nome para a visualização" [(ngModel)]="nomeTabela">
+                <mat-icon matSuffix>edit</mat-icon>
+                <mat-hint>Nome do gráfico</mat-hint>
+            </mat-form-field>
+            <button mat-raised-button color="primary" href="#tabela_dados">Calcular</button>
+        </p>      
+    </mat-grid-tile>
 </mat-grid-list>
         
 <table mat-table [dataSource]="tabela" id="tabela_dados" class="mat-elevation-z8">
 
     <!-- Position Column -->
     <ng-container matColumnDef="intervalos">
-    <th mat-header-cell *matHeaderCellDef> Intervalos </th>
+    <th mat-header-cell *matHeaderCellDef> {{nomeTabela}} </th>
     <td mat-cell *matCellDef="let element"> {{element.intervalos}} </td>
     </ng-container>
 
@@ -51,100 +62,54 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<mat-grid-list cols="2" rowHeight="3:1" *ngIf="DadosTabela != undefined">
-    <mat-grid-tile>
-        <mat-form-field>
+<div *ngIf="DadosTabela != undefined">
+
+    <mat-form-field>
+        <MatFormFieldControl>
             <input matNativeControl value="{{DadosTabela.Media.Resultado}}" disabled>
             <mat-hint>Média</mat-hint>
-        </mat-form-field>
-        <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                Passos
-                </mat-panel-title>
-                <mat-panel-title>
-                    Como cheguei a esse valor?
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>{{DadosTabela.Media.m_StringValue}}</p>
-        </mat-expansion-panel>
-    </mat-grid-tile>
+        </MatFormFieldControl>
+        <button mat-raised-button (click)="openDialog('Média',DadosTabela.Media.Passos.m_StringValue)">Como cheguei nesse resultado?</button>
+    </mat-form-field>
 
-    <mat-grid-tile>
-        <mat-form-field>
+    <mat-form-field>
+        <MatFormFieldControl>
             <input matNativeControl value="{{DadosTabela.Mediana.Resultado}}" disabled>
             <mat-hint>Mediana</mat-hint>
-        </mat-form-field>
-
-        <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Passos
-                </mat-panel-title>
-                <mat-panel-title>
-                    Como cheguei a esse valor?
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>{{DadosTabela.Mediana.m_StringValue}}</p>
-        </mat-expansion-panel>
-    </mat-grid-tile>
-
-
-    <mat-grid-tile>
-        <mat-form-field>
+        </MatFormFieldControl>
+        <button mat-raised-button (click)="openDialog('Mediana',DadosTabela.Mediana.Passos.m_StringValue)">Como cheguei nesse resultado?</button>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <MatFormFieldControl>
             <input matNativeControl value="{{DadosTabela.Moda.Resultado}}" disabled>
             <mat-hint>Moda</mat-hint>
-        </mat-form-field>
-        <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Passos
-                </mat-panel-title>
-                <mat-panel-title>
-                    Como cheguei a esse valor?
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>{{DadosTabela.Moda.Passos.m_StringValue}}</p>
-        </mat-expansion-panel>
-    </mat-grid-tile>
+            <button mat-raised-button (click)="openDialog('Moda',DadosTabela.Moda.Passos.m_StringValue)">Como cheguei nesse resultado?</button>
+        </MatFormFieldControl>
+    </mat-form-field>
 
-
-    <mat-grid-tile>
-        <mat-form-field>
+    <mat-form-field>
+        <MatFormFieldControl>
             <input matNativeControl value="{{DadosTabela.DesvioPadrao.Resultado}}" disabled>
             <mat-hint>Desvio Padrão</mat-hint>
-        </mat-form-field>
-        <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Passos
-                </mat-panel-title>
-                <mat-panel-title>
-                    Como cheguei a esse valor?
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>{{DadosTabela.DesvioPadrao.Passos.m_StringValue}}</p>
-        </mat-expansion-panel>
-    </mat-grid-tile>
+            <button mat-raised-button (click)="openDialog('Desvio Padrão', DadosTabela.DesvioPadrao.Passos.m_StringValue)">Como cheguei nesse resultado?</button>
+        </MatFormFieldControl>
+    </mat-form-field>
 
-    <mat-grid-tile>
-        <mat-form-field>
+    <mat-form-field>
+        <MatFormFieldControl>
             <input matNativeControl value="{{DadosTabela.Variancia.Resultado}}" disabled>
             <mat-hint>Variância</mat-hint>
-        </mat-form-field>
+            <button mat-raised-button (click)="openDialog('Variância',DadosTabela.Variancia.Passos.m_StringValue)">Como cheguei nesse resultado?</button>
+        </MatFormFieldControl>
+    </mat-form-field>
+</div>
 
-        <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Passos
-                </mat-panel-title>
-                <mat-panel-title>
-                    Como cheguei a esse valor?
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>{{DadosTabela.Variancia.Passos.m_StringValue}}</p>
-        </mat-expansion-panel>
+<mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile>
+        
     </mat-grid-tile>
-
-</mat-grid-list>
-  
+    <mat-grid-tile>2</mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+    <mat-grid-tile>4</mat-grid-tile>
+  </mat-grid-list>

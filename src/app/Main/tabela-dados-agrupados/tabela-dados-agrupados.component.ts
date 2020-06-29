@@ -1,6 +1,8 @@
-import {Component, ViewChild, OnInit} from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { RestApiService } from '../../api/RestApiService';
 import { MatTable } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent, DialogData } from 'src/app/shared/dialog/dialog.component';
 
 export interface TabelaDadosAgrupados {
   intervalos:number[];
@@ -22,6 +24,7 @@ export interface DadosTabelaDadosAgrupados {
   Media:object;
   DesvioPadrao:object;
   Variancia:object;
+  Passos:object;
 }
 @Component({
   selector: 'app-tabela-dados-agrupados',
@@ -31,7 +34,7 @@ export interface DadosTabelaDadosAgrupados {
 
 export class TabelaDadosAgrupadosComponent implements OnInit {
   
-  constructor(public restApi: RestApiService) {  }
+  constructor(public restApi: RestApiService, public dialog: MatDialog) {  }
   
   @ViewChild(MatTable) MatTable: MatTable<any>;
   tabela:TabelaDadosAgrupados[] = [];
@@ -62,6 +65,7 @@ export class TabelaDadosAgrupadosComponent implements OnInit {
             ValorMinimo:data.ValorMinimo,
             ValorMaximo:data.ValorMaximo,
             Moda:data.Moda,
+            Passos:data.Passos,
             Mediana:data.Mediana,
             Media:data.Media,
             DesvioPadrao:data.DesvioPadrao,
@@ -69,6 +73,17 @@ export class TabelaDadosAgrupadosComponent implements OnInit {
         };
         console.log(this.DadosTabela);
         this.MatTable.renderRows();
+    });
+  }
+
+  openDialog(operacao,passos): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '90%',
+      data: {operacao: operacao, passos:  passos}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 

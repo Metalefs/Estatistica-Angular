@@ -14,6 +14,8 @@ import { DesvioPadraoComponent } from './Main/desvio-padrao/desvio-padrao.compon
 import { VarianciaComponent } from './Main/variancia/variancia.component';
 import { SidenavComponent } from './shared/sidenav-fixed/sidenav.component';
 import { DesvioVarianciaComponent } from './Main/desvio-variancia/desvio-variancia.component';
+import { DialogComponent } from './shared/dialog/dialog.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { DesvioVarianciaComponent } from './Main/desvio-variancia/desvio-varianc
     DesvioPadraoComponent,
     VarianciaComponent,
     SidenavComponent,
-    DesvioVarianciaComponent
+    DesvioVarianciaComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { DesvioVarianciaComponent } from './Main/desvio-variancia/desvio-varianc
     BrowserModule,
     MaterialModule,
     FormsModule,
+    MatDialogModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

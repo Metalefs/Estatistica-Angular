@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Olá</h1>
+<div mat-dialog-content>
+    <p>Como foi realizada a operação?</p>
+    <mat-label>{{data.operacao}}</mat-label>
+    <p innerHTML="{{data.passos}}"></p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.passos" cdkFocusInitial>Ok</button>
+</div>
+
+
+<!-- Copyright 2020 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
