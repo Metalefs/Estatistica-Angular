@@ -1,0 +1,3 @@
+.mat-toolbar-row, .mat-toolbar-single-row{
+    z-index: 2;
+}
