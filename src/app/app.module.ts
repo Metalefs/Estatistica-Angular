@@ -9,11 +9,7 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { TabelaDadosAgrupadosComponent } from './Main/tabela-dados-agrupados/tabela-dados-agrupados.component';
-import { MediaMedianaModaComponent } from './Main/media-mediana-moda/media-mediana-moda.component';
-import { DesvioPadraoComponent } from './Main/desvio-padrao/desvio-padrao.component';
-import { VarianciaComponent } from './Main/variancia/variancia.component';
 import { SidenavComponent } from './shared/sidenav-fixed/sidenav.component';
-import { DesvioVarianciaComponent } from './Main/desvio-variancia/desvio-variancia.component';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
@@ -21,11 +17,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
   declarations: [
     AppComponent,
     TabelaDadosAgrupadosComponent,
-    MediaMedianaModaComponent,
-    DesvioPadraoComponent,
-    VarianciaComponent,
     SidenavComponent,
-    DesvioVarianciaComponent,
     DialogComponent
   ],
   imports: [

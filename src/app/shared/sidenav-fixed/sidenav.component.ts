@@ -13,8 +13,6 @@ export class SidenavComponent {
   private _mobileQueryListener: () => void;
   nav_elements: NAV_ELEMENT[] = [
     {name: "Tabela de Agrupamento",link: "/TabelaAgrupamento"},
-    {name: "Desvio e Variância",link: "/DesvioVariancia"},
-    {name: "Média Mediana e Moda",link: "/MediaMedianaModa"},
   ];
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
