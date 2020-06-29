@@ -3,7 +3,7 @@
         <p>
             <mat-form-field appearance="outline">
                 <mat-label>Valores</mat-label>
-                <input matInput placeholder="1,2,3,4" #valores (keyup)="GerarTabela(valores.value.toString())">
+                <input matInput placeholder="1,2,3,4" [(ngModel)]="valoresTabela" (keyup)="GerarTabela(valoresTabela)">
                 <mat-icon matSuffix>edit</mat-icon>
                 <mat-hint>Valores para a tabela</mat-hint>
             </mat-form-field>
@@ -13,12 +13,11 @@
     <mat-grid-tile>  
         <p>
             <mat-form-field appearance="outline">
-                <mat-label>Valores</mat-label>
-                <input matInput placeholder="Nome para a visualização" [(ngModel)]="nomeTabela">
+                <mat-label>Nome</mat-label>
+                <input matInput placeholder="Nome para a visualização" [(ngModel)]="NomeTabela">
                 <mat-icon matSuffix>edit</mat-icon>
                 <mat-hint>Nome do gráfico</mat-hint>
             </mat-form-field>
-            <button mat-raised-button color="primary" href="#tabela_dados">Calcular</button>
         </p>      
     </mat-grid-tile>
 </mat-grid-list>
@@ -27,7 +26,7 @@
 
     <!-- Position Column -->
     <ng-container matColumnDef="intervalos">
-    <th mat-header-cell *matHeaderCellDef> {{nomeTabela}} </th>
+    <th mat-header-cell *matHeaderCellDef> {{NomeTabela}} </th>
     <td mat-cell *matCellDef="let element"> {{element.intervalos}} </td>
     </ng-container>
 

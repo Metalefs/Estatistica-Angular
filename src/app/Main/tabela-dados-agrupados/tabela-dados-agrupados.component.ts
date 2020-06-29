@@ -39,7 +39,10 @@ export class TabelaDadosAgrupadosComponent implements OnInit {
   @ViewChild(MatTable) MatTable: MatTable<any>;
   tabela:TabelaDadosAgrupados[] = [];
   DadosTabela:DadosTabelaDadosAgrupados = null;
+  NomeTabela:string = "Intervalos";
+  valoresTabela:string;
   GerarTabela(dados :string){
+    this.valoresTabela = dados;
     this.restApi.getTabelaDadosAgrupados(dados).subscribe(data => {
       data = JSON.parse(data);
       this.tabela = [];
@@ -71,7 +74,9 @@ export class TabelaDadosAgrupadosComponent implements OnInit {
             DesvioPadrao:data.DesvioPadrao,
             Variancia:data.Variancia
         };
-        console.log(this.DadosTabela);
+        localStorage.setItem('last_table_values', JSON.stringify(this.valoresTabela));
+        localStorage.setItem('last_table_data', JSON.stringify(this.DadosTabela));
+        localStorage.setItem('last_table_search', JSON.stringify(this.tabela));
         this.MatTable.renderRows();
     });
   }
@@ -83,14 +88,17 @@ export class TabelaDadosAgrupadosComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 
   displayedColumns: string[] = ['intervalos', 'xi', 'fi', 'Fi','fr','Fr'];
 
   ngOnInit(): void {
-    this.GerarTabela("1,2,3,4");
+    if(localStorage.getItem('last_table_search') !== null){
+      this.tabela = JSON.parse(localStorage.getItem('last_table_search'));
+      this.valoresTabela = JSON.parse(localStorage.getItem('last_table_values'));
+      this.DadosTabela = JSON.parse(localStorage.getItem('last_table_data'));
+    }
   }
 
 }
