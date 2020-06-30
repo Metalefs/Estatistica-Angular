@@ -33,8 +33,8 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="xi">
-    <th mat-header-cell *matHeaderCellDef> XI </th>
-    <td mat-cell *matCellDef="let element"> {{element.xi}} </td>
+    <th mat-header-cell *matHeaderCellDef> Média </th>
+    <td mat-cell *matCellDef="let element"> {{element.xi.toFixed(2)}} </td>
     </ng-container>
 
     <!-- Weight Column -->
