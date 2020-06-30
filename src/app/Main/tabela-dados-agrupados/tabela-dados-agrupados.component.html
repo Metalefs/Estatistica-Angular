@@ -1,5 +1,5 @@
-<mat-grid-list cols="2" rowHeight="6rem">
-    <mat-grid-tile>  
+<div style="display: flex; justify-content: center; ">
+    <div>
         <p>
             <mat-form-field appearance="outline">
                 <mat-label>Valores</mat-label>
@@ -8,9 +8,9 @@
                 <mat-hint>Valores para a tabela</mat-hint>
             </mat-form-field>
             <button mat-raised-button color="primary" href="#tabela_dados">Calcular</button>
-        </p>      
-    </mat-grid-tile>
-    <mat-grid-tile>  
+        </p>  
+    </div>
+    <div style="display: inline-block;">
         <p>
             <mat-form-field appearance="outline">
                 <mat-label>Nome</mat-label>
@@ -18,10 +18,11 @@
                 <mat-icon matSuffix>edit</mat-icon>
                 <mat-hint>Nome do gráfico</mat-hint>
             </mat-form-field>
-        </p>      
-    </mat-grid-tile>
-</mat-grid-list>
-        
+        </p>  
+    </div>
+</div>
+ 
+
 <table mat-table [dataSource]="tabela" id="tabela_dados" class="mat-elevation-z8">
 
     <!-- Position Column -->
@@ -61,6 +62,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+
 <div *ngIf="DadosTabela != undefined">
 
     <mat-form-field>
