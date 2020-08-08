@@ -22,4 +22,7 @@ export class DialogComponent {
     this.dialogRef.close();
   }
 
+  ngOnInit(){
+    
+  }
 }

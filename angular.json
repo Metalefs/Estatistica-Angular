@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "EstatisticaApp"
+  "defaultProject": "EstatisticaApp",
+  "cli": {
+    "analytics": false
+  }
 }

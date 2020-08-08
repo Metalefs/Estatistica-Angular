@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, observable } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
     providedIn: 'root'
 })
 export class RestApiService {
-    apiURL = 'https://localhost:5001/api/Busca';
+    apiURL = environment.endpoint;
     tabela_dados_agrupadosURL = this.apiURL + '/TabelaDistribuicao';
     mediaURL = this.apiURL + '/media';
     medianaURL = this.apiURL + '/mediana';

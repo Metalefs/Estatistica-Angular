@@ -12,13 +12,15 @@ import { TabelaDadosAgrupadosComponent } from './Main/tabela-dados-agrupados/tab
 import { SidenavComponent } from './shared/sidenav-fixed/sidenav.component';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MathjaxComponent } from './mathjax/mathjax.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TabelaDadosAgrupadosComponent,
     SidenavComponent,
-    DialogComponent
+    DialogComponent,
+    MathjaxComponent
   ],
   imports: [
     BrowserModule,
