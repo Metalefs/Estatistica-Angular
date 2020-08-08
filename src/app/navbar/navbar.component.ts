@@ -3,11 +3,11 @@ import {ChangeDetectorRef, Component} from '@angular/core';
 
 /** @title Responsive sidenav */
 @Component({
-  selector: 'sidenav',
-  templateUrl: 'sidenav.component.html',
-  styleUrls: ['sidenav.component.css'],
+  selector: 'navbar',
+  templateUrl: 'navbar.component.html',
+  styleUrls: ['navbar.component.css'],
 })
-export class SidenavComponent {
+export class NavComponent {
   mobileQuery: MediaQueryList;
 
   private _mobileQueryListener: () => void;

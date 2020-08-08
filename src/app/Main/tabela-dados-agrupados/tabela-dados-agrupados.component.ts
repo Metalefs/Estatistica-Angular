@@ -3,6 +3,8 @@ import { RestApiService } from '../../api/RestApiService';
 import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent, DialogData } from 'src/app/shared/dialog/dialog.component';
+import { LinkTrackerService } from 'src/app/link-tracker.service';
+
 
 export interface TabelaDadosAgrupados {
   intervalos:number[];
@@ -27,14 +29,19 @@ export interface DadosTabelaDadosAgrupados {
   Passos:object;
 }
 @Component({
-  selector: 'app-tabela-dados-agrupados',
+  selector: 'tabela-dados-agrupados',
   templateUrl: './tabela-dados-agrupados.component.html',
   styleUrls: ['./tabela-dados-agrupados.component.css']
 })
 
 export class TabelaDadosAgrupadosComponent implements OnInit {
   
-  constructor(public restApi: RestApiService, public dialog: MatDialog) {  }
+  constructor(linkTracker: LinkTrackerService, public restApi: RestApiService, public dialog: MatDialog) {
+    linkTracker.links = [
+      { route: '/TabelaDadosAgrupados', shape: 'home', text: 'Agrupamento de dados' },
+      { route: '/component2', shape: 'folder', text: 'Component 2' },
+    ]
+  }
   
   @ViewChild(MatTable) MatTable: MatTable<any>;
   tabela:TabelaDadosAgrupados[] = [];
@@ -56,20 +63,20 @@ export class TabelaDadosAgrupadosComponent implements OnInit {
           this.tabela.push({
             intervalos:data.ValoresDistintos[i].Key,
             xi: [0],
-            fi:data.ValoresDistintos[i].Value,
-            Fi:data.Fi[i],
-            fr:data.fr[i],
-            Fr:data.Fr[i],
+            fi:data.ValoresDistintos[i].Value.toFixed(2),
+            Fi:data.Fi[i].toFixed(2),
+            fr:data.fr[i].toFixed(2),
+            Fr:data.Fr[i].toFixed(2),
           });
         }
         else{
             this.tabela.push({
-              intervalos:data.intervalos[i],
-              xi:data.xi[i],
-              fi:data.fi[i],
-              Fi:data.Fi[i],
-              fr:data.fr[i],
-              Fr:data.Fr[i],
+              intervalos:data.intervalos[i].toFixed(2),
+              xi:data.xi[i].toFixed(2),
+              fi:data.fi[i].toFixed(2),
+              Fi:data.Fi[i].toFixed(2),
+              fr:data.fr[i].toFixed(2),
+              Fr:data.Fr[i].toFixed(2),
             });
         }
       }

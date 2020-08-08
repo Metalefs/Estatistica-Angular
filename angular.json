@@ -26,9 +26,16 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/bulma/css/bulma.min.css",
+              "./node_modules/@clr/icons/clr-icons.min.css",
+              "./node_modules/@clr/ui/clr-ui.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
+              "./node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
+              "./node_modules/@clr/icons/clr-icons.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -94,9 +101,16 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/bulma/css/bulma.min.css",
+              "./node_modules/@clr/icons/clr-icons.min.css",
+              "./node_modules/@clr/ui/clr-ui.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
+              "./node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
+              "./node_modules/@clr/icons/clr-icons.min.js"
+            ]
           }
         },
         "lint": {

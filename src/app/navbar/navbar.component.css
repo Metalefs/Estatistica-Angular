@@ -1,14 +1,8 @@
-.mat-toolbar-row, .mat-toolbar-single-row{
-    z-index: 2;
-}
-.main{
-    animation: fade-in ease-in-out .5s forwards;
-    width: 100vw;
-}
-.main-container .content-container .content-area{
-    height: 100%;
-    min-height: 100%;
-    min-height: 100%;
+.navbar{
+    height: 80px;
+    background: linear-gradient(90deg,#f15b5b,#ff4c4c 35%,#f15b5b);
+    border-bottom: 1px solid rgba(173, 81, 81, 0.19);
+    padding: 10px 24px;
 }
 .m-number{
     margin: 0 auto;
@@ -51,26 +45,4 @@
 }
 .absolute{
     position: absolute;
-}
-.stack-view-key{
-    flex:initial !important;
-}
-.footer{
-    background: linear-gradient(90deg,#8e8a8a,#948282 35%,#8c8383);
-}
-@keyframes fade-in{
-    0%{
-        transform: translateY(-10px);
-    }
-    100%{
-        transform: translate(0px);
-    }
-}
-
-@media screen and (max-width: 576px) {
-    .main-container .header .branding {
-        max-width: INITIAL;
-        min-width: 0;
-        overflow: hidden;
-    }
 }
