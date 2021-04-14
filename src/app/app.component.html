@@ -15,18 +15,18 @@
                 <clr-icon clrVerticalNavIcon [attr.shape]="link?.shape"></clr-icon>
                 {{link?.text}}
             </a>
-        </clr-vertical-nav>  
+        </clr-vertical-nav>
         <div class="content-area">
             <router-outlet></router-outlet>
         </div>
-        
+
     </div>
 </clr-main-container>
 
 <footer class="footer">
     <div class="content">
         <p class="has-text-white-bis is-family-primary">
-            <strong>TBD Online</strong> - 2020 - Unchool Tech.
+            <strong>TBD Online</strong> - {{year}} - Unchool Tech.
         </p>
     </div>
 </footer>

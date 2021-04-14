@@ -19,6 +19,10 @@
       </mat-form-field>
       <button class="btn btn-primary" href="#tabela_dados">Calcular</button>
     </p>
+    <div *ngIf="DadosTabela != undefined">
+
+      <button mat-flat-button (click)="openDialog('Tabela',DadosTabela['Passos'].m_StringValue)">Como a tabela foi montada?</button>
+    </div>
   </div>
   <div class="">
 
@@ -45,10 +49,11 @@
       <mat-form-field>
 
         <input matNativeControl value="" disabled>
-        <label>Moda: {{DadosTabela.Moda['Resultado']}}</label>
+        <label>Moda(s): {{DadosTabela.Moda['Modas']}}</label>
 
         <button mat-flat-button (click)="openDialog('Moda',DadosTabela.Moda['Passos'].m_StringValue)">Como cheguei a esse
           resultado?</button>
+        <mat-hint>Classificação: {{DadosTabela.Moda['Classificacao']}}</mat-hint>
 
       </mat-form-field>
 

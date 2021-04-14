@@ -12,6 +12,7 @@ export class AppComponent {
   nav_elements: NAV_ELEMENT[] = [
     {name: "Tabela de Agrupamento",link: "/TabelaAgrupamento"},
   ];
+  year:number=new Date().getFullYear();
 }
 interface NAV_ELEMENT {
   name: string;
