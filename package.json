@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "heroku-postbuild": "ng build --prod",
-    "start": "node server.js",
+    "start": "node main.js",
+    "deploy": "ng build --prod && firebase deploy",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

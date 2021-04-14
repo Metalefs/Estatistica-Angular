@@ -12,7 +12,7 @@ export interface TabelaDadosAgrupados {
   fi:number[];
   Fi:number[];
   fr:number[];
-  Fr:number[];  
+  Fr:number[];
 }
 export interface DadosTabelaDadosAgrupados {
   Amplitude:number;
@@ -35,14 +35,13 @@ export interface DadosTabelaDadosAgrupados {
 })
 
 export class TabelaDadosAgrupadosComponent implements OnInit {
-  
+
   constructor(linkTracker: LinkTrackerService, public restApi: RestApiService, public dialog: MatDialog) {
     linkTracker.links = [
       { route: '/TabelaDadosAgrupados', shape: 'home', text: 'Agrupamento de dados' },
-      { route: '/component2', shape: 'folder', text: 'Component 2' },
     ]
   }
-  
+
   @ViewChild(MatTable) MatTable: MatTable<any>;
   tabela:TabelaDadosAgrupados[] = [];
   DadosTabela:DadosTabelaDadosAgrupados = null;
@@ -71,7 +70,7 @@ export class TabelaDadosAgrupadosComponent implements OnInit {
         }
         else{
             this.tabela.push({
-              intervalos:data.intervalos[i].toFixed(2),
+              intervalos:data.intervalos[i],
               xi:data.xi[i].toFixed(2),
               fi:data.fi[i].toFixed(2),
               Fi:data.Fi[i].toFixed(2),
@@ -80,7 +79,7 @@ export class TabelaDadosAgrupadosComponent implements OnInit {
             });
         }
       }
-      this.DadosTabela = 
+      this.DadosTabela =
       {
         Amplitude:data.Amplitude,
         NumeroDeElementos:data.NumeroDeElementos,
@@ -115,11 +114,11 @@ export class TabelaDadosAgrupadosComponent implements OnInit {
   displayedColumns: string[] = ['intervalos', 'xi', 'fi', 'Fi','fr','Fr'];
 
   ngOnInit(): void {
-    // if(localStorage.getItem('last_table_search') !== null){
-    //   this.tabela = JSON.parse(localStorage.getItem('last_table_search'));
-    //   this.valoresTabela = JSON.parse(localStorage.getItem('last_table_values'));
-    //   this.DadosTabela = JSON.parse(localStorage.getItem('last_table_data'));
-    // }
+    if(localStorage.getItem('last_table_search') !== null){
+      this.tabela = JSON.parse(localStorage.getItem('last_table_search'));
+      this.valoresTabela = JSON.parse(localStorage.getItem('last_table_values'));
+      this.DadosTabela = JSON.parse(localStorage.getItem('last_table_data'));
+    }
   }
 
 }

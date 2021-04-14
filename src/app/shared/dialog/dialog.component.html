@@ -3,7 +3,7 @@
     <p>Como foi realizada a operação?</p>
     <mat-label>{{data.operacao}}</mat-label>
     <div class="box">
-      <mathjax [content]='data.passos'></mathjax>
+      <mathjax [content]='data?.passos ||""'></mathjax>
     </div>
 </div>
 <div mat-dialog-actions>

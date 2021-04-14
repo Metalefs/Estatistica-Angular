@@ -8,13 +8,13 @@ import { RestApiService } from '../../api/RestApiService';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
-  
-  api:RestApiService;  
-  title = "ElShadday Marmitex";
-  
+
+  api:RestApiService;
+  title = "Distribuição online";
+
   desktop = "is-hidden-touch";
   mobile = "is-hidden-desktop";
-  
+
   constructor(api:RestApiService) {
     this.api = api;
   }
