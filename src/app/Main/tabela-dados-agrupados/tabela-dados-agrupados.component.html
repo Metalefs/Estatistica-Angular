@@ -17,23 +17,25 @@
         <mat-icon matSuffix>edit</mat-icon>
         <mat-hint>Valores para a tabela quantitativa</mat-hint>
       </mat-form-field>
-      <button class="btn btn-primary" href="#tabela_dados">Calcular</button>
+      <button mat-flat-button class="btn btn-primary" href="#tabela_dados">Calcular</button>
     </p>
     <div *ngIf="DadosTabela != undefined">
 
-      <button mat-flat-button (click)="openDialog('Tabela',DadosTabela['Passos'].m_StringValue)">Como a tabela foi montada?</button>
+      <button mat-flat-button (click)="openDialog('Tabela',DadosTabela['Passos'].m_StringValue)">Como a tabela foi
+        montada?</button>
     </div>
   </div>
-  <div class="">
+  <div class="" *ngIf="DadosTabela != undefined">
 
-    <div *ngIf="DadosTabela != undefined">
+    <div>
 
       <mat-form-field>
 
         <input matNativeControl value="" disabled>
         <label>Média: {{DadosTabela.Media['Resultado']}}</label>
 
-        <button mat-flat-button (click)="openDialog('Média',DadosTabela.Media['Passos'].m_StringValue)">Como cheguei a esse
+        <button mat-flat-button (click)="openDialog('Média',DadosTabela.Media['Passos'].m_StringValue)">Como cheguei a
+          esse
           resultado?</button>
       </mat-form-field>
 
@@ -42,7 +44,8 @@
         <input matNativeControl value="" disabled>
         <label>Mediana: {{DadosTabela.Mediana['Resultado']}}</label>
 
-        <button mat-flat-button (click)="openDialog('Mediana',DadosTabela.Mediana['Passos'].m_StringValue)">Como cheguei a
+        <button mat-flat-button (click)="openDialog('Mediana',DadosTabela.Mediana['Passos'].m_StringValue)">Como cheguei
+          a
           esse resultado?</button>
       </mat-form-field>
 
@@ -51,7 +54,8 @@
         <input matNativeControl value="" disabled>
         <label>Moda(s): {{DadosTabela.Moda['Modas']}}</label>
 
-        <button mat-flat-button (click)="openDialog('Moda',DadosTabela.Moda['Passos'].m_StringValue)">Como cheguei a esse
+        <button mat-flat-button (click)="openDialog('Moda',DadosTabela.Moda['Passos'].m_StringValue)">Como cheguei a
+          esse
           resultado?</button>
         <mat-hint>Classificação: {{DadosTabela.Moda['Classificacao']}}</mat-hint>
 
@@ -77,48 +81,55 @@
       </mat-form-field>
     </div>
 
-    <table mat-table [dataSource]="tabela" id="tabela_dados" class="table mat-elevation-z8 pr-3">
+    <hr>
 
-      <ng-container matColumnDef="intervalos">
-        <th mat-header-cell *matHeaderCellDef> {{NomeTabela}} </th>
-        <td mat-cell *matCellDef="let element"> {{element.intervalos}} </td>
-      </ng-container>
+    <fieldset>
+      <table mat-table [dataSource]="tabela" id="tabela_dados" class="table mat-elevation-z8 pr-3">
+        <caption>
+           Tabela de agrupamento {{Simples ? 'simples' : 'com intervalos'}}<br>
+           <em><span *ngIf="!Simples">Intervalo: {{DadosTabela.Intervalo}}</span></em>
+        </caption>
+        <ng-container matColumnDef="intervalos">
+          <th mat-header-cell *matHeaderCellDef> {{NomeTabela}} </th>
+          <td mat-cell *matCellDef="let element"> {{element.intervalos}} </td>
+        </ng-container>
 
-      <ng-container matColumnDef="xi">
-        <th mat-header-cell *matHeaderCellDef> Média </th>
-        <td mat-cell *matCellDef="let element"> {{element.xi}} </td>
-      </ng-container>
+        <ng-container matColumnDef="xi">
+          <th mat-header-cell *matHeaderCellDef> Média </th>
+          <td mat-cell *matCellDef="let element"> {{element.xi}} </td>
+        </ng-container>
 
-      <ng-container matColumnDef="fi">
-        <th mat-header-cell *matHeaderCellDef> F. simples </th>
-        <td mat-cell *matCellDef="let element"> {{element.fi}} </td>
-      </ng-container>
+        <ng-container matColumnDef="fi">
+          <th mat-header-cell *matHeaderCellDef> F. simples </th>
+          <td mat-cell *matCellDef="let element"> {{element.fi}} </td>
+        </ng-container>
 
-      <ng-container matColumnDef="Fi">
-        <th mat-header-cell *matHeaderCellDef> F. simples acumulada </th>
-        <td mat-cell *matCellDef="let element"> {{element.Fi}} </td>
-      </ng-container>
+        <ng-container matColumnDef="Fi">
+          <th mat-header-cell *matHeaderCellDef> F. simples acumulada </th>
+          <td mat-cell *matCellDef="let element"> {{element.Fi}} </td>
+        </ng-container>
 
-      <ng-container matColumnDef="fr">
-        <th mat-header-cell *matHeaderCellDef> F. relativa </th>
-        <td mat-cell *matCellDef="let element"> {{element.fr}} </td>
-      </ng-container>
+        <ng-container matColumnDef="fr">
+          <th mat-header-cell *matHeaderCellDef> F. relativa </th>
+          <td mat-cell *matCellDef="let element"> {{element.fr}} </td>
+        </ng-container>
 
-      <ng-container matColumnDef="Fr">
-        <th mat-header-cell *matHeaderCellDef> F. relativa acumulada </th>
-        <td mat-cell *matCellDef="let element"> {{element.Fr}} </td>
-      </ng-container>
+        <ng-container matColumnDef="Fr">
+          <th mat-header-cell *matHeaderCellDef> F. relativa acumulada </th>
+          <td mat-cell *matCellDef="let element"> {{element.Fr}} </td>
+        </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </fieldset>
 
   </div>
 
   <mat-form-field>
 
-    <textarea matNativeControl matInput></textarea>
-
+    <textarea matInput matNativeControl>
+    </textarea>
     <mat-hint>Anotações</mat-hint>
 
   </mat-form-field>

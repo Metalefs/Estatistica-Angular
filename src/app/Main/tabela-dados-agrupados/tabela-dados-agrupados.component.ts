@@ -54,7 +54,7 @@ export class TabelaDadosAgrupadosComponent implements OnInit {
       data = JSON.parse(data);
       this.tabela = [];
       this.DadosTabela = null;
-      this.Simples=data.Simples
+      this.Simples = data.Simples;
       console.log(data);
       for (let i = 0; i < data.QuantidadeIntervalos; i++)
       {
@@ -95,8 +95,9 @@ export class TabelaDadosAgrupadosComponent implements OnInit {
         Variancia:data.Variancia,
       };
       localStorage.setItem('last_table_values', JSON.stringify(this.valoresTabela));
-      localStorage.setItem('last_table_data', JSON.stringify(this.DadosTabela));
+      localStorage.setItem('last_table_data',   JSON.stringify(this.DadosTabela));
       localStorage.setItem('last_table_search', JSON.stringify(this.tabela));
+      localStorage.setItem('last_table_type',   JSON.stringify(this.Simples));
       this.MatTable.renderRows();
     });
   }
@@ -118,6 +119,7 @@ export class TabelaDadosAgrupadosComponent implements OnInit {
       this.tabela = JSON.parse(localStorage.getItem('last_table_search'));
       this.valoresTabela = JSON.parse(localStorage.getItem('last_table_values'));
       this.DadosTabela = JSON.parse(localStorage.getItem('last_table_data'));
+      this.Simples = Boolean(localStorage.getItem('last_table_type'));
     }
   }
 
