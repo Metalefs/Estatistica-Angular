@@ -12,22 +12,23 @@ export class AppComponent {
       {
         route: '/agrupamento', shape: 'folder', text: 'Agrupamento de dados' ,
         children: [
-          { route: '/media', shape: 'folder', text: 'Média', },
-          { route: '/mediana', shape: 'folder', text: 'Mediana', },
-          { route: '/moda', shape: 'folder', text: 'Moda', },
-          { route: '/desvioPadrao', shape: 'folder', text: 'Desvio Padrão', },
-          { route: '/variancia', shape: 'folder', text: 'Variância', },
+          { route: '/agrupamento/dados-agrupados', shape: 'folder', text: 'Dados Agrupados', },
+          { route: '/agrupamento/media', shape: 'folder', text: 'Média', },
+          { route: '/agrupamento/mediana', shape: 'folder', text: 'Mediana', },
+          { route: '/agrupamento/moda', shape: 'folder', text: 'Moda', },
+          { route: '/agrupamento/desvioPadrao', shape: 'folder', text: 'Desvio Padrão', },
+          { route: '/agrupamento/variancia', shape: 'folder', text: 'Variância', },
         ]
       },
       {
         route: '/analiseCombinatoria', shape: 'folder', text: 'Análise Combinatória' ,
         children: [{
-          route: '/analiseCombinatoria', shape: 'folder', text: 'Anagramas'
+          route: '/analiseCombinatoria/anagramas', shape: 'folder', text: 'Anagramas'
         }]
       }
     ]
   }
-  title = 'Tabela Distribuição Online';
+  title = 'Estatística Online';
 
   year:number=new Date().getFullYear();
 }

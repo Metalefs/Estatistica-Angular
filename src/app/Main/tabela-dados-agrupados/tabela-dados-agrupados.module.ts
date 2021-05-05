@@ -9,13 +9,18 @@ import { VarianciaComponent } from './variancia/variancia.component';
 import { CoeficienteVariacaoComponent } from './coeficiente-variacao/coeficiente-variacao.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+import { TabelaDadosAgrupadosRoutingModule } from './tabela-dados-agrupados.routing';
+import { TabelaDistrbuicaoComponent } from './tabela-distrbuicao/tabela-distrbuicao.component';
+
 
 
 @NgModule({
-  declarations: [TabelaDadosAgrupadosComponent, MediaComponent, MedianaComponent, ModaComponent, DesvioPadraoComponent, VarianciaComponent, CoeficienteVariacaoComponent],
+  declarations: [TabelaDadosAgrupadosComponent, MediaComponent, MedianaComponent, ModaComponent, DesvioPadraoComponent, VarianciaComponent, CoeficienteVariacaoComponent, TabelaDistrbuicaoComponent],
   imports: [
     CommonModule,
+    TabelaDadosAgrupadosRoutingModule,
     SharedModule
-  ]
+  ],
+  exports:[]
 })
 export class TabelaDadosAgrupadosModule { }

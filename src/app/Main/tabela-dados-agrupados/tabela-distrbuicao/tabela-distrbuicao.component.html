@@ -1,0 +1,262 @@
+<div class="container" >
+  <div>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome para a visualização" [(ngModel)]="NomeTabela">
+        <mat-icon matSuffix>edit</mat-icon>
+        <mat-hint>Nome do gráfico</mat-hint>
+      </mat-form-field>
+    </p>
+  </div>
+  <div>
+    <form action="" method="post" [formGroup]="dadosForm">
+      <p>
+        <mat-form-field appearance="outline" class="fill">
+          <mat-label>{{DadosTabela?.NumeroDeElementos||NumElementos ? 'Num. Elementos: '+DadosTabela?.NumeroDeElementos||NumElementos : 'Valores para a tabela quantitativa'}}</mat-label>
+          <input matInput [formControlName]="'valores'" placeholder="1,2,3,4" [(ngModel)]="valoresTabela" (keyup)="GerarTabela(valoresTabela)">
+          <mat-icon matSuffix>edit</mat-icon>
+          <mat-hint></mat-hint>
+        </mat-form-field>
+        <button mat-flat-button class="btn btn-primary" [disabled]="this.dadosForm.get('valores').invalid" (click)="GerarTabela(valoresTabela)" href="#tabela_dados">Calcular</button>
+      </p>
+    </form>
+    <div *ngIf="DadosTabela != undefined">
+        <clr-accordion>
+          <clr-accordion-panel  (click)="openDialog('Média',DadosTabela.Media['Passos'].Valor);">
+            <clr-accordion-title>Como a tabela foi
+              montada?</clr-accordion-title>
+            <clr-accordion-content [(clrIfExpanded)]="panelExpandedProperty" >
+              <!-- <mathjax #math [content]="DadosTabela['Passos']?.Valor"></mathjax> -->
+            </clr-accordion-content>
+          </clr-accordion-panel>
+        </clr-accordion>
+    </div>
+    <button class="button btn btn-secondary" *ngIf="panelExpandedProperty" (click)="fecharPainel()">Fechar </button>
+  </div>
+  <div class="" *ngIf="DadosTabela != undefined">
+    <div>
+
+      <mat-form-field>
+
+        <input matNativeControl value="" disabled>
+        <label>Média: {{DadosTabela.Media['Resultado']}}</label>
+
+        <button mat-flat-button (click)="openDialog('Média',DadosTabela.Media['Passos'].Valor)">Como cheguei a
+          esse
+          resultado?</button>
+      </mat-form-field>
+
+      <mat-form-field>
+
+        <input matNativeControl value="" disabled>
+        <label>CV: {{DadosTabela.DesvioPadrao['Resultado'] / DadosTabela.Media['Resultado']}}</label>
+
+        <button mat-flat-button (click)="openDialog('CV',DadosTabela.DesvioPadrao['Resultado'] / DadosTabela.Media['Resultado'])">Como cheguei a
+          esse
+          resultado?</button>
+      </mat-form-field>
+
+      <mat-form-field>
+
+        <input matNativeControl value="" disabled>
+        <label>Mediana: {{DadosTabela.Mediana['Resultado']}}</label>
+
+        <button mat-flat-button (click)="openDialog('Mediana',DadosTabela.Mediana['Passos'].Valor)">Como cheguei
+          a
+          esse resultado?</button>
+      </mat-form-field>
+
+      <mat-form-field>
+
+        <input matNativeControl value="" disabled>
+        <label>Moda(s): {{DadosTabela.Moda['Modas']}}</label>
+
+        <button mat-flat-button (click)="openDialog('Moda',DadosTabela.Moda['Passos'].Valor)">Como cheguei a
+          esse
+          resultado?</button>
+        <mat-hint>Classificação: {{DadosTabela.Moda['Classificacao']}}</mat-hint>
+
+      </mat-form-field>
+
+      <mat-form-field>
+
+        <input matNativeControl value="" disabled>
+        <label>Desvio Padrão: {{DadosTabela.DesvioPadrao['Resultado']}}</label>
+        <button mat-flat-button
+          (click)="openDialog('Desvio Padrão', DadosTabela.DesvioPadrao['Passos'].Valor)">Como cheguei a esse
+          resultado?</button>
+
+      </mat-form-field>
+
+      <mat-form-field>
+
+        <input matNativeControl value="" disabled>
+        <label>Variância: {{DadosTabela.Variancia['Resultado']}}</label>
+        <button mat-flat-button (click)="openDialog('Variância',DadosTabela.Variancia['Passos'].Valor)">Como
+          cheguei a esse resultado?</button>
+
+      </mat-form-field>
+    </div>
+
+    <hr>
+
+    <fieldset>
+      <mat-tab-group>
+      <mat-tab [label]="'Tabela Simples'">
+        <table mat-table [dataSource]="tabela" id="tabela_dados" class="table mat-elevation-z8 pr-3">
+          <caption>
+             Tabela de agrupamento {{Simples ? 'simples' : 'com intervalos'}}<br>
+             <em><span *ngIf="!Simples">Intervalo: {{DadosTabela.Intervalo}}</span></em>
+          </caption>
+          <ng-container matColumnDef="i">
+            <th mat-header-cell *matHeaderCellDef> i </th>
+            <td mat-cell *matCellDef="let element; let i = index"> {{i+1}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="intervalos">
+            <th mat-header-cell *matHeaderCellDef> {{NomeTabela}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.intervalos}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="xi">
+            <th mat-header-cell *matHeaderCellDef> Média </th>
+            <td mat-cell *matCellDef="let element"> {{element.xi}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="fi">
+            <th mat-header-cell *matHeaderCellDef> F. simples </th>
+            <td mat-cell *matCellDef="let element"> {{element.fi}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Fi">
+            <th mat-header-cell *matHeaderCellDef> F. simples acumulada </th>
+            <td mat-cell *matCellDef="let element"> {{element.Fi}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="fr">
+            <th mat-header-cell *matHeaderCellDef> F. relativa </th>
+            <td mat-cell *matCellDef="let element"> {{element.fr}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Fr">
+            <th mat-header-cell *matHeaderCellDef> F. relativa acumulada </th>
+            <td mat-cell *matCellDef="let element"> {{element.Fr}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-tab>
+      <mat-tab [label]="'Tabela Desvio Padrão'">
+        <table mat-table [dataSource]="tabela" id="tabela_dados_dp" class="table mat-elevation-z8 pr-3">
+          <caption>
+             Tabela de agrupamento {{Simples ? 'simples' : 'com intervalos'}}<br>
+             <em><span *ngIf="!Simples">Intervalo: {{DadosTabela.Intervalo}}</span></em>
+          </caption>
+          <ng-container matColumnDef="i">
+            <th mat-header-cell *matHeaderCellDef> i </th>
+            <td mat-cell *matCellDef="let element; let i = index"> {{i+1}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="intervalos">
+            <th mat-header-cell *matHeaderCellDef> 	Xi ({{NomeTabela}}) </th>
+            <td mat-cell *matCellDef="let element"> {{element.intervalos}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="xi">
+            <th mat-header-cell *matHeaderCellDef> Média </th>
+            <td mat-cell *matCellDef="let element"> {{element.xi}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="fi">
+            <th mat-header-cell *matHeaderCellDef> Fi </th>
+            <td mat-cell *matCellDef="let element"> {{element.fi}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Fi">
+            <th mat-header-cell *matHeaderCellDef> FI </th>
+            <td mat-cell *matCellDef="let element"> {{element.Fi}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="fr">
+            <th mat-header-cell *matHeaderCellDef> Fr </th>
+            <td mat-cell *matCellDef="let element"> {{element.fr}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Fr">
+            <th mat-header-cell *matHeaderCellDef> FR </th>
+            <td mat-cell *matCellDef="let element"> {{element.Fr}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="QuadradoDoTermo">
+            <th mat-header-cell *matHeaderCellDef> Xi² </th>
+            <td mat-cell *matCellDef="let element"> {{element.QuadradoDoTermo}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="FrequenciaSimplesVezesOTermo">
+            <th mat-header-cell *matHeaderCellDef> Fi * Xi </th>
+            <td mat-cell *matCellDef="let element"> {{element.FrequenciaSimplesVezesOTermo}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="FrequenciaSimplesVezesOQuadradoDoTermo">
+            <th mat-header-cell *matHeaderCellDef> Fi * Xi² </th>
+            <td mat-cell *matCellDef="let element"> {{element.FrequenciaSimplesVezesOQuadradoDoTermo}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="dp_displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: dp_displayedColumns;"></tr>
+        </table>
+        <div>
+
+          <mat-form-field>
+
+            <input matNativeControl value="" disabled>
+            <label>Somatório Fi * Xi: {{DadosTabela.SomatorioFrequenciaSimplesVezesOTermo}}</label>
+          </mat-form-field>
+          <mat-form-field>
+
+            <input matNativeControl value="" disabled>
+            <label>Somatório Fi * Xi²: {{DadosTabela.SomatorioFrequenciaSimplesVezesOQuadradoDoTermo}}</label>
+          </mat-form-field>
+
+        </div>
+        <div>
+          <mat-form-field>
+
+            <input matNativeControl value="" disabled>
+            <label>Dp da Tabela: {{DadosTabela.DesvioPadraoTabela}}</label>
+          </mat-form-field>
+          <mat-form-field>
+
+            <input matNativeControl value="" disabled>
+            <label>Média do Dp: {{DadosTabela.MediaDp}}</label>
+          </mat-form-field>
+        </div>
+      </mat-tab>
+      </mat-tab-group>
+    </fieldset>
+
+  </div>
+
+  <mat-form-field>
+
+    <textarea matInput matNativeControl>
+    </textarea>
+    <mat-hint>Anotações</mat-hint>
+
+  </mat-form-field>
+
+  <clr-accordion>
+    <clr-accordion-panel>
+      <clr-accordion-title>Cálculos</clr-accordion-title>
+      <clr-accordion-content [(clrIfExpanded)]="calculosExpandedProperty">
+        <pre>
+          <mat-hint><i>cálculos:</i></mat-hint>
+          {{DadosTabela || "" | json}}
+        </pre>
+      </clr-accordion-content>
+    </clr-accordion-panel>
+  </clr-accordion>
+</div>
+
