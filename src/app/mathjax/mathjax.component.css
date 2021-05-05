@@ -1,2 +1,5 @@
 .mjx-chtml .MJXc-display{
 }
+.mathContent{
+  overflow-x: scroll;
+}

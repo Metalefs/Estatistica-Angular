@@ -1,5 +1,6 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component} from '@angular/core';
+import { LinkTrackerService } from '../link-tracker.service';
 
 /** @title Responsive sidenav */
 @Component({
@@ -11,10 +12,8 @@ export class NavComponent {
   mobileQuery: MediaQueryList;
 
   private _mobileQueryListener: () => void;
-  nav_elements: NAV_ELEMENT[] = [
-    {name: "Tabela de Agrupamento",link: "/TabelaAgrupamento"},
-  ];
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+
+  constructor(public linkTracker: LinkTrackerService, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -24,11 +23,6 @@ export class NavComponent {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-}
-
-interface NAV_ELEMENT {
-  name: string;
-  link: string;
 }
 
 /**  Copyright 2018 Google Inc. All Rights Reserved.

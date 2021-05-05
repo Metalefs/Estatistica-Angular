@@ -11,14 +11,15 @@ import { environment } from '../environments/environment';
 
 import { ClarityModule } from '@clr/angular';
 import { MaterialModule } from './material-module';
-
-import { TabelaDadosAgrupadosComponent } from './Main/tabela-dados-agrupados/tabela-dados-agrupados.component';
 import { NavComponent } from './navbar/navbar.component';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { MathjaxComponent } from './mathjax/mathjax.component';
 import { ScrollTopComponent } from './scroll-top/scroll-top.component';
-import { MainPageComponent } from './pages/main-page/main-page.component';
 import { LinkTrackerService } from './link-tracker.service';
+import { PageScrollService } from './shared/scrollService';
+
+import { TabelaDadosAgrupadosComponent } from './Main/tabela-dados-agrupados/tabela-dados-agrupados.component';
+import { AnaliseCombinatoriaComponent } from './Main/analise-combinatoria/analise-combinatoria.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { LinkTrackerService } from './link-tracker.service';
     DialogComponent,
     MathjaxComponent,
     ScrollTopComponent,
-    MainPageComponent
+    AnaliseCombinatoriaComponent
   ],
   imports: [
     BrowserModule,
@@ -38,11 +39,12 @@ import { LinkTrackerService } from './link-tracker.service';
     BrowserModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     MatDialogModule,
     ClarityModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [{ provide: Document },LinkTrackerService],
+  providers: [{ provide: Document },PageScrollService,LinkTrackerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

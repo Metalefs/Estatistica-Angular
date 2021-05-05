@@ -56,7 +56,10 @@
     flex:initial !important;
 }
 .footer{
-    background: linear-gradient(90deg,#8e8a8a,#948282 35%,#8c8383);
+    background: linear-gradient(90deg,#8a8b8e,#838294 35%,#83878c);
+    padding: .3rem;
+    position: sticky;
+    bottom: 0;
 }
 @keyframes fade-in{
     0%{

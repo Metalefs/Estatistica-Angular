@@ -7,14 +7,15 @@ import { LinkTrackerService } from './link-tracker.service';
   providers: [LinkTrackerService]
 })
 export class AppComponent {
-  constructor(public linkTracker: LinkTrackerService) {}
+  constructor(public linkTracker: LinkTrackerService) {
+    linkTracker.links = [
+      { route: '/TabelaAgrupamento', shape: 'folder', text: 'Agrupamento de dados' },
+      { route: '/AnaliseCombinatoria', shape: 'folder', text: 'Análise Combinatória' , children: [{
+        route: '/AnaliseCombinatoria', shape: 'folder', text: 'Anagramas'
+      }]}
+    ]
+  }
   title = 'Tabela Distribuição Online';
-  nav_elements: NAV_ELEMENT[] = [
-    {name: "Tabela de Agrupamento",link: "/TabelaAgrupamento"},
-  ];
+
   year:number=new Date().getFullYear();
-}
-interface NAV_ELEMENT {
-  name: string;
-  link: string;
 }

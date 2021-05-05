@@ -8,14 +8,14 @@ import { environment } from 'src/environments/environment';
 @Injectable({
     providedIn: 'root'
 })
-export class RestApiService {
+export class TabelaService {
     apiURL = environment.endpoint;
-    tabela_dados_agrupadosURL = this.apiURL + '/TabelaDistribuicao';
-    mediaURL = this.apiURL + '/media';
-    medianaURL = this.apiURL + '/mediana';
-    modaURL = this.apiURL + '/moda';
-    desvio_padraoURL = this.apiURL + "/desvio_padrao";
-    varianciaURL = this.apiURL + '/variancia';
+    tabela_dados_agrupadosURL = this.apiURL + 'Distribuicao/TabelaDistribuicao';
+    mediaURL = this.apiURL + 'Distribuicao/ObterMedia';
+    medianaURL = this.apiURL + 'Distribuicao/ObterMediana';
+    modaURL = this.apiURL + 'Distribuicao/ObterModa';
+    desvio_padraoURL = this.apiURL + "Distribuicao/ObterDesvioPadrao";
+    varianciaURL = this.apiURL + 'Distribuicao/ObterVariancia';
 
     constructor(private http: HttpClient) { }
 

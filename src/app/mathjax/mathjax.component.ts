@@ -32,9 +32,9 @@ export class MathjaxComponent implements OnChanges,OnInit {
     let angObj = this;
     setTimeout(() => {
       angObj.mathJaxObject['Hub'].Queue(["Typeset", angObj.mathJaxObject.Hub]);
-    },0)
-    console.log(this.content);
+    }, 0)
   }
+
   loadMathConfig() {
     this.updateMathObt();
     this.mathJaxObject.Hub.Config({

@@ -1,29 +1,24 @@
 
 <clr-main-container>
-	<clr-header class="header-2">
-		<div class="branding">
+	<clr-header class="header-5">
+		<div class="branding" >
 			<a class="nav-link">
 				<clr-icon shape="home" size="24"></clr-icon>
 				<span class="title">Tabela de Distribuição Online</span>
 			</a>
 		</div>
     </clr-header>
-    <div class="content-container">
+    <div class="content-container" >
 
-        <clr-vertical-nav [clrVerticalNavCollapsible]="true" [clr-nav-level]="1">
-            <a clrVerticalNavLink *ngFor="let link of linkTracker.links" [routerLink]="link?.route" routerLinkActive="active">
-                <clr-icon clrVerticalNavIcon [attr.shape]="link?.shape"></clr-icon>
-                {{link?.text}}
-            </a>
-        </clr-vertical-nav>
-        <div class="content-area">
+        <navbar class="h-full"></navbar>
+        <div class="content-area" id="content-area">
             <router-outlet></router-outlet>
         </div>
 
     </div>
 </clr-main-container>
 
-<footer class="footer">
+<footer class="">
     <div class="content">
         <p class="has-text-white-bis is-family-primary">
             <strong>TBD Online</strong> - {{year}} - Unchool Tech.

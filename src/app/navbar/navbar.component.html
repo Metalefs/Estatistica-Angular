@@ -1,0 +1,23 @@
+<clr-vertical-nav class="h-100" [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="false" [clr-nav-level]="1">
+  <ng-container *ngFor="let link of linkTracker.links">
+    <ng-container *ngIf="link.children then group else single"></ng-container>
+    <ng-template #group>
+      <clr-vertical-nav-group>
+        <clr-icon [attr.shape]="link?.shape" clrVerticalNavIcon></clr-icon>
+        {{link.text}}
+        <clr-vertical-nav-group-children>
+          <a clrVerticalNavLink *ngFor="let child of link.children" [routerLink]="child?.route" routerLinkActive="active">
+            <clr-icon clrVerticalNavIcon [attr.shape]="child?.shape"></clr-icon>
+            {{child?.text}}
+          </a>
+        </clr-vertical-nav-group-children>
+      </clr-vertical-nav-group>
+    </ng-template>
+    <ng-template #single>
+      <a clrVerticalNavLink [routerLink]="link?.route" routerLinkActive="active">
+        <clr-icon clrVerticalNavIcon [attr.shape]="link?.shape"></clr-icon>
+        {{link?.text}}
+      </a>
+    </ng-template>
+  </ng-container>
+</clr-vertical-nav>
