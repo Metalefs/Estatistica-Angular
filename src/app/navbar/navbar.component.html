@@ -6,7 +6,7 @@
         <clr-icon [attr.shape]="link?.shape" clrVerticalNavIcon></clr-icon>
         {{link.text}}
         <clr-vertical-nav-group-children>
-          <a clrVerticalNavLink *ngFor="let child of link.children" [routerLink]="child?.route" routerLinkActive="active">
+          <a clrVerticalNavLink *ngFor="let child of link.children" [routerLink]="link.route+'/'+child?.route" routerLinkActive="active">
             <clr-icon clrVerticalNavIcon [attr.shape]="child?.shape"></clr-icon>
             {{child?.text}}
           </a>

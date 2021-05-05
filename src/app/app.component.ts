@@ -9,10 +9,22 @@ import { LinkTrackerService } from './link-tracker.service';
 export class AppComponent {
   constructor(public linkTracker: LinkTrackerService) {
     linkTracker.links = [
-      { route: '/TabelaAgrupamento', shape: 'folder', text: 'Agrupamento de dados' },
-      { route: '/AnaliseCombinatoria', shape: 'folder', text: 'Análise Combinatória' , children: [{
-        route: '/AnaliseCombinatoria', shape: 'folder', text: 'Anagramas'
-      }]}
+      {
+        route: '/agrupamento', shape: 'folder', text: 'Agrupamento de dados' ,
+        children: [
+          { route: '/media', shape: 'folder', text: 'Média', },
+          { route: '/mediana', shape: 'folder', text: 'Mediana', },
+          { route: '/moda', shape: 'folder', text: 'Moda', },
+          { route: '/desvioPadrao', shape: 'folder', text: 'Desvio Padrão', },
+          { route: '/variancia', shape: 'folder', text: 'Variância', },
+        ]
+      },
+      {
+        route: '/analiseCombinatoria', shape: 'folder', text: 'Análise Combinatória' ,
+        children: [{
+          route: '/analiseCombinatoria', shape: 'folder', text: 'Anagramas'
+        }]
+      }
     ]
   }
   title = 'Tabela Distribuição Online';

@@ -1,31 +1,3 @@
-<div class="container" id="main">
-  <div>
-    <form action="" method="post" [formGroup]="dadosForm">
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Anagrama</mat-label>
-          <input matInput [formControlName]="'valores'" placeholder="AMOR" [(ngModel)]="valoresAnagrama" (keyup)="getAnagrama(valoresAnagrama)">
-          <mat-icon matSuffix>edit</mat-icon>
-          <mat-hint>Os possíveis anagramas aparecerão abaixo</mat-hint>
-        </mat-form-field>
-        <button mat-flat-button class="btn btn-primary" [disabled]="this.dadosForm.get('valores').invalid" (click)="getAnagrama(valoresAnagrama)">Calcular</button>
-      </p>
-    </form>
-    <div *ngIf="Anagramas">
-      <table id="tabela_dados" class="table ">
-        <caption>
-           Anagramas para {{ valoresAnagrama }}<br>
-           <em><span>{{Anagramas.length}} resultados</span></em>
-        </caption>
-        <thead>
-          <th>Anagrama</th>
-        </thead>
-        <tbody>
-          <tr *ngFor="let anagrama of Anagramas">
-            <td>{{anagrama}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
- </div>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

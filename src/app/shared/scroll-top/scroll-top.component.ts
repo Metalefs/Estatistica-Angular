@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, HostListener } from '@angular/core';
-import { PageScrollService } from '../shared/scrollService';
+import { PageScrollService } from '../scrollService';
 @Component({
     selector: 'app-scroll-top',
     templateUrl: './scroll-top.component.html',

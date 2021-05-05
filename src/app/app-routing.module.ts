@@ -5,8 +5,14 @@ import { AnaliseCombinatoriaComponent } from './Main/analise-combinatoria/analis
 
 const routes: Routes = [
     {path: '', component: TabelaDadosAgrupadosComponent},
-    {path: 'TabelaAgrupamento', component: TabelaDadosAgrupadosComponent},
-    {path: 'AnaliseCombinatoria', component: AnaliseCombinatoriaComponent},
+    {
+      path: 'agrupamento',
+      loadChildren: () => import('./Main/tabela-dados-agrupados/tabela-dados-agrupados.module').then(m => m.TabelaDadosAgrupadosModule)
+    },
+    {
+      path: 'analiseCombinatoria',
+      loadChildren: () => import('./Main/analise-combinatoria/analise-combinatoria.module').then(m => m.AnaliseCombinatoriaModule)
+    },
     //{ path: '**', component: PageNotFoundComponent }
   ]
 ;

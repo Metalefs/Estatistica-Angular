@@ -5,9 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent, DialogData } from 'src/app/shared/dialog/dialog.component';
 import { LinkTrackerService } from 'src/app/link-tracker.service';
 import { PageScrollService } from '../../shared/scrollService';
-import { MathjaxComponent } from 'src/app/mathjax/mathjax.component';
+import { MathjaxComponent } from 'src/app/shared/mathjax/mathjax.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 
 
 export interface TabelaDadosAgrupados {
