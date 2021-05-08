@@ -8,9 +8,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ClarityModule } from '@clr/angular';
 import { MaterialModule } from './material-module';
 import { MathjaxComponent } from './mathjax/mathjax.component';
+import { WikiCardComponent } from './wiki-card/wiki-card.component';
 
 @NgModule({
-  declarations: [MathjaxComponent],
+  declarations: [MathjaxComponent, WikiCardComponent],
   imports: [
     MaterialModule,
     ClarityModule,
@@ -28,7 +29,8 @@ import { MathjaxComponent } from './mathjax/mathjax.component';
     MatDialogModule,
     ServiceWorkerModule,
     CommonModule,
-    MathjaxComponent
+    MathjaxComponent,
+    WikiCardComponent
   ]
 })
 export class SharedModule { }

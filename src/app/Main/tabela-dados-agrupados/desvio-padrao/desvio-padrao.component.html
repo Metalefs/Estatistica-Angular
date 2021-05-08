@@ -25,8 +25,7 @@
 </div>
 <ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
 <ng-template #dynamic>
-  <div class="container card card-block" [innerHTML]="wiki?.extract_html">
-  </div>
+  <app-wiki-card [wiki]="wiki"></app-wiki-card>
 </ng-template>
 <ng-template #static>
   <div class="container card card-block">

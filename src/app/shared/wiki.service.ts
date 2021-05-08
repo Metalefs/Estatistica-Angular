@@ -46,16 +46,35 @@ export class WikiSummary {
   wikibase_item?: string;
   //titles?:        Titles;
   pageid?:        number;
-  //thumbnail?:     Originalimage;
- // originalimage?: Originalimage;
+  thumbnail?:     Originalimage;
+  originalimage?: Originalimage;
   lang?:          string;
   dir?:           string;
   revision?:      string;
   tid?:           string;
   timestamp?:     Date;
   description?:   string;
-  //content_urls?:  ContentUrls;
+  content_urls?:  ContentUrls;
   //api_urls?:      APIUrls;
   extract?:       string;
   extract_html?:  string;
+}
+
+export interface Originalimage{
+  source:string,
+  width:string,
+  height:string
+}
+
+export interface ContentUrls
+{
+  desktop: ContentItem,
+  mobile: ContentItem
+}
+
+export interface ContentItem{
+  page: string,
+  revisions: string,
+  edit: string,
+  talk: string
 }
