@@ -1,28 +1,69 @@
-
 <clr-main-container>
-	<clr-header class="header-5">
-		<div class="branding" >
-			<a class="nav-link">
-				<clr-icon shape="home" size="24"></clr-icon>
+  <!-- <div class="alert alert-app-level alert-info">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+        </div>
+        <div class="alert-text">
+          App Level Alert
+        </div>
+        <div class="alert-actions">
+          <button class="btn btn-sm alert-action">Action</button>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="close" aria-label="Close">
+      <clr-icon aria-hidden="true" shape="close"></clr-icon>
+    </button>
+  </div> -->
+  <clr-header class="header header-6">
+    <div class="branding" >
+			<a class="nav-link" [routerLink]="'/'" style="text-align: center;">
+				<clr-icon shape="home" style="color:white" size="24"></clr-icon>
 				<span class="title">{{title}}</span>
 			</a>
 		</div>
-    </clr-header>
-    <div class="content-container" >
-
-        <navbar class="h-full"></navbar>
-        <div class="content-area" id="content-area">
-            <router-outlet></router-outlet>
-        </div>
-
+    <div class="header-nav">
+      <a href="javascript://" class="nav-link nav-icon">
+        <clr-icon shape="cloud"></clr-icon>
+      </a>
+      <a href="javascript://" class="active nav-link nav-icon">
+        <clr-icon shape="folder"></clr-icon>
+      </a>
     </div>
+  </clr-header>
+  <nav class="subnav">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link active" [routerLink]="'/'">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="javascript://">Sobre</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="javascript://">Ajuda</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="content-container">
+    <navbar class="h-full"></navbar>
+    <div class="content-area" id="content-area">
+      <router-outlet></router-outlet>
+      <div class="card">
+        <div class="card-footer">
+          <button class="btn btn-sm btn-link" [routerLink]="['/']">Voltar</button>
+        </div>
+      </div>
+      <footer class="">
+        <div class="content">
+            <p class="has-text-white-bis is-family-primary">
+                <strong>TBD Online</strong> - {{year}} - Unchool Tech.
+            </p>
+        </div>
+      </footer>
+      <app-scroll-top></app-scroll-top>
+    </div>
+  </div>
 </clr-main-container>
 
-<footer class="">
-    <div class="content">
-        <p class="has-text-white-bis is-family-primary">
-            <strong>TBD Online</strong> - {{year}} - Unchool Tech.
-        </p>
-    </div>
-</footer>
-<app-scroll-top></app-scroll-top>

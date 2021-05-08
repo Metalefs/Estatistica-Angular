@@ -1,1 +1,36 @@
-<p>moda works!</p>
+<div>
+  <form action="" method="post" [formGroup]="dadosForm">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Moda</mat-label>
+        <input matInput [formControlName]="'values'" placeholder="1,2,3"
+        [(ngModel)]="values" (keyup)="calcular(values)">
+        <mat-icon matSuffix>edit</mat-icon>
+        <mat-hint>A moda será exbido abaixo</mat-hint>
+      </mat-form-field>
+      <button mat-flat-button class="btn btn-primary"
+      [disabled]="this.dadosForm.get('values').invalid"
+       (click)="calcular(values)">Calcular</button>
+    </p>
+  </form>
+  <div *ngIf="Moda">
+    <mat-form-field>
+
+      <input matNativeControl value="" disabled>
+      <label>Moda: {{Moda.Modas}}</label>
+
+    </mat-form-field>
+    <mathjax #math [content]="Moda.Passos.Valor"></mathjax>
+  </div>
+</div>
+
+<ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
+<ng-template #dynamic>
+  <div class="container card card-block" [innerHTML]="wiki?.extract_html">
+  </div>
+</ng-template>
+<ng-template #static>
+  <div class="container card card-block">
+    <p><b>Moda</b> é uma das medidas de altura de um conjunto de dados, assim como a média e a mediana. Ela pode ser definida em moda amostral e populacional.</p>
+  </div>
+</ng-template>

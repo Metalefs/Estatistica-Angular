@@ -7,9 +7,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { ClarityModule } from '@clr/angular';
 import { MaterialModule } from './material-module';
+import { MathjaxComponent } from './mathjax/mathjax.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [MathjaxComponent],
   imports: [
     MaterialModule,
     ClarityModule,
@@ -26,7 +27,8 @@ import { MaterialModule } from './material-module';
     ReactiveFormsModule,
     MatDialogModule,
     ServiceWorkerModule,
-    CommonModule
+    CommonModule,
+    MathjaxComponent
   ]
 })
 export class SharedModule { }

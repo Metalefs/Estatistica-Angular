@@ -3,21 +3,21 @@ import { TabelaService } from '../tabela.service';
 import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent, DialogData } from 'src/app/shared/dialog/dialog.component';
-import { LinkTrackerService } from 'src/app/link-tracker.service';
 import { PageScrollService } from '../../../shared/scrollService';
 import { MathjaxComponent } from 'src/app/shared/mathjax/mathjax.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { TabelaDadosAgrupadosBase } from '../tabela-dados-agrupados.base';
+import { WikiService } from 'src/app/shared/wiki.service';
 @Component({
   selector: 'app-tabela-distrbuicao',
   templateUrl: './tabela-distrbuicao.component.html',
   styleUrls: ['./tabela-distrbuicao.component.css']
 })
-export class TabelaDistrbuicaoComponent implements OnInit {
+export class TabelaDistrbuicaoComponent extends TabelaDadosAgrupadosBase implements OnInit {
 
-  constructor(private fb:FormBuilder, linkTracker: LinkTrackerService, public restApi: TabelaService, public dialog: MatDialog, private PageScrollService: PageScrollService) {
-
+  constructor(protected wikiService: WikiService, private fb:FormBuilder, private router:Router, protected activeRoute: ActivatedRoute, public restApi: TabelaService, public dialog: MatDialog, private PageScrollService: PageScrollService) {
+    super(activeRoute,wikiService)
   }
   dadosForm: FormGroup;
   panelExpandedProperty:boolean = false;
@@ -27,32 +27,44 @@ export class TabelaDistrbuicaoComponent implements OnInit {
   tabela:TabelaDadosAgrupados[] = [];
   DadosTabela:DadosTabelaDadosAgrupados = null;
   NomeTabela:string = "Dados";
-  valoresTabela:string;
   Simples:boolean;
 
   ngOnInit(): void {
     this.dadosForm = this.fb.group({
-      valores:[this.valoresTabela,[Validators.required, Validators.pattern(/^[0-9.,]+/)]]
+      valores:[this.values,[Validators.required, Validators.pattern(/^[0-9.,]+/)]]
     })
-    if(localStorage.getItem('last_table_search') !== null){
-      this.tabela = JSON.parse(localStorage.getItem('last_table_search'));
-      this.valoresTabela = JSON.parse(localStorage.getItem('last_table_values'));
-      this.DadosTabela = JSON.parse(localStorage.getItem('last_table_data'));
-      this.Simples = Boolean(localStorage.getItem('last_table_type'));
-
-      if(this.Simples){
-        this.displayedColumns = ['i','intervalos', 'fi', 'Fi','fr','Fr'];
-        this.dp_displayedColumns = ['i','intervalos', 'fi', 'Fi','fr','Fr','QuadradoDoTermo',
-        'FrequenciaSimplesVezesOTermo',
-        'FrequenciaSimplesVezesOQuadradoDoTermo'];
-      }
-    }
   }
+
+  setValue(values:string){
+    this.values = values;
+  }
+  ngAfterViewInit(){
+    if(this.hasValueParam()){
+      this.handleActivatedRoute();
+    }
+    else
+      if(localStorage.getItem('last_table_search') !== null){
+        this.tabela = JSON.parse(localStorage.getItem('last_table_search'));
+        this.values = JSON.parse(localStorage.getItem('last_table_values'));
+        this.DadosTabela = JSON.parse(localStorage.getItem('last_table_data'));
+        this.Simples = Boolean(localStorage.getItem('last_table_type'));
+
+        if(this.Simples){
+          this.displayedColumns = ['i','intervalos', 'fi', 'Fi','fr','Fr'];
+          this.dp_displayedColumns = ['i','intervalos', 'fi', 'Fi','fr','Fr','QuadradoDoTermo',
+          'FrequenciaSimplesVezesOTermo',
+          'FrequenciaSimplesVezesOQuadradoDoTermo'];
+        }
+      }
+      this.getWikiSummary("Distribuição de frequências");
+  }
+
   NumElementos:number;
-  GerarTabela(dados :string){
+
+  calcular(dados :string){
     dados = dados.replace(/[^0-9,.]/g,',');
     this.NumElementos = dados.split(",").length;
-    this.valoresTabela = dados;
+    this.values = dados;
     if(this.dadosForm.get("valores").valid)
       this.restApi.getTabelaDadosAgrupados(dados).subscribe(data => {
         data = JSON.parse(data);
@@ -120,17 +132,16 @@ export class TabelaDistrbuicaoComponent implements OnInit {
           DesvioPadrao:data.DesvioPadrao,
           Variancia:data.Variancia,
 
-
           SomatorioFrequenciaSimplesVezesOTermo:data.SomatorioFrequenciaSimplesVezesOTermo,
           SomatorioFrequenciaSimplesVezesOQuadradoDoTermo:data.SomatorioFrequenciaSimplesVezesOQuadradoDoTermo,
           MediaDp:data.MediaDp,
           DesvioPadraoTabela:data.DesvioPadraoTabela,
         };
-        localStorage.setItem('last_table_values', JSON.stringify(this.valoresTabela));
+        localStorage.setItem('last_table_values', JSON.stringify(this.values));
         localStorage.setItem('last_table_data',   JSON.stringify(this.DadosTabela));
         localStorage.setItem('last_table_search', JSON.stringify(this.tabela));
         localStorage.setItem('last_table_type',   JSON.stringify(this.Simples));
-        this.MatTable.renderRows();
+        this.MatTable?.renderRows();
       });
   }
 
@@ -151,9 +162,12 @@ export class TabelaDistrbuicaoComponent implements OnInit {
 
   fecharPainel(){
     this.panelExpandedProperty = false;
-    this.PageScrollService.scrollElementIntoView("main");
+    this.PageScrollService.scrollElementIntoView("main-content");
   }
 
+  redirectWithValues(url:string){
+    this.router.navigate([url], {queryParams:{values:this.values}})
+  }
 
 }
 

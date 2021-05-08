@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './Main/home/home.component';
 import { TabelaDadosAgrupadosComponent } from './Main/tabela-dados-agrupados/tabela-dados-agrupados.component';
 
 const routes: Routes = [
-    {path: '', component: TabelaDadosAgrupadosComponent},
+    {path: '', component: HomeComponent},
     {
       path: 'agrupamento',
       loadChildren: () => import('./Main/tabela-dados-agrupados/tabela-dados-agrupados.module').then(m => m.TabelaDadosAgrupadosModule)

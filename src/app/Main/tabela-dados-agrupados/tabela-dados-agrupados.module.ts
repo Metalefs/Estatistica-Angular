@@ -13,7 +13,6 @@ import { TabelaDadosAgrupadosRoutingModule } from './tabela-dados-agrupados.rout
 import { TabelaDistrbuicaoComponent } from './tabela-distrbuicao/tabela-distrbuicao.component';
 
 
-
 @NgModule({
   declarations: [TabelaDadosAgrupadosComponent, MediaComponent, MedianaComponent, ModaComponent, DesvioPadraoComponent, VarianciaComponent, CoeficienteVariacaoComponent, TabelaDistrbuicaoComponent],
   imports: [
@@ -21,6 +20,6 @@ import { TabelaDistrbuicaoComponent } from './tabela-distrbuicao/tabela-distrbui
     TabelaDadosAgrupadosRoutingModule,
     SharedModule
   ],
-  exports:[]
+  exports: []
 })
 export class TabelaDadosAgrupadosModule { }

@@ -49,6 +49,11 @@
 .navbar-brand{
     height:22px;
 }
+.nav-link{
+  width: 100%;
+  display: flex;
+  justify-content: center
+}
 .absolute{
     position: absolute;
 }

@@ -11,6 +11,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 import { ClarityModule } from '@clr/angular';
+import { CdsModule } from '@cds/angular';
 import { NavComponent } from './navbar/navbar.component';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { LinkTrackerService } from './link-tracker.service';
@@ -19,17 +20,17 @@ import { PageScrollService } from './shared/scrollService';
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './shared/material-module';
 
-import { MathjaxComponent } from './shared/mathjax/mathjax.component';
 import { ScrollTopComponent } from './shared/scroll-top/scroll-top.component';
-
+import { HomeComponent } from './Main/home/home.component';
+import '@cds/core/modal/register.js';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     DialogComponent,
-    MathjaxComponent,
     ScrollTopComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +45,7 @@ import { ScrollTopComponent } from './shared/scroll-top/scroll-top.component';
     ReactiveFormsModule,
     MatDialogModule,
     ClarityModule,
+    CdsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{ provide: Document },PageScrollService,LinkTrackerService],

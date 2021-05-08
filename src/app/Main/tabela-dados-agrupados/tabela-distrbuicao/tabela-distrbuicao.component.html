@@ -11,97 +11,28 @@
   </div>
   <div>
     <form action="" method="post" [formGroup]="dadosForm">
-      <p>
-        <mat-form-field appearance="outline" class="fill">
-          <mat-label>{{DadosTabela?.NumeroDeElementos||NumElementos ? 'Num. Elementos: '+DadosTabela?.NumeroDeElementos||NumElementos : 'Valores para a tabela quantitativa'}}</mat-label>
-          <input matInput [formControlName]="'valores'" placeholder="1,2,3,4" [(ngModel)]="valoresTabela" (keyup)="GerarTabela(valoresTabela)">
-          <mat-icon matSuffix>edit</mat-icon>
-          <mat-hint></mat-hint>
-        </mat-form-field>
-        <button mat-flat-button class="btn btn-primary" [disabled]="this.dadosForm.get('valores').invalid" (click)="GerarTabela(valoresTabela)" href="#tabela_dados">Calcular</button>
-      </p>
+      <div class="clr-row">
+        <div class="clr-col-sm-12 clr-col-md-10" style="padding-bottom: 0 !important;margin-bottom: 0 !important;">
+
+          <p >
+            <mat-form-field appearance="outline" class="fill w-full" style="padding-bottom: 0 !important;margin-bottom: 0 !important;">
+              <mat-label>{{DadosTabela?.NumeroDeElementos||NumElementos ? 'Num. Elementos: '+DadosTabela?.NumeroDeElementos||NumElementos : 'Valores para a tabela quantitativa'}}</mat-label>
+              <input matInput [formControlName]="'valores'" placeholder="1,2,3,4" [(ngModel)]="values" (keyup)="calcular(values)">
+              <mat-icon matSuffix>edit</mat-icon>
+              <mat-hint></mat-hint>
+            </mat-form-field>
+          </p>
+        </div>
+        <div class="clr-col-2" style="margin-bottom: 10px !important;">
+          <button  mat-flat-button class="btn btn-primary" [disabled]="this.dadosForm.get('valores').invalid" (click)="calcular(values)" href="#tabela_dados">Calcular</button>
+
+        </div>
+      </div>
     </form>
-    <div *ngIf="DadosTabela != undefined">
-        <clr-accordion>
-          <clr-accordion-panel  (click)="openDialog('Média',DadosTabela.Media['Passos'].Valor);">
-            <clr-accordion-title>Como a tabela foi
-              montada?</clr-accordion-title>
-            <clr-accordion-content [(clrIfExpanded)]="panelExpandedProperty" >
-              <!-- <mathjax #math [content]="DadosTabela['Passos']?.Valor"></mathjax> -->
-            </clr-accordion-content>
-          </clr-accordion-panel>
-        </clr-accordion>
-    </div>
-    <button class="button btn btn-secondary" *ngIf="panelExpandedProperty" (click)="fecharPainel()">Fechar </button>
   </div>
   <div class="" *ngIf="DadosTabela != undefined">
-    <div>
-
-      <mat-form-field>
-
-        <input matNativeControl value="" disabled>
-        <label>Média: {{DadosTabela.Media['Resultado']}}</label>
-
-        <button mat-flat-button (click)="openDialog('Média',DadosTabela.Media['Passos'].Valor)">Como cheguei a
-          esse
-          resultado?</button>
-      </mat-form-field>
-
-      <mat-form-field>
-
-        <input matNativeControl value="" disabled>
-        <label>CV: {{DadosTabela.DesvioPadrao['Resultado'] / DadosTabela.Media['Resultado']}}</label>
-
-        <button mat-flat-button (click)="openDialog('CV',DadosTabela.DesvioPadrao['Resultado'] / DadosTabela.Media['Resultado'])">Como cheguei a
-          esse
-          resultado?</button>
-      </mat-form-field>
-
-      <mat-form-field>
-
-        <input matNativeControl value="" disabled>
-        <label>Mediana: {{DadosTabela.Mediana['Resultado']}}</label>
-
-        <button mat-flat-button (click)="openDialog('Mediana',DadosTabela.Mediana['Passos'].Valor)">Como cheguei
-          a
-          esse resultado?</button>
-      </mat-form-field>
-
-      <mat-form-field>
-
-        <input matNativeControl value="" disabled>
-        <label>Moda(s): {{DadosTabela.Moda['Modas']}}</label>
-
-        <button mat-flat-button (click)="openDialog('Moda',DadosTabela.Moda['Passos'].Valor)">Como cheguei a
-          esse
-          resultado?</button>
-        <mat-hint>Classificação: {{DadosTabela.Moda['Classificacao']}}</mat-hint>
-
-      </mat-form-field>
-
-      <mat-form-field>
-
-        <input matNativeControl value="" disabled>
-        <label>Desvio Padrão: {{DadosTabela.DesvioPadrao['Resultado']}}</label>
-        <button mat-flat-button
-          (click)="openDialog('Desvio Padrão', DadosTabela.DesvioPadrao['Passos'].Valor)">Como cheguei a esse
-          resultado?</button>
-
-      </mat-form-field>
-
-      <mat-form-field>
-
-        <input matNativeControl value="" disabled>
-        <label>Variância: {{DadosTabela.Variancia['Resultado']}}</label>
-        <button mat-flat-button (click)="openDialog('Variância',DadosTabela.Variancia['Passos'].Valor)">Como
-          cheguei a esse resultado?</button>
-
-      </mat-form-field>
-    </div>
-
-    <hr>
-
     <fieldset>
+
       <mat-tab-group>
       <mat-tab [label]="'Tabela Simples'">
         <table mat-table [dataSource]="tabela" id="tabela_dados" class="table mat-elevation-z8 pr-3">
@@ -207,47 +138,121 @@
           <tr mat-header-row *matHeaderRowDef="dp_displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: dp_displayedColumns;"></tr>
         </table>
-        <div>
-
-          <mat-form-field>
-
-            <input matNativeControl value="" disabled>
-            <label>Somatório Fi * Xi: {{DadosTabela.SomatorioFrequenciaSimplesVezesOTermo}}</label>
-          </mat-form-field>
-          <mat-form-field>
-
-            <input matNativeControl value="" disabled>
-            <label>Somatório Fi * Xi²: {{DadosTabela.SomatorioFrequenciaSimplesVezesOQuadradoDoTermo}}</label>
-          </mat-form-field>
-
-        </div>
-        <div>
-          <mat-form-field>
-
-            <input matNativeControl value="" disabled>
-            <label>Dp da Tabela: {{DadosTabela.DesvioPadraoTabela}}</label>
-          </mat-form-field>
-          <mat-form-field>
-
-            <input matNativeControl value="" disabled>
-            <label>Média do Dp: {{DadosTabela.MediaDp}}</label>
-          </mat-form-field>
-        </div>
       </mat-tab>
-      </mat-tab-group>
+    </mat-tab-group>
+    <div class="clr-row">
+      <mat-form-field class="clr-col-3">
+
+        <input matNativeControl value="" disabled>
+        <label>Somatório Fi * Xi: {{DadosTabela.SomatorioFrequenciaSimplesVezesOTermo}}</label>
+      </mat-form-field>
+      <mat-form-field class="clr-col-3">
+
+        <input matNativeControl value="" disabled>
+        <label>Somatório Fi * Xi²: {{DadosTabela.SomatorioFrequenciaSimplesVezesOQuadradoDoTermo}}</label>
+      </mat-form-field>
+
+      <mat-form-field class="clr-col-3">
+
+        <input matNativeControl value="" disabled>
+        <label>Dp da Tabela: {{DadosTabela.DesvioPadraoTabela}}</label>
+      </mat-form-field>
+      <mat-form-field class="clr-col-3">
+
+        <input matNativeControl value="" disabled>
+        <label>Média do Dp: {{DadosTabela.MediaDp}}</label>
+      </mat-form-field>
+    </div>
     </fieldset>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        <clr-accordion>
+          <clr-accordion-panel  (click)="math.ngOnInit()">
+            <clr-accordion-title>Como a tabela foi
+              montada?</clr-accordion-title>
+              <clr-accordion-content>
+                <mathjax #math [content]="DadosTabela['Passos'].Valor"></mathjax>
+              </clr-accordion-content>
+          </clr-accordion-panel>
+        </clr-accordion>
+        <button class="button btn btn-secondary" *ngIf="panelExpandedProperty" (click)="fecharPainel()">Fechar </button>
+      </div>
+      <mat-form-field class="clr-col-md-6 clr-col-sm-12">
 
+        <input matNativeControl value="" disabled><br>
+        <label (click)="redirectWithValues('/agrupamento/media')"><a>Média: {{DadosTabela.Media['Resultado']}}</a></label>
+
+        <button mat-flat-button (click)="openDialog('Média',DadosTabela.Media['Passos'].Valor)">Como cheguei a
+          esse
+          resultado?</button>
+      </mat-form-field>
+
+      <mat-form-field class="clr-col-md-6 clr-col-sm-12">
+
+        <input matNativeControl value="" disabled><br>
+        <label (click)="redirectWithValues('/agrupamento/coeficienteVaricao')"><a>CV: {{DadosTabela.DesvioPadrao['Resultado'] / DadosTabela.Media['Resultado']}}</a></label>
+
+        <button mat-flat-button (click)="openDialog('CV',DadosTabela.DesvioPadrao['Resultado'] / DadosTabela.Media['Resultado'])">Como cheguei a
+          esse
+          resultado?</button>
+      </mat-form-field>
+
+      <mat-form-field class="clr-col-md-6 clr-col-sm-12">
+
+        <input matNativeControl value="" disabled><br>
+        <label (click)="redirectWithValues('/agrupamento/mediana')"><a>Mediana: {{DadosTabela.Mediana['Resultado']}}</a></label>
+
+        <button mat-flat-button (click)="openDialog('Mediana',DadosTabela.Mediana['Passos'].Valor)">Como cheguei
+          a
+          esse resultado?</button>
+      </mat-form-field>
+
+      <mat-form-field class="clr-col-md-6 clr-col-sm-12">
+
+        <input matNativeControl value="" disabled><br>
+        <label (click)="redirectWithValues('/agrupamento/moda')"><a>Moda(s): {{DadosTabela.Moda['Modas']}}</a></label>
+
+        <button mat-flat-button (click)="openDialog('Moda',DadosTabela.Moda['Passos'].Valor)">Como cheguei a
+          esse
+          resultado?</button>
+        <mat-hint>Classificação: {{DadosTabela.Moda['Classificacao']}}</mat-hint>
+
+      </mat-form-field>
+
+      <mat-form-field class="clr-col-md-6 clr-col-sm-12">
+
+        <input matNativeControl value="" disabled><br>
+        <label (click)="redirectWithValues('/agrupamento/desvioPadrao')"><a>Desvio Padrão: {{DadosTabela.DesvioPadrao['Resultado']}}</a></label>
+        <button mat-flat-button
+          (click)="openDialog('Desvio Padrão', DadosTabela.DesvioPadrao['Passos'].Valor)">Como cheguei a esse
+          resultado?</button>
+
+      </mat-form-field>
+
+      <mat-form-field class="clr-col-md-6 clr-col-sm-12">
+
+        <input matNativeControl value="" disabled><br>
+        <label (click)="redirectWithValues('/agrupamento/variancia')"><a>Variância: {{DadosTabela.Variancia['Resultado']}}</a></label>
+        <button mat-flat-button (click)="openDialog('Variância',DadosTabela.Variancia['Passos'].Valor)">Como
+          cheguei a esse resultado?</button>
+
+      </mat-form-field>
+    </div>
+
+    <hr>
   </div>
+  <ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
+  <ng-template #dynamic>
+    <div class="container card card-block" [innerHTML]="wiki?.extract_html">
+    </div>
+  </ng-template>
+  <ng-template #static>
+    <div class="container card card-block">
+      <p>Em estatística, a <b>distribuição de frequência</b> é um arranjo de valores que uma ou mais variáveis ​​tomam em uma amostra. Cada entrada na tabela contém a frequência ou a contagem de ocorrências de valores dentro de um grupo ou intervalo específico, e deste modo, a tabela resume a distribuição dos valores da amostra.</p>
+    </div>
+  </ng-template>
 
-  <mat-form-field>
-
-    <textarea matInput matNativeControl>
-    </textarea>
-    <mat-hint>Anotações</mat-hint>
-
-  </mat-form-field>
-
-  <clr-accordion>
+  <!-- <clr-accordion>
     <clr-accordion-panel>
       <clr-accordion-title>Cálculos</clr-accordion-title>
       <clr-accordion-content [(clrIfExpanded)]="calculosExpandedProperty">
@@ -257,6 +262,6 @@
         </pre>
       </clr-accordion-content>
     </clr-accordion-panel>
-  </clr-accordion>
+  </clr-accordion> -->
 </div>
 

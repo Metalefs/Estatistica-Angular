@@ -46,3 +46,6 @@
 .absolute{
     position: absolute;
 }
+.nav-group-trigger, .nav-group-text {
+  font-weight: 500 !important;
+}

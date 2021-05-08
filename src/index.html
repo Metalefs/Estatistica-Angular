@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="utf-8">
   <title>Estatística Online</title>
   <base href="/">
@@ -13,13 +11,17 @@
   <script src="https://apis.google.com/js/platform.js" async="" defer=""></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script src="https://rawgit.com/abodelot/jquery.json-viewer/master/json-viewer/jquery.json-viewer.js"></script>
-  <link href="https://rawgit.com/abodelot/jquery.json-viewer/master/json-viewer/jquery.json-viewer.css" rel="stylesheet"/>
-
+  <link href="https://rawgit.com/abodelot/jquery.json-viewer/master/json-viewer/jquery.json-viewer.css" rel="stylesheet">
+  <link href="/node_modules/normalize.css/normalize.css" rel="stylesheet">
+  <link href="/node_modules/@cds/core/global.min.css" rel="stylesheet">
+  <link href="/node_modules/@cds/core/styles/module.shims.min.css" rel="stylesheet">
+  <link href="/node_modules/@cds/city/css/bundles/default.min.css" rel="stylesheet">
+  <link href="/node_modules/@cds/core/styles/theme.dark.min.css" rel="stylesheet">
   <script>
     window.MathJax = MathJax;
   </script>
 </head>
-<body class="mat-typography">
+<body class="mat-typography" cds-theme="dark" cds-text="body">
   <app-root></app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -30,5 +32,6 @@
 
   <!-- Initialize Firebase -->
   <script src="/__/firebase/init.js"></script>
-</body>
-</html>
+
+
+</body></html>

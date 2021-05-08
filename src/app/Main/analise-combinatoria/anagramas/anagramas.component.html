@@ -4,7 +4,7 @@
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Anagrama</mat-label>
-          <input matInput [formControlName]="'valores'" placeholder="AMOR" [(ngModel)]="valoresAnagrama" (keyup)="getAnagrama(valoresAnagrama)">
+          <input matInput [formControlName]="'valores'" placeholder="AMOR" [(ngModel)]="valoresAnagrama" (change)="getAnagrama(valoresAnagrama)">
           <mat-icon matSuffix>edit</mat-icon>
           <mat-hint>Os possíveis anagramas aparecerão abaixo</mat-hint>
         </mat-form-field>
@@ -29,3 +29,4 @@
     </div>
   </div>
  </div>
+ <div class="container card card-block" [innerHTML]="wiki?.extract_html"></div>

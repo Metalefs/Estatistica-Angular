@@ -1,1 +1,36 @@
-<p>media works!</p>
+<div>
+  <form action="" method="post" [formGroup]="dadosForm">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Média</mat-label>
+        <input matInput [formControlName]="'values'" placeholder="1,2,3"
+        [(ngModel)]="values" (keyup)="calcular(values)">
+        <mat-icon matSuffix>edit</mat-icon>
+        <mat-hint>A média será exbido abaixo</mat-hint>
+      </mat-form-field>
+      <button mat-flat-button class="btn btn-primary"
+      [disabled]="this.dadosForm.get('values').invalid"
+       (click)="calcular(values)">Calcular</button>
+    </p>
+  </form>
+  <div *ngIf="Media">
+    <mat-form-field>
+
+      <input matNativeControl value="" disabled>
+      <label>Média: {{Media.Resultado}}</label>
+
+    </mat-form-field>
+    <mathjax #math [content]="Media.Passos.Valor"></mathjax>
+  </div>
+</div>
+
+<ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
+<ng-template #dynamic>
+  <div class="container card card-block" [innerHTML]="wiki?.extract_html">
+  </div>
+</ng-template>
+<ng-template #static>
+  <div class="container card card-block">
+    <p>Em estatística, <b>média</b> é definida como o valor que demonstra a concentração dos dados de uma distribuição, como o ponto de equilíbrio das frequências em um histograma. Média também é interpretada como um valor significativo de uma lista de números. Os valores de uma lista de números podem ser representados por meio da escolha aleatória de um número. Se todos os números forem iguais, o número escolhido aleatoriamente será a média. Então, a média pode ser calculada por meio da combinação dos números de maneira específica e da geração de um valor significativo. Entretanto, a palavra média é usualmente usada em métodos mais sofisticados como média aritmética, mediana, moda, entre outros.</p>
+  </div>
+</ng-template>

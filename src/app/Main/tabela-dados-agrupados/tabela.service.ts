@@ -16,6 +16,7 @@ export class TabelaService {
     modaURL = this.apiURL + 'Distribuicao/ObterModa';
     desvio_padraoURL = this.apiURL + "Distribuicao/ObterDesvioPadrao";
     varianciaURL = this.apiURL + 'Distribuicao/ObterVariancia';
+    coeficienteVariacaoURL = this.apiURL + 'Distribuicao/ObterCoeficienteVariacao';
 
     constructor(private http: HttpClient) { }
 
@@ -29,40 +30,46 @@ export class TabelaService {
 private IsLoading = true;
 // HttpClient API get() method => Fetch
 getTabelaDadosAgrupados(valores) {
-    return this.http.get<any>(this.tabela_dados_agrupadosURL+"/"+valores).pipe(
+    return this.http.get<any>(`${this.tabela_dados_agrupadosURL}/${valores}`).pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
     )
 }
-getMedia() {
-    return this.http.get<any>(this.mediaURL).pipe(
+getMedia(valores) {
+    return this.http.get<any>(`${this.mediaURL}/${valores}`).pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
     )
 }
-getMediana() {
-    return this.http.get<any>(this.medianaURL).pipe(
+getMediana(valores) {
+    return this.http.get<any>(`${this.medianaURL}/${valores}`).pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
     )
 }
-getModa() {
-    return this.http.get<any>(this.modaURL).pipe(
+getModa(valores) {
+    return this.http.get<any>(`${this.modaURL}/${valores}`).pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
     )
 }
-getDesvioPadrao() {
-    return this.http.get<any>(this.desvio_padraoURL).pipe(
+getDesvioPadrao(valores) {
+    return this.http.get<any>(`${this.desvio_padraoURL}/${valores}`).pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
     )
 }
-getVariancia() {
-    return this.http.get<any>(this.varianciaURL).pipe(
+getVariancia(valores) {
+    return this.http.get<any>(`${this.varianciaURL}/${valores}`).pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
     )
+}
+getCoeficienteVariacao(valores) {
+  return this.http.get<any>(`${this.coeficienteVariacaoURL}/${valores}`).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+  )
 }
 // Page Loading state
 

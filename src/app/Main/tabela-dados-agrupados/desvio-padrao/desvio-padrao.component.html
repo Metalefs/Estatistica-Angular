@@ -1,1 +1,35 @@
-<p>desvio-padrao works!</p>
+<div>
+  <form action="" method="post" [formGroup]="dadosForm">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Desvio Padrão</mat-label>
+        <input matInput [formControlName]="'valores'" placeholder="1,2,3"
+          [(ngModel)]="values" (keyup)="calcular(values)">
+        <mat-icon matSuffix>edit</mat-icon>
+        <mat-hint>O desvio padrão será exbido abaixo</mat-hint>
+      </mat-form-field>
+      <button mat-flat-button class="btn btn-primary"
+      [disabled]="this.dadosForm.get('valores').invalid"
+       (click)="calcular(values)">Calcular</button>
+    </p>
+  </form>
+  <div *ngIf="Desvio">
+    <mat-form-field>
+
+      <input matNativeControl value="" disabled>
+      <label>Desvio Padrão: {{Desvio.Resultado}}</label>
+
+    </mat-form-field>
+    <mathjax #math [content]="Desvio.Passos.Valor"></mathjax>
+  </div>
+</div>
+<ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
+<ng-template #dynamic>
+  <div class="container card card-block" [innerHTML]="wiki?.extract_html">
+  </div>
+</ng-template>
+<ng-template #static>
+  <div class="container card card-block">
+    <p>Em estatística, o <b>desvio</b> é uma qualidade estatística de ajuste para um modelo que é usado frequentemente para testes estatísticos de hipóteses. É uma generalização da ideia de usar a soma dos quadrados dos resíduos no método dos mínimos quadrados&nbsp;aos casos em que o modelo de ajuste é conseguido por máxima verossimilhança.</p>
+  </div>
+</ng-template>
