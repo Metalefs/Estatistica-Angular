@@ -11,7 +11,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 import { ClarityModule } from '@clr/angular';
-import { CdsModule } from '@cds/angular';
 import { NavComponent } from './navbar/navbar.component';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { LinkTrackerService } from './link-tracker.service';
@@ -45,7 +44,6 @@ import '@cds/core/modal/register.js';
     ReactiveFormsModule,
     MatDialogModule,
     ClarityModule,
-    CdsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{ provide: Document },PageScrollService,LinkTrackerService],

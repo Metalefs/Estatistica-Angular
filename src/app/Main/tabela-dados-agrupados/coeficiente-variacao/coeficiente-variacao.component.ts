@@ -40,7 +40,7 @@ export class CoeficienteVariacaoComponent extends TabelaDadosAgrupadosBase imple
     this.NumElementos = dados.split(",").length;
     this.values = dados;
     if(this.dadosForm.get("values").valid)
-      this.tabelaService.getVariancia(dados).subscribe(data=>{
+      this.tabelaService.getCoeficienteVariacao(dados).subscribe(data=>{
         this.CoeficienteVariacao = JSON.parse(data);
         localStorage.setItem('last_cv_data',   JSON.stringify(this.CoeficienteVariacao));
       })

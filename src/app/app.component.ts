@@ -18,6 +18,7 @@ export class AppComponent {
           { route: '/agrupamento/moda', shape: 'folder', text: 'Moda', },
           { route: '/agrupamento/desvioPadrao', shape: 'folder', text: 'Desvio Padrão', },
           { route: '/agrupamento/variancia', shape: 'folder', text: 'Variância', },
+          { route: '/agrupamento/coeficienteVariacao', shape: 'folder', text: 'Coeficiênte de Variação', },
         ]
       },
       {

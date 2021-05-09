@@ -131,7 +131,7 @@ export class TabelaDistrbuicaoComponent extends TabelaDadosAgrupadosBase impleme
           Media:data.Media,
           DesvioPadrao:data.DesvioPadrao,
           Variancia:data.Variancia,
-
+          CoeficienteVariacao:data.CoeficienteVariacao,
           SomatorioFrequenciaSimplesVezesOTermo:data.SomatorioFrequenciaSimplesVezesOTermo,
           SomatorioFrequenciaSimplesVezesOQuadradoDoTermo:data.SomatorioFrequenciaSimplesVezesOQuadradoDoTermo,
           MediaDp:data.MediaDp,
@@ -194,6 +194,7 @@ export interface DadosTabelaDadosAgrupados {
   Media:object;
   DesvioPadrao:object;
   Variancia:object;
+  CoeficienteVariacao:object;
   Passos:object;
 
 
