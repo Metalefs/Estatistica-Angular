@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
 
 export class TabelaDadosAgrupadosComponent implements OnInit {
   public values:boolean;
-  constructor(public activeRoute:ActivatedRoute){
+  constructor(){
 
   }
 
@@ -18,27 +18,8 @@ export class TabelaDadosAgrupadosComponent implements OnInit {
 
   }
 
-  hasValueParam(){
-    let subject = new Subject<boolean>();
-    console.log(this.activeRoute)
-    return subject.asObservable();
+  resetLocalStorage(){
+    localStorage.clear();
+    location.reload();
   }
-
-  private getValueParam(){
-    let subject = new Subject<string>();
-    this.activeRoute.params.subscribe(routeParams =>{
-      let values = routeParams['values'];
-      if(values){
-        this.values = values;
-      }
-      subject.next(values);
-    });
-    return subject.asObservable();
-  }
-
-
-  handleActivatedRoute(){
-    this.getValueParam()
-  }
-
 }

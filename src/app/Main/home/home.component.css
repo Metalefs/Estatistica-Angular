@@ -1,6 +1,15 @@
 .card-media-text{
   text-transform: capitalize;
 }
-.card{
-  /* height: 100%; */
+.card-header{
+  background-color: rgb(188 209 255 / 43%);
+  font-weight: 400;
+}
+.card-footer{
+  background-color: rgb(232 232 232);
+}
+.card-block{
+  min-height: 200px;
+
+  overflow-y: scroll;
 }

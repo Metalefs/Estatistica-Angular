@@ -1,27 +1,31 @@
 <div class="clr-row">
-  <div class="clr-col-lg-6 clr-col-12" *ngFor="let project of projects">
-    <div class="card">
+
+  <div class="clr-col-lg-4 clr-col-12" *ngFor="let project of projects">
+    <a [routerLink]="[project.link]">
+    <div class="card" >
       <div class="card-header">
         {{project.name}}
       </div>
       <div class="card-block">
         <div class="card-media-block">
-          <clr-icon shape="details"></clr-icon>
           <div class="card-media-description">
             <h4 class="card-media-title">
               {{project.header}}
             </h4>
-            <span class="card-media-text">
-              {{project.wiki?.description || project.description}}
-            </span>
+
           </div>
         </div>
-        <div class="card-text" [innerHTML]="project.wiki?.extract_html">
-        </div>
+        <span class="card-media-text">
+          <clr-icon shape="details"></clr-icon>
+          {{project.wiki?.description}}
+        </span>
       </div>
       <div class="card-footer">
+        <clr-icon shape="calculator"></clr-icon>
+
         <button class="btn btn-sm btn-link" [routerLink]="[project.link]">Calcular</button>
       </div>
     </div>
+  </a>
   </div>
 </div>

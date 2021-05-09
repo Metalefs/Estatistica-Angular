@@ -1,1 +1,35 @@
-<p>coeficiente-variacao works!</p>
+<div>
+  <form action="" method="post" [formGroup]="dadosForm">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Coeficiente de Variação</mat-label>
+        <input matInput [formControlName]="'values'" placeholder="1,2,3"
+        [(ngModel)]="values" (keyup)="calcular(values)">
+        <mat-icon matSuffix>edit</mat-icon>
+        <mat-hint>O Coeficiente de Variação será exbido abaixo</mat-hint>
+      </mat-form-field>
+      <button mat-flat-button class="btn btn-primary"
+      [disabled]="this.dadosForm.get('values').invalid"
+       (click)="calcular(values)">Calcular</button>
+    </p>
+  </form>
+  <div *ngIf="CoeficienteVariacao">
+    <mat-form-field>
+
+      <input matNativeControl value="" disabled>
+      <label>Coeficiente de Variação: {{CoeficienteVariacao.Resultado}}</label>
+
+    </mat-form-field>
+    <mathjax #math [content]="CoeficienteVariacao.Passos.Valor"></mathjax>
+  </div>
+</div>
+
+<ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
+<ng-template #dynamic>
+  <app-wiki-card [wiki]="wiki"></app-wiki-card>
+</ng-template>
+<ng-template #static>
+  <div class="container card card-block">
+    <p>Na teoria da probabilidade e na estatística, a <b>variância</b> de uma variável aleatória ou processo estocástico é uma medida da sua dispersão estatística, indicando "o quão longe" em geral os seus valores se encontram do valor esperado.</p>
+  </div>
+</ng-template>

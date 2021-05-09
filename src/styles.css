@@ -26,3 +26,8 @@ i.counter{
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
   background-color: #0072a3;
 }
+p > button {
+  height: 50px !important;
+  bottom: 5px !important;
+  margin-left: 5px !important;
+}

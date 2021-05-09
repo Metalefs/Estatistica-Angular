@@ -11,23 +11,15 @@
   </div>
   <div>
     <form action="" method="post" [formGroup]="dadosForm">
-      <div class="clr-row">
-        <div class="clr-col-sm-12 clr-col-md-10" style="padding-bottom: 0 !important;margin-bottom: 0 !important;">
-
-          <p >
-            <mat-form-field appearance="outline" class="fill w-full" style="padding-bottom: 0 !important;margin-bottom: 0 !important;">
-              <mat-label>{{DadosTabela?.NumeroDeElementos||NumElementos ? 'Num. Elementos: '+DadosTabela?.NumeroDeElementos||NumElementos : 'Valores para a tabela quantitativa'}}</mat-label>
-              <input matInput [formControlName]="'valores'" placeholder="1,2,3,4" [(ngModel)]="values" (keyup)="calcular(values)">
-              <mat-icon matSuffix>edit</mat-icon>
-              <mat-hint></mat-hint>
-            </mat-form-field>
-          </p>
-        </div>
-        <div class="clr-col-2" style="margin-bottom: 10px !important;">
-          <button  mat-flat-button class="btn btn-primary" [disabled]="this.dadosForm.get('valores').invalid" (click)="calcular(values)" href="#tabela_dados">Calcular</button>
-
-        </div>
-      </div>
+      <p >
+        <mat-form-field appearance="outline" class="fill w-full" style="padding-bottom: 0 !important;margin-bottom: 0 !important;">
+          <mat-label>{{DadosTabela?.NumeroDeElementos||NumElementos ? 'Num. Elementos: '+DadosTabela?.NumeroDeElementos||NumElementos : 'Valores para a tabela quantitativa'}}</mat-label>
+          <input matInput [formControlName]="'valores'" placeholder="1,2,3,4" [(ngModel)]="values" (keyup)="calcular(values)">
+          <mat-icon matSuffix>edit</mat-icon>
+          <mat-hint></mat-hint>
+        </mat-form-field>
+        <button  mat-flat-button class="btn btn-primary" [disabled]="this.dadosForm.get('valores').invalid" (click)="calcular(values)" href="#tabela_dados">Calcular</button>
+      </p>
     </form>
   </div>
   <div class="" *ngIf="DadosTabela != undefined">
@@ -56,22 +48,22 @@
           </ng-container>
 
           <ng-container matColumnDef="fi">
-            <th mat-header-cell *matHeaderCellDef> F. simples </th>
+            <th mat-header-cell *matHeaderCellDef> F. i </th>
             <td mat-cell *matCellDef="let element"> {{element.fi}} </td>
           </ng-container>
 
           <ng-container matColumnDef="Fi">
-            <th mat-header-cell *matHeaderCellDef> F. simples acumulada </th>
+            <th mat-header-cell *matHeaderCellDef> F. i acumulada </th>
             <td mat-cell *matCellDef="let element"> {{element.Fi}} </td>
           </ng-container>
 
           <ng-container matColumnDef="fr">
-            <th mat-header-cell *matHeaderCellDef> F. relativa </th>
+            <th mat-header-cell *matHeaderCellDef> F. r </th>
             <td mat-cell *matCellDef="let element"> {{element.fr}} </td>
           </ng-container>
 
           <ng-container matColumnDef="Fr">
-            <th mat-header-cell *matHeaderCellDef> F. relativa acumulada </th>
+            <th mat-header-cell *matHeaderCellDef> F. r acumulada </th>
             <td mat-cell *matCellDef="let element"> {{element.Fr}} </td>
           </ng-container>
 
