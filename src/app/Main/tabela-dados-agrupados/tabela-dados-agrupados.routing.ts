@@ -15,31 +15,38 @@ const routes: Routes = [
       children:[
         {
           path: 'dados-agrupados',
-          component: TabelaDistrbuicaoComponent
+          component: TabelaDistrbuicaoComponent,
+          data: { animation:'isUp', title: '' }
         },
         {
           path: 'media',
-          component: MediaComponent
+          component: MediaComponent,
+          data: { animation:'isUp', title: '' }
         },
         {
           path: 'mediana',
-          component: MedianaComponent
+          component: MedianaComponent,
+          data: { animation:'isUp', title: '' }
         },
         {
           path: 'moda',
-          component: ModaComponent
+          component: ModaComponent,
+          data: { animation:'isUp', title: '' }
         },
         {
           path: 'desvioPadrao',
-          component: DesvioPadraoComponent
+          component: DesvioPadraoComponent,
+          data: { animation:'isUp', title: '' }
         },
         {
           path: 'variancia',
-          component: VarianciaComponent
+          component: VarianciaComponent,
+          data: { animation:'isUp', title: '' }
         },
         {
           path: 'coeficienteVariacao',
-          component: CoeficienteVariacaoComponent
+          component: CoeficienteVariacaoComponent,
+          data: { animation:'isUp', title: '' }
         },
       ]
     },

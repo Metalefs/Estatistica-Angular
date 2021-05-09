@@ -16,8 +16,11 @@
   <div *ngIf="Moda">
     <mat-form-field>
 
-      <input matNativeControl value="" disabled>
-      <label>Moda: {{Moda.Modas}}</label>
+      <input matNativeControl value="" disabled><br>
+      <label class="label">Moda: </label>
+      <div class="control">
+        <input class="input is-medium" readonly type="text" [value]="Moda.Modas">
+      </div>
 
     </mat-form-field>
     <mathjax #math [content]="Moda.Passos.Valor"></mathjax>

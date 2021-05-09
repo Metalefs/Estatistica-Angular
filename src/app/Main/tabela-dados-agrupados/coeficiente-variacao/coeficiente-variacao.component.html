@@ -16,8 +16,11 @@
   <div *ngIf="CoeficienteVariacao">
     <mat-form-field>
 
-      <input matNativeControl value="" disabled>
-      <label>Coeficiente de Variação: {{CoeficienteVariacao.Resultado}}</label>
+      <input matNativeControl value="" disabled><br>
+      <label class="label">Coeficiente de Variação: </label>
+      <div class="control">
+        <input class="input is-medium" readonly type="text" [value]="CoeficienteVariacao.Resultado">
+      </div>
 
     </mat-form-field>
     <mathjax #math [content]="CoeficienteVariacao.Passos.Valor"></mathjax>

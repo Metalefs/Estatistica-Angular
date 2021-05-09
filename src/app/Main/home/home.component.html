@@ -1,31 +1,61 @@
-<div class="clr-row">
 
-  <div class="clr-col-lg-4 clr-col-12" *ngFor="let project of projects">
-    <a [routerLink]="[project.link]">
-    <div class="card" >
-      <div class="card-header">
-        {{project.name}}
+<section class="hero is-medium">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-2">Facilitando cálculos estatisticos.</h1>
+    <!-- <div id="hero-input-group" class="field has-addons has-addons-centered">
+      <div class="control">
+        <input class="input is-medium" type="text" placeholder="Search...">
       </div>
-      <div class="card-block">
-        <div class="card-media-block">
-          <div class="card-media-description">
-            <h4 class="card-media-title">
-              {{project.header}}
-            </h4>
-
+      <div class="control">
+        <a class="button is-medium is-primary">
+          <i class="fal fa-search"></i>
+        </a>
+      </div>
+    </div> -->
+  </div>
+</section>
+<div class="container is-max-desktop">
+  <section class="featured">
+    <div class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <h2 class="subtitle">Últimas operações</h2>
+        </div>
+      </div>
+      <div class="level-right">
+        <div class="level-item">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <a class="button is-small" disabled>
+                <i class="far fa-chevron-left"></i>
+              </a>
+            </div>
+            <div class="control">
+              <a class="button is-small">
+                <i class="far fa-chevron-right"></i>
+              </a>
+            </div>
           </div>
         </div>
-        <span class="card-media-text">
-          <clr-icon shape="details"></clr-icon>
-          {{project.wiki?.description}}
-        </span>
-      </div>
-      <div class="card-footer">
-        <clr-icon shape="calculator"></clr-icon>
-
-        <button class="btn btn-sm btn-link" [routerLink]="[project.link]">Calcular</button>
       </div>
     </div>
-  </a>
-  </div>
+    <div class="columns is-multiline">
+      <div class="column is-3" *ngFor="let project of projects" >
+        <a [routerLink]="[project.link]" class="card h-full">
+          <article class="card-block">
+            <figure class="image is-5by3">
+              <img src="https://i.ibb.co/fq8hSGQ/placeholder-image-368x246.png">
+            </figure>
+            <h2 class="subtitle">{{project.name}}</h2>
+            <span class="tag is-rounded">{{project.header}}</span>
+            {{project.wiki?.description}}
+          </article>
+          <div class="card-footer" style="position:absolute;top:0">
+            <clr-icon shape="calculator"></clr-icon>
+            <button class="btn btn-sm btn-link" [routerLink]="[project.link]">Calcular</button>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 </div>

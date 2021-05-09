@@ -16,8 +16,11 @@
   <div *ngIf="Desvio">
     <mat-form-field>
 
-      <input matNativeControl value="" disabled>
-      <label>Desvio Padrão: {{Desvio.Resultado}}</label>
+      <input matNativeControl value="" disabled><br>
+      <label class="label">Desvio Padrão: </label>
+      <div class="control">
+        <input class="input is-medium" readonly type="text" [value]="Desvio.Resultado">
+      </div>
 
     </mat-form-field>
     <mathjax #math [content]="Desvio.Passos.Valor"></mathjax>

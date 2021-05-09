@@ -32,7 +32,7 @@ import '@cds/core/modal/register.js';
     HomeComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     SharedModule,
     MaterialModule,
     AppRoutingModule,

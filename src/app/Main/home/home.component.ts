@@ -14,9 +14,9 @@ export class HomeComponent implements OnInit {
     this.projects = [
       {header:'Permutação', name:'Anagrama', description:'Transpor letras de uma palavra', link:'/analiseCombinatoria/anagramas', wiki:null},
       {header:'Distribuição de dados', name:'Distribuição de frequências', description:'Gerar tabela de distribuição de frequência', link:'/agrupamento/dados-agrupados', wiki:null},
-      {header:'Distribuição de dados', name:'Moda (estatística)', description:'Obter o elemento mais frequente em uma lista', link:'/agrupamento/mediana', wiki:null},
+      {header:'Distribuição de dados', name:'Moda (estatística)', description:'Obter o elemento mais frequente em uma lista', link:'/agrupamento/moda', wiki:null},
       {header:'Distribuição de dados', name:'Média', description:'Calcular o valor médio entre elemetos', link:'/agrupamento/media', wiki:null},
-      {header:'Distribuição de dados', name:'Mediana (estatística)', description:'Obter o elemento central de uma lista', link:'/agrupamento/moda', wiki:null},
+      {header:'Distribuição de dados', name:'Mediana (estatística)', description:'Obter o elemento central de uma lista', link:'/agrupamento/mediana', wiki:null},
       {header:'Distribuição de dados', name:'Variância', description:'Obter a variação de valores', link:'/agrupamento/variancia', wiki:null},
       {header:'Distribuição de dados', name:'Desvio Padrão', description:'Obter o grau de dispersão de um conjunto de dados', link:'/agrupamento/desvioPadrao', wiki:null},
       {header:'Distribuição de dados', name:'Coeficiênte de Variação', description:'Obter o grau de dispersão de um conjunto de dados', link:'/agrupamento/coeficienteVariacao', wiki:null},

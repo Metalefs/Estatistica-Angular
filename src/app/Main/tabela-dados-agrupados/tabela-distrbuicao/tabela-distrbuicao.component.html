@@ -133,27 +133,30 @@
       </mat-tab>
     </mat-tab-group>
     <div class="clr-row">
-      <mat-form-field class="clr-col-3">
-
-        <input matNativeControl value="" disabled>
-        <label>Somatório Fi * Xi: {{DadosTabela.SomatorioFrequenciaSimplesVezesOTermo}}</label>
-      </mat-form-field>
-      <mat-form-field class="clr-col-3">
-
-        <input matNativeControl value="" disabled>
-        <label>Somatório Fi * Xi²: {{DadosTabela.SomatorioFrequenciaSimplesVezesOQuadradoDoTermo}}</label>
-      </mat-form-field>
-
-      <mat-form-field class="clr-col-3">
-
-        <input matNativeControl value="" disabled>
-        <label>Dp da Tabela: {{DadosTabela.DesvioPadraoTabela}}</label>
-      </mat-form-field>
-      <mat-form-field class="clr-col-3">
-
-        <input matNativeControl value="" disabled>
-        <label>Média do Dp: {{DadosTabela.MediaDp}}</label>
-      </mat-form-field>
+      <div class="field clr-col-3">
+        <label class="label">Somatório Fi * Xi: </label>
+        <div class="control">
+          <input class="input is-medium" readonly type="text" [value]='DadosTabela.SomatorioFrequenciaSimplesVezesOTermo'>
+        </div>
+      </div>
+      <div class="field clr-col-3">
+        <label class="label">Somatório Fi * Xi²: </label>
+        <div class="control">
+          <input class="input is-medium" readonly type="text" [value]='DadosTabela.SomatorioFrequenciaSimplesVezesOQuadradoDoTermo'>
+        </div>
+      </div>
+      <div class="field clr-col-3">
+        <label class="label">Dp da Tabela: </label>
+        <div class="control">
+          <input class="input is-medium" readonly type="text" [value]='DadosTabela.DesvioPadraoTabela'>
+        </div>
+      </div>
+      <div class="field clr-col-3">
+        <label class="label">Média do Dp: </label>
+        <div class="control">
+          <input class="input is-medium" readonly type="text" [value]='DadosTabela.MediaDp'>
+        </div>
+      </div>
     </div>
     </fieldset>
     <div class="clr-row">
@@ -169,40 +172,51 @@
         </clr-accordion>
         <button class="button btn btn-secondary" *ngIf="panelExpandedProperty" (click)="fecharPainel()">Fechar </button>
       </div>
-      <mat-form-field class="clr-col-md-6 clr-col-sm-12">
+      <mat-form-field class="clr-col-md-6 clr-col-sm-12 field">
 
         <input matNativeControl value="" disabled><br>
-        <label (click)="redirectWithValues('/agrupamento/media')"><a>Média: {{DadosTabela.Media['Resultado']}}</a></label>
+        <label class="label" (click)="redirectWithValues('/agrupamento/media')"><a>Média: </a></label>
+        <div class="control">
+          <input class="input is-medium" readonly type="text" [value]="DadosTabela.Media['Resultado']">
+        </div>
 
         <button mat-flat-button (click)="openDialog('Média',DadosTabela.Media['Passos'].Valor)">Como cheguei a
           esse
           resultado?</button>
       </mat-form-field>
 
-      <mat-form-field class="clr-col-md-6 clr-col-sm-12">
+      <mat-form-field class="clr-col-md-6 clr-col-sm-12 field">
 
         <input matNativeControl value="" disabled><br>
-        <label (click)="redirectWithValues('/agrupamento/coeficienteVariacao')"><a>Coeficiente de Variação: {{DadosTabela.CoeficienteVariacao['Resultado'] || ""}}</a></label>
+        <label class="label" (click)="redirectWithValues('/agrupamento/coeficienteVariacao')"><a>Coeficiente de Variação: </a></label>
+        <div class="control">
+          <input class="input is-medium" readonly type="text" [value]="DadosTabela.CoeficienteVariacao['Resultado']">
+        </div>
 
         <button mat-flat-button (click)="openDialog('Coeficiente de Variação',DadosTabela?.CoeficienteVariacao? DadosTabela?.CoeficienteVariacao['Passos']?.Valor : '')">Como cheguei a
           esse
           resultado?</button>
       </mat-form-field>
 
-      <mat-form-field class="clr-col-md-6 clr-col-sm-12">
+      <mat-form-field class="clr-col-md-6 clr-col-sm-12 field">
 
         <input matNativeControl value="" disabled><br>
-        <label (click)="redirectWithValues('/agrupamento/mediana')"><a>Mediana: {{DadosTabela.Mediana['Resultado']}}</a></label>
-
+        <label class="label" (click)="redirectWithValues('/agrupamento/mediana')"><a>Mediana: </a></label>
+        <div class="control">
+          <input class="input is-medium" readonly type="text" [value]="DadosTabela.Mediana['Resultado']">
+        </div>
         <button mat-flat-button (click)="openDialog('Mediana',DadosTabela.Mediana['Passos'].Valor)">Como cheguei
           a
           esse resultado?</button>
       </mat-form-field>
 
-      <mat-form-field class="clr-col-md-6 clr-col-sm-12">
+      <mat-form-field class="clr-col-md-6 clr-col-sm-12 field">
 
         <input matNativeControl value="" disabled><br>
-        <label (click)="redirectWithValues('/agrupamento/moda')"><a>Moda(s): {{DadosTabela.Moda['Modas']}}</a></label>
+        <label class="label" (click)="redirectWithValues('/agrupamento/moda')"><a>Moda: </a></label>
+        <div class="control">
+          <input class="input is-medium" readonly type="text" [value]="DadosTabela.Moda['Resultado']">
+        </div>
 
         <button mat-flat-button (click)="openDialog('Moda',DadosTabela.Moda['Passos'].Valor)">Como cheguei a
           esse
@@ -211,20 +225,27 @@
 
       </mat-form-field>
 
-      <mat-form-field class="clr-col-md-6 clr-col-sm-12">
+      <mat-form-field class="clr-col-md-6 clr-col-sm-12 field">
 
         <input matNativeControl value="" disabled><br>
-        <label (click)="redirectWithValues('/agrupamento/desvioPadrao')"><a>Desvio Padrão: {{DadosTabela.DesvioPadrao['Resultado']}}</a></label>
+        <label class="label" (click)="redirectWithValues('/agrupamento/desvioPadrao')"><a>Desvio Padrão: </a></label>
+        <div class="control">
+          <input class="input is-medium" readonly type="text" [value]="DadosTabela.DesvioPadrao['Resultado']">
+        </div>
+
         <button mat-flat-button
           (click)="openDialog('Desvio Padrão', DadosTabela.DesvioPadrao['Passos'].Valor)">Como cheguei a esse
           resultado?</button>
 
       </mat-form-field>
 
-      <mat-form-field class="clr-col-md-6 clr-col-sm-12">
+      <mat-form-field class="clr-col-md-6 clr-col-sm-12 field">
 
         <input matNativeControl value="" disabled><br>
-        <label (click)="redirectWithValues('/agrupamento/variancia')"><a>Variância: {{DadosTabela.Variancia['Resultado']}}</a></label>
+        <label class="label" (click)="redirectWithValues('/agrupamento/variancia')"><a>Variância: </a></label>
+        <div class="control">
+          <input class="input is-medium" readonly type="text" [value]="DadosTabela.Variancia['Resultado']">
+        </div>
         <button mat-flat-button (click)="openDialog('Variância',DadosTabela.Variancia['Passos'].Valor)">Como
           cheguei a esse resultado?</button>
 

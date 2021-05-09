@@ -16,8 +16,11 @@
   <div *ngIf="Media">
     <mat-form-field>
 
-      <input matNativeControl value="" disabled>
-      <label>Média: {{Media.Resultado}}</label>
+      <input matNativeControl value="" disabled><br>
+      <label class="label">Média: </label>
+      <div class="control">
+        <input class="input is-medium" readonly type="text" [value]="Media.Resultado">
+      </div>
 
     </mat-form-field>
     <mathjax #math [content]="Media.Passos.Valor"></mathjax>

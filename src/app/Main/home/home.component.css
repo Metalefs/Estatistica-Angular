@@ -8,8 +8,3 @@
 .card-footer{
   background-color: rgb(232 232 232);
 }
-.card-block{
-  min-height: 200px;
-
-  overflow-y: scroll;
-}

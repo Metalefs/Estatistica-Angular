@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
 import { LinkTrackerService } from './link-tracker.service';
+
+import { cardFlip, fade, slideInOut, slider } from './animations';
+import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [LinkTrackerService]
+  providers: [LinkTrackerService],
+
+  animations: [cardFlip, slider, fade, slideInOut]
 })
 export class AppComponent {
   constructor(public linkTracker: LinkTrackerService) {
@@ -32,4 +37,13 @@ export class AppComponent {
   title = 'Estatística Online';
 
   year:number=new Date().getFullYear();
+
+  prepareRoute(outlet: RouterOutlet) {
+    try{
+      return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+    }
+    catch(ex){
+
+    }
+  }
 }

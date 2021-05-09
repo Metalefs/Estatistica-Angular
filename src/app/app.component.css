@@ -60,12 +60,6 @@
 .stack-view-key{
     flex:initial !important;
 }
-.footer{
-    background: linear-gradient(90deg,#8a8b8e,#838294 35%,#83878c);
-    padding: .3rem;
-    position: sticky;
-    bottom: 0;
-}
 @keyframes fade-in{
     0%{
         transform: translateY(-10px);

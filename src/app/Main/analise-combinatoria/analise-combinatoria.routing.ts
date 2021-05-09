@@ -9,7 +9,8 @@ const routes: Routes = [
       children:[
         {
           path: 'anagramas',
-          component: AnagramasComponent
+          component: AnagramasComponent,
+          data: { animation:'isUp', title: '' }
         }
       ]
     },
