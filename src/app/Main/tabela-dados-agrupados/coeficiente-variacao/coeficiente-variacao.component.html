@@ -1,16 +1,32 @@
 <div>
+  <h1>Coeficiente de Variação</h1>
+  <h2>O que é Coeficiente de Variação?</h2>
+  <ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
+  <ng-template #dynamic>
+    <app-wiki-card [wiki]="wiki"></app-wiki-card>
+  </ng-template>
+  <ng-template #static>
+    <div class="container card card-block">
+      <p>Em teoria das probabilidades e estatística, o coeficiente de variação (CV), também conhecido como desvio padrão
+        relativo (DPR), é uma medida padronizada de dispersão de uma distribuição de probabilidade ou de uma
+        distribuição de frequências. É frequentemente expresso como uma porcentagem, sendo definido como a razão do
+        desvio padrão σ pela média μ (ou seu valor absoluto, |μ|). O CV ou DPR é amplamente usado em química analítica
+        para expressar a precisão e a repetitividade de um ensaio.</p>
+    </div>
+  </ng-template>
+
   <form action="" method="post" [formGroup]="dadosForm">
+    <h2>Cálcular Coeficiente de Variação</h2>
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Coeficiente de Variação</mat-label>
-        <input matInput [formControlName]="'values'" placeholder="1,2,3"
-        [(ngModel)]="values" (keyup)="calcular(values)">
+        <input matInput [formControlName]="'values'" placeholder="1,2,3" [(ngModel)]="values"
+          (keyup)="calcular(values)">
         <mat-icon matSuffix>edit</mat-icon>
         <mat-hint>O Coeficiente de Variação será exbido abaixo</mat-hint>
       </mat-form-field>
-      <button mat-flat-button class="btn btn-primary"
-      [disabled]="this.dadosForm.get('values').invalid"
-       (click)="calcular(values)">Calcular</button>
+      <button mat-flat-button class="btn btn-primary" [disabled]="this.dadosForm.get('values').invalid"
+        (click)="calcular(values)">Calcular</button>
     </p>
   </form>
   <div *ngIf="CoeficienteVariacao">
@@ -26,13 +42,3 @@
     <mathjax #math [content]="CoeficienteVariacao.Passos.Valor"></mathjax>
   </div>
 </div>
-
-<ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
-<ng-template #dynamic>
-  <app-wiki-card [wiki]="wiki"></app-wiki-card>
-</ng-template>
-<ng-template #static>
-  <div class="container card card-block">
-    <p>Em teoria das probabilidades e estatística, o coeficiente de variação (CV), também conhecido como desvio padrão relativo (DPR), é uma medida padronizada de dispersão de uma distribuição de probabilidade ou de uma distribuição de frequências. É frequentemente expresso como uma porcentagem, sendo definido como a razão do desvio padrão σ pela média μ (ou seu valor absoluto, |μ|). O CV ou DPR é amplamente usado em química analítica para expressar a precisão e a repetitividade de um ensaio.</p>
-  </div>
-</ng-template>

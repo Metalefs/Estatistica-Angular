@@ -1,5 +1,17 @@
 <div class="">
-  <div>
+  <h1>Anagrama</h1>
+  <h2>O que são Anagramas?</h2>
+  <ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
+  <ng-template #dynamic>
+    <app-wiki-card [wiki]="wiki"></app-wiki-card>
+  </ng-template>
+  <ng-template #static>
+    <div class="container card card-block">
+      <p>Um <b>anagrama</b> é uma espécie de jogo de palavras criado com a reorganização das letras de uma palavra ou expressão para produzir outras palavras ou expressões, utilizando todas as letras originais exatamente uma vez. Exemplos amplamente conhecidos são Iracema e América e amor e Roma. Outro exemplo é o prenome da escritora brasileira Nélida Piñón, anagrama do prenome de seu avô materno Daniel Cuiñas.</p>
+    </div>
+  </ng-template>
+
+  <div class="pt-3">
     <form action="" method="post" [formGroup]="dadosForm">
       <p>
         <mat-form-field appearance="outline">
@@ -29,4 +41,3 @@
     </div>
   </div>
  </div>
- <app-wiki-card [wiki]="wiki"></app-wiki-card>

@@ -1,5 +1,18 @@
 <div>
-  <form action="" method="post" [formGroup]="dadosForm">
+  <h1>Moda</h1>
+  <h2>O que é Moda (Estatística)?</h2>
+  <ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
+  <ng-template #dynamic>
+    <app-wiki-card [wiki]="wiki"></app-wiki-card>
+  </ng-template>
+  <ng-template #static>
+    <div class="container card card-block">
+      <p><b>Moda</b> é uma das medidas de altura de um conjunto de dados, assim como a média e a mediana. Ela pode ser definida em moda amostral e populacional.</p>
+    </div>
+  </ng-template>
+
+  <form action="" method="post" [formGroup]="dadosForm" class="pt-3">
+    <h2>Calcular Moda</h2>
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Moda</mat-label>
@@ -25,14 +38,17 @@
     </mat-form-field>
     <mathjax #math [content]="Moda.Passos.Valor"></mathjax>
   </div>
+  <div class="card card-block content">
+    <h2>Como realizar o cálculo de moda?</h2>
+    <p>
+      A Moda (Mo) representa o valor mais frequente de um conjunto de dados, sendo assim, para defini-la basta observar a frequência com que os valores aparecem.
+    </p>
+    <h3>Exemplo</h3>
+    <p>Em uma loja de eletronicos durante um dia foram vendidos as seguintes tamanhos de TV: 30, 40, 42, 36, 50, 40, 36, 38, 36, 38 e 41. Qual o valor da moda desta amostra?</p>
+    <h3>Solução</h3>
+    <p>Observando os números vendidos notamos que o número 36 foi o que apresentou maior frequência (3 pares), portanto, a moda é igual a:</p>
+    <p>Mo = 36</p>
+  </div>
 </div>
 
-<ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
-<ng-template #dynamic>
-  <app-wiki-card [wiki]="wiki"></app-wiki-card>
-</ng-template>
-<ng-template #static>
-  <div class="container card card-block">
-    <p><b>Moda</b> é uma das medidas de altura de um conjunto de dados, assim como a média e a mediana. Ela pode ser definida em moda amostral e populacional.</p>
-  </div>
-</ng-template>
+

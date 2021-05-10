@@ -1,5 +1,28 @@
 <div>
-  <form action="" method="post" [formGroup]="dadosForm">
+  <h1>Mediana</h1>
+  <h2>O que é mediana?</h2>
+  <ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
+  <ng-template #dynamic>
+    <app-wiki-card [wiki]="wiki"></app-wiki-card>
+  </ng-template>
+  <ng-template #static>
+    <div class="container card card-block">
+      <p><b>Mediana</b> é o valor que separa a metade maior e a metade menor de uma amostra, uma população ou uma
+        distribuição de probabilidade. Em termos mais simples, mediana pode ser o valor do meio de um conjunto de dados.
+        No
+        conjunto de dados '{{ '{' }} 1, 3, 3, 6, 7, 8, 9 {{ '}' }}', por exemplo, a mediana é 6. Se houver um número par
+        de observações, não há
+        um único valor do meio. Então, a mediana é definida como a média dos dois valores do meio. No conjunto de dados
+        '{{ '{' }} 3,
+        5, 7, 9 {{ '}' }}', a mediana é <span class="mwe-math-element"><img
+            src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5218a479868875a50270bab2ddfe0285fa1e1896"
+            class="mwe-math-fallback-image-inline" aria-hidden="true"></span>.</p>
+    </div>
+  </ng-template>
+
+
+  <form action="" method="post" [formGroup]="dadosForm" class="pt-3">
+    <h2>Calcular Mediana</h2>
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Mediana</mat-label>
@@ -23,21 +46,29 @@
 
     </mat-form-field>
     <mathjax #math [content]="Mediana.Passos.Valor"></mathjax>
-  </div>
-</div>
 
-<ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
-<ng-template #dynamic>
-  <app-wiki-card [wiki]="wiki"></app-wiki-card>
-</ng-template>
-<ng-template #static>
-  <div class="container card card-block">
-    <p><b>Mediana</b> é o valor que separa a metade maior e a metade menor de uma amostra, uma população ou uma
-      distribuição de probabilidade. Em termos mais simples, mediana pode ser o valor do meio de um conjunto de dados. No
-      conjunto de dados '{{ '{' }} 1, 3, 3, 6, 7, 8, 9 {{ '}' }}', por exemplo, a mediana é 6. Se houver um número par de observações, não há
-      um único valor do meio. Então, a mediana é definida como a média dos dois valores do meio. No conjunto de dados '{{ '{' }} 3,
+  </div>
+  <div class="card card-block content">
+    <h2>Como realizar o cálculo de mediana?</h2>
+    <p>A Mediana (Md) representa o valor central de um conjunto de dados. Para encontrar o valor da mediana é necessário
+      colocar os valores em ordem crescente ou decrescente.</p>
+    <p>Quando o número elementos de um conjunto é par, a mediana é encontrada pela média dos dois valores centrais.
+      Assim, esses valores são somados e divididos por dois.</p>
+    <h3>Exemplo</h3>
+    <p>1) Em uma escola, o professor de educação física anotou a altura de um grupo de alunos. Considerando que os
+      valores medidos foram: 1,54 m; 1,67 m, 1,50 m; 1,65 m; 1,75 m; 1,69 m; 1,60 m; 1,55 m e 1,78 m, qual o valor da
+      mediana das alturas dos alunos?</p>
+    <h3>Solução</h3>
+    <p>Primeiro devemos colocar os valores em ordem. Neste caso, colocaremos em ordem crescente. Assim, o conjunto de
+      dados ficará:</p>
+    <p>1,50; 1,54; 1,55; 1,60; 1,65; 1,67; 1,69; 1,75; 1,78</p>
+    <p>Como o conjunto é formado por 9 elementos, que é um número ímpar, então a mediana será igual ao 5º elemento, ou
+      seja:</p>
+    <p>Md = 1,65 m</p>
+
+    <p> No conjunto de dados '{{ '{' }} 3,
       5, 7, 9 {{ '}' }}', a mediana é <span class="mwe-math-element"><img
           src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5218a479868875a50270bab2ddfe0285fa1e1896"
           class="mwe-math-fallback-image-inline" aria-hidden="true"></span>.</p>
   </div>
-</ng-template>
+</div>

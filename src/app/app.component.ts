@@ -17,7 +17,7 @@ export class AppComponent {
       {
         route: '/agrupamento', shape: 'folder', text: 'Agrupamento de dados' ,
         children: [
-          { route: '/agrupamento/dados-agrupados', shape: 'folder', text: 'Dados Agrupados', },
+          { route: '/agrupamento/dados-agrupados', shape: 'folder', text: 'Tabela de agrupamento', },
           { route: '/agrupamento/media', shape: 'folder', text: 'Média', },
           { route: '/agrupamento/mediana', shape: 'folder', text: 'Mediana', },
           { route: '/agrupamento/moda', shape: 'folder', text: 'Moda', },

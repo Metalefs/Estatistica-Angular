@@ -1,16 +1,33 @@
 <div>
-  <form action="" method="post" [formGroup]="dadosForm">
+  <h1>Desvio Padrão</h1>
+  <h2>O que é Desvio Padrão?</h2>
+
+  <ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
+  <ng-template #dynamic>
+    <app-wiki-card [wiki]="wiki"></app-wiki-card>
+  </ng-template>
+  <ng-template #static>
+    <div class="container card card-block">
+      <p>Em estatística, o <b>desvio</b> é uma qualidade estatística de ajuste para um modelo que é usado frequentemente
+        para testes estatísticos de hipóteses. É uma generalização da ideia de usar a soma dos quadrados dos resíduos no
+        método dos mínimos quadrados&nbsp;aos casos em que o modelo de ajuste é conseguido por máxima verossimilhança.
+      </p>
+    </div>
+  </ng-template>
+
+
+  <form action="" method="post" [formGroup]="dadosForm" class="pt-3">
+    <h2>Calcular Desvio Padrão</h2>
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Desvio Padrão</mat-label>
-        <input matInput [formControlName]="'valores'" placeholder="1,2,3"
-          [(ngModel)]="values" (keyup)="calcular(values)">
+        <input matInput [formControlName]="'valores'" placeholder="1,2,3" [(ngModel)]="values"
+          (keyup)="calcular(values)">
         <mat-icon matSuffix>edit</mat-icon>
         <mat-hint>O desvio padrão será exbido abaixo</mat-hint>
       </mat-form-field>
-      <button mat-flat-button class="btn btn-primary"
-      [disabled]="this.dadosForm.get('valores').invalid"
-       (click)="calcular(values)">Calcular</button>
+      <button mat-flat-button class="btn btn-primary" [disabled]="this.dadosForm.get('valores').invalid"
+        (click)="calcular(values)">Calcular</button>
     </p>
   </form>
   <div *ngIf="Desvio">
@@ -25,13 +42,78 @@
     </mat-form-field>
     <mathjax #math [content]="Desvio.Passos.Valor"></mathjax>
   </div>
-</div>
-<ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
-<ng-template #dynamic>
-  <app-wiki-card [wiki]="wiki"></app-wiki-card>
-</ng-template>
-<ng-template #static>
-  <div class="container card card-block">
-    <p>Em estatística, o <b>desvio</b> é uma qualidade estatística de ajuste para um modelo que é usado frequentemente para testes estatísticos de hipóteses. É uma generalização da ideia de usar a soma dos quadrados dos resíduos no método dos mínimos quadrados&nbsp;aos casos em que o modelo de ajuste é conseguido por máxima verossimilhança.</p>
+  <div class="card card-block content">
+    <h2>Como realizar o cálculo de desvio padrão?</h2>
+    <p>O desvio padrão é definido como a raiz quadrada da variância. Desta forma, a unidade de medida do desvio padrão
+      será a mesma da unidade de medida dos dados, o que não acontece com a variância.</p>
+    <p>Assim, o desvio padrão é encontrado fazendo-se:</p>
+    <p><img alt="D P igual a raiz quadrada de V" class="Wirisformula"
+        data-mathml="«math xmlns=¨http://www.w3.org/1998/Math/MathML¨»«mi»D«/mi»«mi»P«/mi»«mo»=«/mo»«msqrt»«mi»V«/mi»«/msqrt»«/math»"
+        height="19" role="math"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAATCAYAAAAkhtu6AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAABGJhU0UAAAAQ3ZOC+gAAAgdJREFUeNpjYBgegAeI/1OIhwWIAOL9DKOAYTsQp4z0QBAB4vdQmqrgB1re+QLEq4BYngj1MLWOdAyIDCBej0PuMBAb4JAzBeILuAxVQZNkAmJJIM4B4odAHERAPRsQuwDxfSDWolNAgMqGEBxy84E4HIfcXqhbsYIAIF6KQy4UiD9BA4eQ+mQgLqFDICgA8Wsg5sAhHw/EfVjEbQkVrvUEPPAFmqQIqe+ApiJagwogno1HHuThdVjEjwOxHj6DQfnbD488enLCpl4UiG8BsTCaOC3q8vNA7IFHngWI36GJeeBJ9XBwC1om4AL3oR7Fpd4YiI/SoLDkwSKmA8TPoZ7FB26gZZ0zeAp+eMH4BY88FxC/RFP/BxqT76AB0EwgIEkFKtACD2SHDZpcOxD3E2HGciD2QirneghpMIcmfQY8Bc9sNPWktObIyRo10IAAtRNOYUmdJkTYWwKtYkHgJJYsiwEigXguHvlLaAVMJNSR9ABZQPwPiMWhfAsgvk1EtgABHyBeCI3IamIsmwTEiTjkJkAxuvo0OjacvgHxMih7MhA3EKlPGFpLHMVTzaKAdWglMKhx5AbE24B4Gg71XnQMiDlA/B2aCkBtBw0S9H4gJdLeIeXVP9CCEVTNWOJRz0HHgBAA4r9AvBYaw6SA1uHWwToMjaiCkd7TNIUGhMzoyAPuDhZFAAB8LI4AmsWySAAAAHZ0RVh0TWF0aE1MADxtYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8xOTk4L01hdGgvTWF0aE1MIj48bWk+RDwvbWk+PG1pPlA8L21pPjxtbz49PC9tbz48bXNxcnQ+PG1pPlY8L21pPjwvbXNxcnQ+PC9tYXRoPtb+bc4AAAAASUVORK5CYII="
+        width="66"></p>
+    <p>Quando todos os valores de uma amostra são iguais, o desvio padrão é igual a 0. Sendo que, quanto mais próximo de
+      0, menor é a dispersão dos dados.</p>
+    <h3>Fórmula</h3>
+    <p><span class="mwe-math-element"><img src="https://dados-agrupados-api.herokuapp.com/Imagens/desvio-padrao-1.png"
+          class="mwe-math-fallback-image-inline" aria-hidden="true"></span></p>
+    <h3>Exemplo</h3>
+    <p>Vamos considerar que um animador de festas infantis selecione as atividades de acordo com a média das idades das
+      crianças convidadas para uma festa.</p>
+    <p>Vamos considerar as idades de dois grupos de crianças que irão participar de duas festas diferentes:</p>
+    <ul>
+      <li>Festa A: 1 ano, 2 anos, 2 anos, 12 anos, 12 anos e 13 anos</li>
+      <li>Festa B: 5 anos, 6 anos, 7 anos, 7 anos, 8 anos e 9 anos</li>
+    </ul>
+    <p>
+      Em ambos os casos, a média é igual a 7 anos de idade. Entretanto, ao observar as idades dos participantes podemos
+      admitir que as atividades escolhidas sejam iguais?
+
+      Portanto, neste exemplo, a média não é uma medida eficiente, pois não indica o grau de dispersão dos dados.
+
+      As medidas de dispersão mais usadas são: amplitude, variância, desvio padrão e coeficiente de variação.
+    </p>
+    <h3>Solução</h3>
+    <p>A variância é determinada pela média dos quadrados das diferenças entre cada uma das observações e a média
+      aritmética da amostra. O cálculo é feito com base na seguinte fórmula:</p>
+    <p><img
+        alt="V igual a numerador começar estilo mostrar soma de i igual a 1 para n de fim do estilo parêntese esquerdo x com i subscrito menos M A parêntese direito ao quadrado sobre denominador n fim da fração"
+        class="Wirisformula"
+        data-mathml="«math xmlns=¨http://www.w3.org/1998/Math/MathML¨»«mi»V«/mi»«mo»=«/mo»«mfrac»«mrow»«mstyle displaystyle=¨true¨»«munderover»«mo»§#8721;«/mo»«mrow»«mi»i«/mi»«mo»=«/mo»«mn»1«/mn»«/mrow»«mi»n«/mi»«/munderover»«/mstyle»«mo»(«/mo»«msub»«mi»x«/mi»«mi»i«/mi»«/msub»«mo»-«/mo»«mi»M«/mi»«mi»A«/mi»«msup»«mo»)«/mo»«mn»2«/mn»«/msup»«/mrow»«mi»n«/mi»«/mfrac»«/math»"
+        height="65" role="math"
+        src="data:image/png;base64,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"
+        width="138"></p>
+    <p>Como o conjunto é formado por 9 elementos, que é um número ímpar, então a mediana será igual ao 5º elemento, ou
+      seja:</p>
+    <p>Sendo,</p>
+    <p>V: variância</p>
+    <p>xi: valor observado</p>
+    <p>MA: média aritmética da amostra</p>
+    <p>n: número de dados observados</p>
+
+    <p> Média:<img
+        alt="M A com a subscrito igual a numerador 1 mais 2 mais 2 mais 12 mais 12 mais 13 sobre denominador 6 fim da fração igual a 42 sobre 6 igual a 7 espaço a n o s"
+        class="Wirisformula"
+        data-mathml="«math xmlns=¨http://www.w3.org/1998/Math/MathML¨»«mi»M«/mi»«msub»«mi»A«/mi»«mi»a«/mi»«/msub»«mo»=«/mo»«mfrac»«mrow»«mn»1«/mn»«mo»+«/mo»«mn»2«/mn»«mo»+«/mo»«mn»2«/mn»«mo»+«/mo»«mn»12«/mn»«mo»+«/mo»«mn»12«/mn»«mo»+«/mo»«mn»13«/mn»«/mrow»«mn»6«/mn»«/mfrac»«mo»=«/mo»«mfrac»«mn»42«/mn»«mn»6«/mn»«/mfrac»«mo»=«/mo»«mn»7«/mn»«mo»§#160;«/mo»«mi»a«/mi»«mi»n«/mi»«mi»o«/mi»«mi»s«/mi»«/math»"
+        height="35" role="math"
+        src="data:image/png;base64,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"
+        width="347"></p>
+    <p> Variância: </p>
+    <p><img
+        alt="V com a subscrito igual a numerador parêntese esquerdo 1 menos 7 parêntese direito ao quadrado mais parêntese esquerdo 2 menos 7 parêntese direito ao quadrado mais parêntese esquerdo 2 menos 7 parêntese direito ao quadrado mais parêntese esquerdo 12 menos 7 parêntese direito ao quadrado mais parêntese esquerdo 12 menos 7 parêntese direito ao quadrado mais parêntese esquerdo 13 menos 7 parêntese direito ao quadrado sobre denominador 6 fim da fração V com a subscrito igual a numerador 36 mais 25 mais 25 mais 25 mais 25 mais 36 sobre denominador 6 fim da fração aproximadamente igual 28 vírgula 67 espaço a n o s ao quadrado"
+        class="Wirisformula"
+        data-mathml="«math xmlns=¨http://www.w3.org/1998/Math/MathML¨»«msub»«mi»V«/mi»«mi»a«/mi»«/msub»«mo»=«/mo»«mfrac»«mrow»«mo»(«/mo»«mn»1«/mn»«mo»-«/mo»«mn»7«/mn»«msup»«mo»)«/mo»«mn»2«/mn»«/msup»«mo»+«/mo»«mo»(«/mo»«mn»2«/mn»«mo»-«/mo»«mn»7«/mn»«mrow»«msup»«mo»)«/mo»«mn»2«/mn»«/msup»«mo»+«/mo»«mo»(«/mo»«mn»2«/mn»«mo»-«/mo»«mn»7«/mn»«msup»«mo»)«/mo»«mn»2«/mn»«/msup»«mo»+«/mo»«mo»(«/mo»«mn»12«/mn»«mo»-«/mo»«mn»7«/mn»«msup»«mo»)«/mo»«mn»2«/mn»«/msup»«mo»+«/mo»«mo»(«/mo»«mn»12«/mn»«mo»-«/mo»«mn»7«/mn»«msup»«mo»)«/mo»«mn»2«/mn»«/msup»«mo»+«/mo»«mo»(«/mo»«mn»13«/mn»«mo»-«/mo»«mn»7«/mn»«msup»«mo»)«/mo»«mn»2«/mn»«/msup»«/mrow»«/mrow»«mn»6«/mn»«/mfrac»«mspace linebreak=¨newline¨/»«msub»«mi»V«/mi»«mi»a«/mi»«/msub»«mo»=«/mo»«mfrac»«mrow»«mn»36«/mn»«mo»+«/mo»«mn»25«/mn»«mo»+«/mo»«mn»25«/mn»«mo»+«/mo»«mn»25«/mn»«mo»+«/mo»«mn»25«/mn»«mo»+«/mo»«mn»36«/mn»«/mrow»«mn»6«/mn»«/mfrac»«mo»§#8773;«/mo»«mn»28«/mn»«mo»,«/mo»«mn»67«/mn»«mo»§#160;«/mo»«mi»a«/mi»«mi»n«/mi»«mi»o«/mi»«msup»«mi»s«/mi»«mn»2«/mn»«/msup»«/math»"
+        height="85" role="math"
+        src="data:image/png;base64,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PC9tbz48bW4+MTM8L21uPjxtbz4tPC9tbz48bW4+NzwvbW4+PG1zdXA+PG1vPik8L21vPjxtbj4yPC9tbj48L21zdXA+PC9tcm93PjwvbXJvdz48bW4+NjwvbW4+PC9tZnJhYz48bXNwYWNlIGxpbmVicmVhaz0ibmV3bGluZSIvPjxtc3ViPjxtaT5WPC9taT48bWk+YTwvbWk+PC9tc3ViPjxtbz49PC9tbz48bWZyYWM+PG1yb3c+PG1uPjM2PC9tbj48bW8+KzwvbW8+PG1uPjI1PC9tbj48bW8+KzwvbW8+PG1uPjI1PC9tbj48bW8+KzwvbW8+PG1uPjI1PC9tbj48bW8+KzwvbW8+PG1uPjI1PC9tbj48bW8+KzwvbW8+PG1uPjM2PC9tbj48L21yb3c+PG1uPjY8L21uPjwvbWZyYWM+PG1vPiYjeDIyNDU7PC9tbz48bW4+Mjg8L21uPjxtbz4sPC9tbz48bW4+Njc8L21uPjxtbz4mI3hBMDs8L21vPjxtaT5hPC9taT48bWk+bjwvbWk+PG1pPm88L21pPjxtc3VwPjxtaT5zPC9taT48bW4+MjwvbW4+PC9tc3VwPjwvbWF0aD7iE6SUAAAAAElFTkSuQmCC"
+        width="488"></p>
+    <p>Após calcular a variância, torna-se mais fácil o calculo do desvio padrão</p>
+    <p><img
+        alt="D P com a subscrito igual a raiz quadrada de 28 vírgula 67 fim da raiz igual a 5 vírgula 35 espaço a n o s D P com b subscrito igual a raiz quadrada de 1 vírgula 67 fim da raiz igual a 1 vírgula 29 espaço a n o s"
+        class="Wirisformula"
+        data-mathml="«math xmlns=¨http://www.w3.org/1998/Math/MathML¨»«mi»D«/mi»«msub»«mi»P«/mi»«mi»a«/mi»«/msub»«mo»=«/mo»«msqrt»«mn»28«/mn»«mo»,«/mo»«mn»67«/mn»«/msqrt»«mo»=«/mo»«mn»5«/mn»«mo»,«/mo»«mn»35«/mn»«mo»§#160;«/mo»«mi»a«/mi»«mi»n«/mi»«mi»o«/mi»«mi»s«/mi»«mspace linebreak=¨newline¨/»«mi»D«/mi»«msub»«mi»P«/mi»«mi»b«/mi»«/msub»«mo»=«/mo»«msqrt»«mn»1«/mn»«mo»,«/mo»«mn»67«/mn»«/msqrt»«mo»=«/mo»«mn»1«/mn»«mo»,«/mo»«mn»29«/mn»«mo»§#160;«/mo»«mi»a«/mi»«mi»n«/mi»«mi»o«/mi»«mi»s«/mi»«/math»"
+        height="52" role="math"
+        src="data:image/png;base64,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"
+        width="201"></p>
+    <p></p>
   </div>
-</ng-template>
+</div>

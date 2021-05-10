@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/EstatisticaApp",
+    "public": "dist/EstatisticaApp/browser",
     "ignore": [
       "firebase.json",
       "**/.*",

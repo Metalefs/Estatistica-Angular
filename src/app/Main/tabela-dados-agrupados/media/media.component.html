@@ -1,19 +1,38 @@
-<div>
+<h1>Média Aritmética</h1>
+<h2>O que é Média Aritmética?</h2>
+<ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
+<ng-template #dynamic>
+  <app-wiki-card [wiki]="wiki"></app-wiki-card>
+</ng-template>
+<ng-template #static>
+  <div class="container card card-block">
+    <p>Em estatística, <b>média</b> é definida como o valor que demonstra a concentração dos dados de uma
+      distribuição, como o ponto de equilíbrio das frequências em um histograma. Média também é interpretada como um
+      valor significativo de uma lista de números. Os valores de uma lista de números podem ser representados por meio
+      da escolha aleatória de um número. Se todos os números forem iguais, o número escolhido aleatoriamente será a
+      média. Então, a média pode ser calculada por meio da combinação dos números de maneira específica e da geração
+      de um valor significativo. Entretanto, a palavra média é usualmente usada em métodos mais sofisticados como
+      média aritmética, mediana, moda, entre outros.</p>
+  </div>
+</ng-template>
+<hr>
+<div class="pt-3">
+  <h2>Calcular Média</h2>
   <form action="" method="post" [formGroup]="dadosForm">
     <p>
       <mat-form-field appearance="outline">
-        <mat-label>Média</mat-label>
-        <input matInput [formControlName]="'values'" placeholder="1,2,3"
-        [(ngModel)]="values" (keyup)="calcular(values)">
+        <mat-label>Valores Média</mat-label>
+        <input matInput [formControlName]="'values'" placeholder="1,2,3" [(ngModel)]="values"
+          (keyup)="calcular(values)">
         <mat-icon matSuffix>edit</mat-icon>
         <mat-hint>A média será exbido abaixo</mat-hint>
       </mat-form-field>
-      <button mat-flat-button class="btn btn-primary"
-      [disabled]="this.dadosForm.get('values').invalid"
-       (click)="calcular(values)">Calcular</button>
+      <button mat-flat-button class="btn btn-primary" [disabled]="this.dadosForm.get('values').invalid"
+        (click)="calcular(values)">Calcular</button>
     </p>
   </form>
   <div *ngIf="Media">
+
     <mat-form-field>
 
       <input matNativeControl value="" disabled><br>
@@ -23,16 +42,39 @@
       </div>
 
     </mat-form-field>
+
     <mathjax #math [content]="Media.Passos.Valor"></mathjax>
+
+  </div>
+  <div class="card card-block content">
+    <h2>Como realizar o cálculo de média?</h2>
+    <p>
+      A média é o produto da soma de todos os valores com a quantidade de elementos.
+    </p>
+    <h3>Fórmula</h3>
+    <img
+      alt="M com e subscrito igual a numerador x com 1 subscrito mais x com 2 subscrito mais x com 3 subscrito mais... mais x com n subscrito sobre denominador n fim da fração"
+      class="Wirisformula"
+      data-mathml="«math xmlns=¨http://www.w3.org/1998/Math/MathML¨»«msub»«mi»M«/mi»«mi»e«/mi»«/msub»«mo»=«/mo»«mfrac»«mrow»«msub»«mi»x«/mi»«mn»1«/mn»«/msub»«mo»+«/mo»«msub»«mi»x«/mi»«mn»2«/mn»«/msub»«mo»+«/mo»«msub»«mi»x«/mi»«mn»3«/mn»«/msub»«mo»+«/mo»«mo».«/mo»«mo».«/mo»«mo».«/mo»«mo»+«/mo»«msub»«mi»x«/mi»«mi»n«/mi»«/msub»«/mrow»«mi»n«/mi»«/mfrac»«mspace linebreak=¨newline¨/»«/math»"
+      height="37" role="math"
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAM8AAAAlCAYAAADlXr27AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAABGJhU0UAAAAdoyL+RwAAA2hJREFUeNrtnD9oFFEQxh8hBAmSJoiEFEIIkkJEsBARsTlExMJOLCxCIIiFiAipREQCqUTExkJEUgRCCEFEBAliYSEEERE5bMRC7CxEQhDhnI+bxXV9+8e73b3Z3e8HH/juXmCc3dn3Zt7cOkeS6NAe0/Z0eIv2xpxoyfP5Lf2u7ItDe2wHTxn+qBRvRHtD41nRvQE+2WiP7ZWnaH9UilOi2/rvlmhzwBeH9tgOnqL9UTmei06I3orGc7gYaaI9/dlTJ39Uniuin6KDRhJS2mO7YFCkPyrFMdGaLsXnE+btF13Xp02RFyeLPcETEhfwlWjakD3wz8kaB0/W+6X2TIkei0ZFu0VbCcvwsmi+B2d3CrIHDIkuaRJrwR4wI/pc0+DpxR+1ZI/oaeQ/f0aDJM+L3SnYHrBjyB4E9LeCbl5fTpL1s7L90dbvt3RFXqhL4IyI1kWTnu9WtKJS5pOyH3uQuL40Yg9uLJRtZwtO9vMMniL8gQfILw0s/M2h/3yg1BZLJ9ITmvNMGfELdIG3iDuiK044T9qkW+wEDwoYTzSArDAmWtTcsMmgkPAoMn7I0LERPBO6/x4z6qOdht8jd0UXI+O5rI5rpcxp6Z5wiMHTEwicGaP+OR7ZsjQR5EenQ+ONyNjLtN5cSb0+KPGhlPmugkFT5kl4VWwJ24MH5zPRvoYHD4oDuxLGXs667iHZ14Q593XOCneAhPzhhuvWs9tacfBt17Di3HQ1qnsTkgeruvosqsLgVPaj69a8g3l5bVksbWEI6QkEx6SuOm1PBSIIqLbzHzgR0khQOdsOjZH3BBUhHBK9Fw175g060aaoQegvsNq8iBQGFkLbtcMx87htI40neoqK4sBr0Z1I/sPTVkI8Oc18ZBv3XfRBt2tx8whpPNFTVbAc2q4lzQtY0oDDIeoBupQ0hUynqAnzwv0/+JnrA7qUkHTQ6PglNMbPeNfoFkLSOef+rZixqEBIBhr94jhC+gFnPxt0g1nQs3jNdd+UiR3Btuaul+kaG1wVfXLdlyVg2zZCl5hhVQMFgYN3JuAYAu1V+AnCKN1DSDzoEPGdzWH1Gad7CPGDVeaH5/NhN7geRUIqk4/6ehGPuv56FAmpPXG9iOxRJCSFuDe/ZH4jDCFNJa4XMalHkRDi4nsRs/YykgR+A+fV0yIYRFPMAAABd3RFWHRNYXRoTUwAPG1hdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTgvTWF0aC9NYXRoTUwiPjxtc3ViPjxtaT5NPC9taT48bWk+ZTwvbWk+PC9tc3ViPjxtbz49PC9tbz48bWZyYWM+PG1yb3c+PG1zdWI+PG1pPng8L21pPjxtbj4xPC9tbj48L21zdWI+PG1vPis8L21vPjxtc3ViPjxtaT54PC9taT48bW4+MjwvbW4+PC9tc3ViPjxtbz4rPC9tbz48bXN1Yj48bWk+eDwvbWk+PG1uPjM8L21uPjwvbXN1Yj48bW8+KzwvbW8+PG1vPi48L21vPjxtbz4uPC9tbz48bW8+LjwvbW8+PG1vPis8L21vPjxtc3ViPjxtaT54PC9taT48bWk+bjwvbWk+PC9tc3ViPjwvbXJvdz48bWk+bjwvbWk+PC9tZnJhYz48bXNwYWNlIGxpbmVicmVhaz0ibmV3bGluZSIvPjwvbWF0aD79tUhzAAAAAElFTkSuQmCC"
+      width="207">
+    <p>Sendo,</p>
+    <p>Me: média</p>
+    <p>x1, x2, x3,..., xn: valores dos dados</p>
+    <p>n: número de elementos do conjunto de dados</p>
+    <h3>Exemplo</h3>
+    <p>Os alunos obtiveram as seguites notas na prova de matemátoca: 28, 27, 19, 23 e 21. Qual a média das notas destes
+      alunos?</p>
+    <h3>Solução</h3>
+    <img
+      alt="M com e subscrito igual a numerador 28 mais 27 mais 19 mais 23 mais 21 sobre denominador 5 fim da fração M com e subscrito igual a 118 sobre 5 igual a 23 vírgula 6"
+      class="Wirisformula"
+      data-mathml="«math xmlns=¨http://www.w3.org/1998/Math/MathML¨»«msub»«mi»M«/mi»«mi»e«/mi»«/msub»«mo»=«/mo»«mfrac»«mrow»«mn»28«/mn»«mo»+«/mo»«mn»27«/mn»«mo»+«/mo»«mn»19«/mn»«mo»+«/mo»«mn»23«/mn»«mo»+«/mo»«mn»21«/mn»«/mrow»«mn»5«/mn»«/mfrac»«mspace linebreak=¨newline¨/»«msub»«mi»M«/mi»«mi»e«/mi»«/msub»«mo»=«/mo»«mfrac»«mn»118«/mn»«mn»5«/mn»«/mfrac»«mo»=«/mo»«mn»23«/mn»«mo»,«/mo»«mn»6«/mn»«/math»"
+      height="82" role="math"
+      src="data:image/png;base64,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"
+      width="216">
+    <p>Como a média é uma medida sensível aos valores da amostra, é mais adequada para situações em que os dados são
+      distribuídos mais ou menos de forma uniforme, ou seja, valores sem grandes discrepâncias.</p>
   </div>
 </div>
-
-<ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
-<ng-template #dynamic>
-  <app-wiki-card [wiki]="wiki"></app-wiki-card>
-</ng-template>
-<ng-template #static>
-  <div class="container card card-block">
-    <p>Em estatística, <b>média</b> é definida como o valor que demonstra a concentração dos dados de uma distribuição, como o ponto de equilíbrio das frequências em um histograma. Média também é interpretada como um valor significativo de uma lista de números. Os valores de uma lista de números podem ser representados por meio da escolha aleatória de um número. Se todos os números forem iguais, o número escolhido aleatoriamente será a média. Então, a média pode ser calculada por meio da combinação dos números de maneira específica e da geração de um valor significativo. Entretanto, a palavra média é usualmente usada em métodos mais sofisticados como média aritmética, mediana, moda, entre outros.</p>
-  </div>
-</ng-template>
