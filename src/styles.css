@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
+
 html, body { height: 100%;  }
 html{
   overflow: visible !important;
@@ -30,4 +31,26 @@ p > button {
   height: 50px !important;
   bottom: 5px !important;
   margin-left: 5px !important;
+}
+
+.label{
+  font-size: small;
+}
+.label,.subtitle{
+  color: #fff ;
+}
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+  color: #f2f2f2;
+  font-weight: 600;
+  line-height: 1.125;
+}
+
+.mat-hint {
+  color: #f2f2f2;
+}
+.mat-form-field-label {
+  color: #f2f2f2;
+}
+.title {
+  color: #fff;
 }

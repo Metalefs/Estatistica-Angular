@@ -7,7 +7,7 @@
     <app-wiki-card [wiki]="wiki"></app-wiki-card>
   </ng-template>
   <ng-template #static>
-    <div class="container card card-block">
+    <div class="container card-block">
       <p>Em estatística, a <b>distribuição de frequência</b> é um arranjo de valores que uma ou mais variáveis ​​tomam
         em uma amostra. Cada entrada na tabela contém a frequência ou a contagem de ocorrências de valores dentro de um
         grupo ou intervalo específico, e deste modo, a tabela resume a distribuição dos valores da amostra.</p>
@@ -24,14 +24,14 @@
       </mat-form-field>
     </p>
   </div>
-  <div>
-    <form action="" method="post" [formGroup]="dadosForm">
+  <div class="clr-row columns is-vcentered">
+    <form action="" method="post" class="clr-col-6" [formGroup]="dadosForm">
       <p>
         <mat-form-field appearance="outline" class="fill w-full"
           style="padding-bottom: 0 !important;margin-bottom: 0 !important;">
-          <mat-label>Valores para a tabela quantitativa :{{DadosTabela?.NumeroDeElementos||NumElementos ?
+          <mat-label>Conjunto (Coloque todos os elementos separados por vírgula.) :{{DadosTabela?.NumeroDeElementos||NumElementos ?
             DadosTabela?.NumeroDeElementos||NumElementos||0 + 'Elementos' : ''}}</mat-label>
-          <input matInput [formControlName]="'valores'" placeholder="1,2,3,4" [(ngModel)]="values"
+          <input matInput [formControlName]="'valores'" placeholder="Coloque todos os elementos separados por vírgula. Ex: 1,2,3,4" [(ngModel)]="values"
             (keyup)="calcular(values)">
           <mat-icon matSuffix>edit</mat-icon>
           <mat-hint></mat-hint>
@@ -40,8 +40,24 @@
           (click)="calcular(values)" href="#tabela_dados">Calcular</button>
       </p>
     </form>
+    <div class="card clr-col-6">
+      <div class="card-body">
+        <h3>Ajuda</h3>
+        <p>Esta calculadora de estatística, permite calcular frequência absoluta, moda, media, mediana, e frequências
+          relativas.</p>
+
+        <p>Para fazer os cálculos basta colocar todos os elementos no campo ao lado, separados por vírgula.</p>
+
+        <p>Por exemplo: 1,3,2,3,4,5,1,4,4,6</p>
+
+        <p>Após colocar todos os elementos clique no botão <strong>calcular</strong>.</p>
+
+      </div> <!-- card-body -->
+    </div>
   </div>
   <div class="" *ngIf="DadosTabela != undefined">
+    <h2>Conjunto</h2>
+    <p>{{values}}</p>
     <fieldset>
       <div class="clr-row">
         <div class="field clr-col-lg-3 clr-col-sm-6">
@@ -206,8 +222,7 @@
           <input class="input is-medium" readonly type="text" [value]="DadosTabela.Media['Resultado']">
         </div>
 
-        <button mat-flat-button (click)="openDialog('Média',DadosTabela.Media['Passos'].Valor)">Como obtive esse
-          resultado?</button>
+        <button mat-flat-button (click)="openDialog('Média',DadosTabela.Media['Passos'].Valor)">Como calcular a média?</button>
       </mat-form-field>
 
       <mat-form-field class="clr-col-md-6 clr-col-sm-12 field">
@@ -231,9 +246,7 @@
         <div class="control">
           <input class="input is-medium" readonly type="text" [value]="DadosTabela.Mediana['Resultado']">
         </div>
-        <button mat-flat-button (click)="openDialog('Mediana',DadosTabela.Mediana['Passos'].Valor)">Como cheguei
-          a
-          esse resultado?</button>
+        <button mat-flat-button (click)="openDialog('Mediana',DadosTabela.Mediana['Passos'].Valor)">Como determinar a mediana?</button>
       </mat-form-field>
 
       <mat-form-field class="clr-col-md-6 clr-col-sm-12 field">
@@ -244,8 +257,7 @@
           <input class="input is-medium" readonly type="text" [value]="DadosTabela.Moda['Resultado']">
         </div>
 
-        <button mat-flat-button (click)="openDialog('Moda',DadosTabela.Moda['Passos'].Valor)">Como obtive esse
-          resultado?</button>
+        <button mat-flat-button (click)="openDialog('Moda',DadosTabela.Moda['Passos'].Valor)">Como determinar a moda?</button>
         <mat-hint>Classificação: {{DadosTabela.Moda['Classificacao']}}</mat-hint>
 
       </mat-form-field>

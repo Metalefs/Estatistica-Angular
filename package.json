@@ -30,7 +30,7 @@
     "@angular/platform-server": "~10.0.0",
     "@angular/router": "~10.0.0",
     "@angular/service-worker": "~10.0.0",
-    "@cds/angular": "^5.1.1",
+    "@cds/angular": "^5.2.0",
     "@cds/city": "^1.1.0",
     "@cds/core": "^5.2.0",
     "@clr/angular": "^3.1.5",

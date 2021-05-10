@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CdsModule } from '@cds/angular';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +34,7 @@ import '@cds/core/modal/register.js';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    CdsModule,
     SharedModule,
     MaterialModule,
     AppRoutingModule,
