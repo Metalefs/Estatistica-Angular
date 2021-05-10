@@ -14,7 +14,7 @@
     </div>
   </ng-template>
 
-  <div class="pt-3">
+  <div class="pt-2">
     <h2>Gerar tabela de distribuição de frequências</h2>
     <p>
       <mat-form-field appearance="outline">
@@ -89,7 +89,7 @@
       </div>
       <mat-tab-group>
         <mat-tab [label]="'Tabela Simples'">
-          <table mat-table [dataSource]="tabela" id="tabela_dados" class="table mat-elevation-z8 pr-3">
+          <table mat-table [dataSource]="tabela" id="tabela_dados" class="table mat-elevation-z8">
             <caption>
               Tabela de agrupamento {{Simples ? 'simples' : 'com intervalos'}}<br>
               <em><span *ngIf="!Simples">Intervalo: {{DadosTabela.Intervalo}}</span></em>
@@ -134,7 +134,7 @@
           </table>
         </mat-tab>
         <mat-tab [label]="'Tabela Desvio Padrão'">
-          <table mat-table [dataSource]="tabela" id="tabela_dados_dp" class="table mat-elevation-z8 pr-3">
+          <table mat-table [dataSource]="tabela" id="tabela_dados_dp" class="table mat-elevation-z8">
             <caption>
               Tabela de agrupamento {{Simples ? 'simples' : 'com intervalos'}}<br>
               <em><span *ngIf="!Simples">Intervalo: {{DadosTabela.Intervalo}}</span></em>

@@ -16,13 +16,13 @@
   </div>
 </ng-template>
 <hr>
-<div class="pt-3">
+<div class="pt-2">
   <h2>Calcular Média</h2>
   <form action="" method="post" [formGroup]="dadosForm">
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Valores Média</mat-label>
-        <input matInput [formControlName]="'values'" placeholder="1,2,3" [(ngModel)]="values"
+        <input matInput [formControlName]="'values'" placeholder="Conjunto (Coloque todos os elementos separados por vírgula.) Ex: 1,2,6,8"  [(ngModel)]="values"
           (keyup)="calcular(values)">
         <mat-icon matSuffix>edit</mat-icon>
         <mat-hint>A média será exbido abaixo</mat-hint>

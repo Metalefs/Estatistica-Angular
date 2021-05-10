@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import '~@cds/core/global.min';
 
 html, body { height: 100%;  }
 html{
@@ -36,7 +36,7 @@ p > button {
 .label{
   font-size: small;
 }
-.label,.subtitle{
+/* .label,.subtitle{
   color: #fff ;
 }
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
@@ -53,4 +53,4 @@ p > button {
 }
 .title {
   color: #fff;
-}
+} */

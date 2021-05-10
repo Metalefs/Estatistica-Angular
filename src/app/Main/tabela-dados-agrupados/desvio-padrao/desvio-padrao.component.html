@@ -16,12 +16,12 @@
   </ng-template>
 
 
-  <form action="" method="post" [formGroup]="dadosForm" class="pt-3">
+  <form action="" method="post" [formGroup]="dadosForm" class="pt-2">
     <h2>Calcular Desvio Padrão</h2>
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Desvio Padrão</mat-label>
-        <input matInput [formControlName]="'valores'" placeholder="1,2,3" [(ngModel)]="values"
+        <input matInput [formControlName]="'valores'" placeholder="Conjunto (Coloque todos os elementos separados por vírgula.) Ex: 1,2,6,8" [(ngModel)]="values"
           (keyup)="calcular(values)">
         <mat-icon matSuffix>edit</mat-icon>
         <mat-hint>O desvio padrão será exbido abaixo</mat-hint>

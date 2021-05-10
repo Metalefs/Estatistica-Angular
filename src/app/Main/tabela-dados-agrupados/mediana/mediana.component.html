@@ -21,12 +21,12 @@
   </ng-template>
 
 
-  <form action="" method="post" [formGroup]="dadosForm" class="pt-3">
+  <form action="" method="post" [formGroup]="dadosForm" class="pt-2">
     <h2>Calcular Mediana</h2>
     <p>
       <mat-form-field appearance="outline">
-        <mat-label>Mediana</mat-label>
-        <input matInput [formControlName]="'values'" placeholder="1,2,3" [(ngModel)]="values"
+        <mat-label>Conjunto (Coloque todos os elementos separados por vírgula.)</mat-label>
+        <input matInput [formControlName]="'values'" placeholder="Conjunto (Coloque todos os elementos separados por vírgula.) Ex: 1,2,6,8" [(ngModel)]="values"
           (keyup)="calcular(values)">
         <mat-icon matSuffix>edit</mat-icon>
         <mat-hint>A mediana será exbido abaixo</mat-hint>

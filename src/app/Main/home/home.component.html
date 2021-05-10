@@ -41,7 +41,7 @@
     </div>
     <div class="columns is-multiline">
       <div class="column is-3" *ngFor="let project of projects" >
-        <a [routerLink]="[project.link]" class="card h-full">
+        <a [href]="project.link" class="card h-full">
           <article class="card-block">
             <figure class="image is-5by3">
               <img src="https://i.ibb.co/fq8hSGQ/placeholder-image-368x246.png">

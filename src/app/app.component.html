@@ -30,12 +30,20 @@
       </label>
     </form>
     <div class="header-nav">
-      <a href="javascript://" class="nav-link nav-icon">
+      <a href="javascript://" class=" active nav-link nav-icon">
         <clr-icon shape="cloud"></clr-icon>
       </a>
-      <a href="javascript://" class="active nav-link nav-icon">
+      <a href="javascript://" class=" nav-link nav-icon">
         <clr-icon shape="folder"></clr-icon>
       </a>
+    </div>
+    <div class="header-actions">
+      <clr-dropdown>
+        <button class="nav-icon dropdown-toggle" clrDropdownTrigger><clr-icon shape="cog"></clr-icon></button>
+        <clr-dropdown-menu clrPosition="bottom-right">
+          <button type="button" class="dropdown-item" *ngFor="let theme of themes" (click)="setTheme(theme)" clrDropdownItem>{{theme.name}}</button>
+        </clr-dropdown-menu>
+      </clr-dropdown>
     </div>
   </clr-header>
   <nav class="subnav">
