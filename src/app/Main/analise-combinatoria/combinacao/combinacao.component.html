@@ -9,9 +9,9 @@
 
   </div>
 </ng-template>
-<div class="pt-1">
-  <h2>Calcular Combinação</h2>
+<div class="">
   <form action="" method="post" [formGroup]="dadosForm">
+    <h2>Calcular Combinação</h2>
     <p>
       <mat-form-field appearance="outline">
         <mat-label>Elementos</mat-label>
@@ -44,6 +44,44 @@
 
     <!-- <mathjax #math [content]="Media.Passos.Valor"></mathjax> -->
 
+    <div class="content card container pt-1">
+      <div>
+        <p>Combinação simples é um tipo de agrupamento no estudo sobre análise combinatória. Os agrupamentos formados com os elementos de um conjunto serão considerados combinações simples se os elementos dos agrupamentos diferenciarem apenas pela sua natureza.<br>
+          <br>
+          Esse é um problema de análise combinatória, pois iremos formar agrupamentos.<br>
+          <br>
+          As combinações simples podem ser consideradas um tipo particular de arranjo simples, pois os agrupamentos formados nos arranjos são diferenciados pela ordem e pela natureza dos seus elementos. A combinação simples são esses arranjos diferenciados apenas pela natureza de seus elementos.<br>
+          <br>
+          Considerando o exemplo acima veja todas as possibilidades de triângulos formados com quatro pontos não colineares:<br>
+          <br>
+          ABC, BAC, CAB, DAB<br>
+          ABD, BAD, CAD, DAC<br>
+          ACB, BCA, CBA, DBA<br>
+          ACD, BCD, CBD, DBC<br>
+          ADB, BDA, CDA, DCA<br>
+          ADC, BDC, CDB, DCB<br>
+          <br>
+          Percebemos que há vários agrupamentos que se diferem pela ordem de seus elementos, esses representam o mesmo triângulo, por isso que consideramos esse exercício como sendo uma combinação simples, assim a quantidade de combinações simples que os 4 pontos não colineares (A,B,C,D), tomados 3 a 3 irão formar será 4, pois os seus agrupamentos se diferem pela natureza de seus elementos e não pela ordem.<br>
+          <br>
+          Para encontrar essa quantidade de agrupamentos formados em uma combinação simples utilizamos a seguinte fórmula:<br>
+          <br>
+          C<sub>n,p</sub> =<u>&nbsp; &nbsp; &nbsp; n! &nbsp; &nbsp;&nbsp;</u><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p! (n – p)!<br>
+          <br>
+          n é a quantidade de elementos de um conjunto<br>
+          p é um número natural menor ou igual a n, que representa a quantidade de elementos que irão formar os agrupamentos.<br>
+          <br>
+          Substituindo os dados acima na fórmula teremos:<br>
+          <br>
+          n = {{values}} <br>
+          p = {{group}}<br>
+          C<sub>{{values}},{{group}}</sub> =&nbsp; <u>&nbsp; &nbsp; &nbsp;</u><u>{{values}}! &nbsp; &nbsp;&nbsp;</u><br>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{group}}! ({{values}}-{{group}})!<br>
+          <br>
+          C<sub>{{values}},{{group}}</sub> = {{Combinacao}}
+        </p>
+      </div>
+    </div>
   </div>
 
 </div>

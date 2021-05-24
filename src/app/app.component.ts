@@ -33,7 +33,8 @@ export class AppComponent {
         { route: '/analiseCombinatoria/anagramas', shape: 'calculator', text: 'Análise Combinatória', children: [
           { route: '/analiseCombinatoria/anagramas', shape: 'calculator', text: 'Anagramas'},
           { route: '/analiseCombinatoria/fatorial', shape: 'calculator', text: 'Fatorial'},
-          { route: '/analiseCombinatoria/combinacao', shape: 'calculator', text: 'Combinação'}
+          { route: '/analiseCombinatoria/combinacao', shape: 'calculator', text: 'Combinação'},
+          { route: '/analiseCombinatoria/arranjo', shape: 'calculator', text: 'Arranjo'}
         ]}
 
     ]

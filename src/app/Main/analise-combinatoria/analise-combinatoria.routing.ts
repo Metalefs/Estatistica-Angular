@@ -4,6 +4,7 @@ import { AnaliseCombinatoriaComponent } from './analise-combinatoria.component';
 import { AnagramasComponent } from './anagramas/anagramas.component';
 import { FatorialComponent } from './fatorial/fatorial.component';
 import { CombinacaoComponent } from './combinacao/combinacao.component';
+import { ArranjoComponent } from './arranjo/arranjo.component';
 
 const routes: Routes = [
     {
@@ -22,6 +23,11 @@ const routes: Routes = [
         {
           path: 'combinacao',
           component: CombinacaoComponent,
+          data: { animation:'isUp', title: '' }
+        },
+        {
+          path: 'arranjo',
+          component: ArranjoComponent,
           data: { animation:'isUp', title: '' }
         }
       ]

@@ -11,6 +11,7 @@ export class AnaliseService {
     apiURL = environment.endpoint;
     anagramaURL = this.apiURL + 'AnaliseCombinatoria/Anagramas';
     fatorialURL = this.apiURL + 'AnaliseCombinatoria/Fatorial';
+    arranjoURL = this.apiURL + 'AnaliseCombinatoria/Arranjo';
     constructor(private http: HttpClient) { }
 
     httpOptions = {
@@ -34,6 +35,12 @@ getFatorial(valor, repeticoes = 0) {
         catchError(this.handleError) // then handle the error
     )
 }
+getArranjo(valor, repeticoes = 0) {
+    return this.http.get<any>(this.arranjoURL+"/"+valor,this.httpOptions).pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+    )
+}
 
 getFactorialLocal(valor, repeticoes = 0){
   var resultado = 1;
@@ -46,6 +53,10 @@ getFactorialLocal(valor, repeticoes = 0){
 
 getCombinacaoLocal(valor,combinacao:string[]){
   return this.getFactorialLocal(valor) / (this.getFactorialLocal(valor - parseFloat(combinacao[0])) * this.getFactorialLocal(combinacao));
+}
+
+getArranjoLocal(valor, repeticoes = 0){
+  return this.getFactorialLocal(valor) / this.getFactorialLocal(valor-repeticoes);
 }
 // Page Loading state
 

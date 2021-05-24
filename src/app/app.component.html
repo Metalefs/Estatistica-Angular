@@ -67,16 +67,23 @@
                   Operações <span>- {{projects.length}} recursos</span>
                 </h3>
                 <hr>
-                <mat-list>
-                  <mat-list-item *ngFor="let proj of projects">
-                    <a href="{{proj.link}}">Calcular {{proj.name}}</a>
-                  </mat-list-item>
-
-                  <mat-list-item>
-                    <a href="/"><h3 class="category-more">Ver todos </h3></a>
-                  </mat-list-item>
-                </mat-list>
               </div>
+              <clr-accordion>
+                <clr-accordion-panel>
+                  <clr-accordion-title>  <span>Expandir </span></clr-accordion-title>
+                  <clr-accordion-content>
+                    <mat-list>
+                      <mat-list-item *ngFor="let proj of projects">
+                        <a href="{{proj.link}}">- {{proj.name}}</a>
+                      </mat-list-item>
+
+                      <mat-list-item>
+                        <a href="/"><h3 class="category-more">Ver todos </h3></a>
+                      </mat-list-item>
+                    </mat-list>
+                  </clr-accordion-content>
+                </clr-accordion-panel>
+              </clr-accordion>
             </div>
             <div class="column is-6">
               <div class="category">

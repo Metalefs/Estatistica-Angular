@@ -1,0 +1,49 @@
+<h1>Arranjo</h1>
+<h2>O que é Arranjo?</h2>
+<ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
+<ng-template #dynamic>
+  <app-wiki-card [wiki]="wiki"></app-wiki-card>
+</ng-template>
+<ng-template #static>
+  <div class="container card card-block">
+
+  </div>
+</ng-template>
+<div class="">
+  <form action="" method="post" [formGroup]="dadosForm">
+    <h2>Calcular Arranjo</h2>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Elemento</mat-label>
+        <input matInput [formControlName]="'values'" placeholder="Insira um valor"  [(ngModel)]="values">
+        <mat-icon matSuffix>edit</mat-icon>
+        <mat-hint>O resultado será exibido abaixo</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Conjunto</mat-label>
+        <input matInput [formControlName]="'group'" placeholder="Insira um valor"  [(ngModel)]="group"
+          (keyup)="getArranjo(values,group)">
+        <mat-icon matSuffix>edit</mat-icon>
+        <mat-hint></mat-hint>
+      </mat-form-field>
+      <button mat-flat-button class="btn btn-primary" [disabled]="this.dadosForm.get('values').invalid"
+        (click)="getArranjo(values,group)">Calcular</button>
+    </p>
+  </form>
+  <div *ngIf="Arranjo">
+
+    <mat-form-field style="width: 100%;">
+
+      <input matNativeControl value="" disabled><br>
+      <label class="label">Arranjo: </label>
+      <div class="control">
+        <input class="input is-medium" readonly type="text" [value]="Arranjo">
+      </div>
+
+    </mat-form-field>
+
+    <!-- <mathjax #math [content]="Media.Passos.Valor"></mathjax> -->
+
+  </div>
+
+</div>

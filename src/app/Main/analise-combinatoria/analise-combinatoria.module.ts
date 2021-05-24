@@ -8,9 +8,10 @@ import { AnagramasComponent } from './anagramas/anagramas.component';
 import { FatorialComponent } from './fatorial/fatorial.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CombinacaoComponent } from './combinacao/combinacao.component';
+import { ArranjoComponent } from './arranjo/arranjo.component';
 
 @NgModule({
-  declarations: [AnaliseCombinatoriaComponent, AnagramasComponent, FatorialComponent, CombinacaoComponent],
+  declarations: [AnaliseCombinatoriaComponent, AnagramasComponent, FatorialComponent, CombinacaoComponent, ArranjoComponent],
   imports: [
     CommonModule,
     SharedModule,
