@@ -10,6 +10,7 @@ import { environment } from '../../../environments/environment';
 export class AnaliseService {
     apiURL = environment.endpoint;
     anagramaURL = this.apiURL + 'AnaliseCombinatoria/Anagramas';
+    fatorialURL = this.apiURL + 'AnaliseCombinatoria/Fatorial';
     constructor(private http: HttpClient) { }
 
     httpOptions = {
@@ -26,6 +27,25 @@ getAnagrama(valor) {
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
     )
+}
+getFatorial(valor, repeticoes = 0) {
+    return this.http.get<any>(this.fatorialURL+"/"+valor,this.httpOptions).pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+    )
+}
+
+getFactorialLocal(valor, repeticoes = 0){
+  var resultado = 1;
+  for (let cont = parseInt(valor); repeticoes > 0 ? cont > valor - repeticoes: cont > 1; cont--)
+  {
+      resultado *= cont;
+  }
+  return resultado;
+}
+
+getCombinacaoLocal(valor,combinacao:string[]){
+  return this.getFactorialLocal(valor) / (this.getFactorialLocal(valor - parseFloat(combinacao[0])) * this.getFactorialLocal(combinacao));
 }
 // Page Loading state
 

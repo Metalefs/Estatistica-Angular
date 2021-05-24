@@ -1,25 +1,11 @@
 
-<section class="hero is-small">
-  <div class="hero-body has-text-centered">
-    <h1 class="title is-4">Operações de Estatística.</h1>
-    <!-- <div id="hero-input-group" class="field has-addons has-addons-centered">
-      <div class="control">
-        <input class="input is-medium" type="text" placeholder="Search...">
-      </div>
-      <div class="control">
-        <a class="button is-medium is-primary">
-          <i class="fal fa-search"></i>
-        </a>
-      </div>
-    </div> -->
-  </div>
-</section>
-<div class="container is-max-desktop">
+
+<div class="container is-max-desktop" id="main">
   <section class="featured">
     <div class="level">
       <div class="level-left">
         <div class="level-item">
-          <h2 class="subtitle">Últimas operações</h2>
+          <h2 class="subtitle">Todas as operações</h2>
         </div>
       </div>
       <div class="level-right">
@@ -40,22 +26,35 @@
       </div>
     </div>
     <div class="columns is-multiline">
-      <div class="column is-3" *ngFor="let project of projects" >
-        <a [href]="project.link" class="card h-full">
-          <article class="card-block">
-            <figure class="image is-5by3">
-              <img src="https://i.ibb.co/fq8hSGQ/placeholder-image-368x246.png">
-            </figure>
+      <mat-card class="column is-3 card-block  card" *ngFor="let project of projects" >
+        <mat-header class="h-full ">
+          <a [href]="project.link" class="">
             <h2 class="subtitle">{{project.name}}</h2>
-            <span class="tag is-rounded">{{project.header}}</span>
+            <span class="tag is-rounded {{project.class}}">{{project.header}}</span>
             {{project.wiki?.description}}
-          </article>
-          <div class="card-footer" style="position:absolute;top:0">
-            <clr-icon shape="calculator"></clr-icon>
-            <button class="btn btn-sm btn-link" [routerLink]="[project.link]">Calcular</button>
-          </div>
-        </a>
-      </div>
+          </a>
+        </mat-header>
+        <mat-card-actions class="card-footer">
+          <clr-icon shape="calculator"></clr-icon>
+          <button class="btn btn-sm btn-link" [routerLink]="[project.link]">Calcular</button>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </section>
 </div>
+<section class="hero is-small">
+  <div class="hero-body has-text-centered">
+    <!-- <h1 class="title is-4">Operações de Estatística.</h1> -->
+
+    <!-- <div id="hero-input-group" class="field has-addons has-addons-centered">
+      <div class="control">
+        <input class="input is-medium" type="text" placeholder="Search...">
+      </div>
+      <div class="control">
+        <a class="button is-medium is-primary">
+          <i class="fal fa-search"></i>
+        </a>
+      </div>
+    </div> -->
+  </div>
+</section>

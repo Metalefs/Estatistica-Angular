@@ -1,4 +1,4 @@
-<clr-vertical-nav class="h-100" [clrVerticalNavCollapsible]="true" [clrVerticalNavCollapsed]="false" [clr-nav-level]="1">
+<clr-vertical-nav class="h-100" [clrVerticalNavCollapsible]="false" [clrVerticalNavCollapsed]="true" [clr-nav-level]="1">
   <ng-container *ngFor="let link of linkTracker.links">
     <ng-container *ngIf="link.children then group else single"></ng-container>
     <ng-template #group>

@@ -20,6 +20,8 @@ import { PageScrollService } from './shared/scrollService';
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './shared/material-module';
 
+import { ProjectsService } from './shared/projects.service';
+
 import { ScrollTopComponent } from './shared/scroll-top/scroll-top.component';
 import { HomeComponent } from './Main/home/home.component';
 import '@cds/core/modal/register.js';
@@ -48,7 +50,7 @@ import '@cds/core/modal/register.js';
     ClarityModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [{ provide: Document },PageScrollService,LinkTrackerService],
+  providers: [{ provide: Document },PageScrollService,LinkTrackerService,ProjectsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

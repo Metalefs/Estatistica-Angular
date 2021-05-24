@@ -1,0 +1,49 @@
+<h1>Combinação</h1>
+<h2>O que é Combinação?</h2>
+<ng-container *ngIf="wiki?.extract_html then dynamic else static"></ng-container>
+<ng-template #dynamic>
+  <app-wiki-card [wiki]="wiki"></app-wiki-card>
+</ng-template>
+<ng-template #static>
+  <div class="container card card-block">
+
+  </div>
+</ng-template>
+<div class="pt-1">
+  <h2>Calcular Combinação</h2>
+  <form action="" method="post" [formGroup]="dadosForm">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Elementos</mat-label>
+        <input matInput [formControlName]="'values'" placeholder="Insira um valor"  [(ngModel)]="values">
+        <mat-icon matSuffix>edit</mat-icon>
+        <mat-hint>O resultado será exibido abaixo</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Conjunto</mat-label>
+        <input matInput [formControlName]="'group'" placeholder="Insira um valor"  [(ngModel)]="group"
+          (keyup)="getCombinacao(values,group)">
+        <mat-icon matSuffix>edit</mat-icon>
+        <mat-hint></mat-hint>
+      </mat-form-field>
+      <button mat-flat-button class="btn btn-primary" [disabled]="this.dadosForm.get('values').invalid"
+        (click)="getCombinacao(values,group)">Calcular</button>
+    </p>
+  </form>
+  <div *ngIf="Combinacao">
+
+    <mat-form-field style="width: 100%;">
+
+      <input matNativeControl value="" disabled><br>
+      <label class="label">Combinação: </label>
+      <div class="control">
+        <input class="input is-medium" readonly type="text" [value]="Combinacao">
+      </div>
+
+    </mat-form-field>
+
+    <!-- <mathjax #math [content]="Media.Passos.Valor"></mathjax> -->
+
+  </div>
+
+</div>

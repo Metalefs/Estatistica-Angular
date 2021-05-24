@@ -36,21 +36,27 @@ p > button {
 .label{
   font-size: small;
 }
-/* .label,.subtitle{
-  color: #fff ;
-}
-.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
-  color: #f2f2f2;
-  font-weight: 600;
-  line-height: 1.125;
-}
 
-.mat-hint {
-  color: #f2f2f2;
+hr{
+  border-bottom: 1px solid #eee;
 }
-.mat-form-field-label {
-  color: #f2f2f2;
+.content table th, table th, .table thead td, .table thead th,.mat-tab-label, .mat-tab-link, .mat-form-field-label, .mat-cell, .mat-footer-cell, .mat-hint, .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+  color: inherit !important;
 }
-.title {
-  color: #fff;
-} */
+.title,.subtitle {
+  color: inherit !important;
+}
+.box, .card {
+  background-color: inherit !important;
+  color: inherit !important;
+  padding-top : inherit;
+  padding-bottom : inherit;
+}
+.mat-h2, .mat-title, .mat-typography h2{
+  margin: 0 !important;
+}
+img {
+  vertical-align: middle;
+  padding: .5rem;
+  background-color: whitesmoke;
+}

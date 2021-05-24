@@ -7,29 +7,29 @@
     <app-wiki-card [wiki]="wiki"></app-wiki-card>
   </ng-template>
   <ng-template #static>
-    <div class="container card-block">
+    <div class="container content card-block">
       <p>Em estatística, a <b>distribuição de frequência</b> é um arranjo de valores que uma ou mais variáveis ​​tomam
         em uma amostra. Cada entrada na tabela contém a frequência ou a contagem de ocorrências de valores dentro de um
         grupo ou intervalo específico, e deste modo, a tabela resume a distribuição dos valores da amostra.</p>
     </div>
   </ng-template>
 
-  <div class="pt-2">
-    <h2>Gerar tabela de distribuição de frequências</h2>
-    <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Nome da tabela</mat-label>
-        <input matInput placeholder="Nome para a visualização" [(ngModel)]="NomeTabela">
-        <mat-icon matSuffix>edit</mat-icon>
-      </mat-form-field>
-    </p>
-  </div>
   <div class="clr-row columns is-vcentered">
     <form action="" method="post" class="clr-col-6" [formGroup]="dadosForm">
+      <div class="pt-2">
+        <h2>Gerar tabela de distribuição de frequências</h2>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Nome da tabela</mat-label>
+            <input matInput placeholder="Nome para a visualização" [(ngModel)]="NomeTabela">
+            <mat-icon matSuffix>edit</mat-icon>
+          </mat-form-field>
+        </p>
+      </div>
       <p>
         <mat-form-field appearance="outline" class="fill w-full"
           style="padding-bottom: 0 !important;margin-bottom: 0 !important;">
-          <mat-label>Conjunto (Coloque todos os elementos separados por vírgula.) :{{DadosTabela?.NumeroDeElementos||NumElementos ?
+          <mat-label>Conjunto :{{DadosTabela?.NumeroDeElementos||NumElementos ?
             DadosTabela?.NumeroDeElementos||NumElementos||0 + 'Elementos' : ''}}</mat-label>
           <input matInput [formControlName]="'valores'" placeholder="Coloque todos os elementos separados por vírgula. Ex: 1,2,3,4" [(ngModel)]="values"
             (keyup)="calcular(values)">
@@ -40,8 +40,8 @@
           (click)="calcular(values)" href="#tabela_dados">Calcular</button>
       </p>
     </form>
-    <div class="card clr-col-6">
-      <div class="card-body">
+    <div class="box clr-col-6">
+      <div class="">
         <h3>Ajuda</h3>
         <p>Esta calculadora de estatística, permite calcular frequência absoluta, moda, media, mediana, e frequências
           relativas.</p>
@@ -56,37 +56,14 @@
     </div>
   </div>
   <div class="" *ngIf="DadosTabela != undefined">
-    <h2>Conjunto</h2>
-    <p>{{values}}</p>
+    <div class="content">
+      <h2>Conjunto</h2>
+      <p>{{values}}</p>
+      <hr>
+      <h2>Elementos</h2>
+      <p>{{DadosTabela?.NumeroDeElementos||NumElementos}}</p>
+    </div>
     <fieldset>
-      <div class="clr-row">
-        <div class="field clr-col-lg-3 clr-col-sm-6">
-          <label class="label">Somatório Fi * Xi: </label>
-          <div class="control">
-            <input class="input is-medium" readonly type="text"
-              [value]='DadosTabela.SomatorioFrequenciaSimplesVezesOTermo'>
-          </div>
-        </div>
-        <div class="field clr-col-lg-3 clr-col-sm-6">
-          <label class="label">Somatório Fi * Xi²: </label>
-          <div class="control">
-            <input class="input is-medium" readonly type="text"
-              [value]='DadosTabela.SomatorioFrequenciaSimplesVezesOQuadradoDoTermo'>
-          </div>
-        </div>
-        <div class="field clr-col-lg-3 clr-col-sm-6">
-          <label class="label">Dp da Tabela: </label>
-          <div class="control">
-            <input class="input is-medium" readonly type="text" [value]='DadosTabela.DesvioPadraoTabela'>
-          </div>
-        </div>
-        <div class="field clr-col-lg-3 clr-col-sm-6">
-          <label class="label">Média do Dp: </label>
-          <div class="control">
-            <input class="input is-medium" readonly type="text" [value]='DadosTabela.MediaDp'>
-          </div>
-        </div>
-      </div>
       <mat-tab-group>
         <mat-tab [label]="'Tabela Simples'">
           <table mat-table [dataSource]="tabela" id="tabela_dados" class="table mat-elevation-z8">
@@ -133,7 +110,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
         </mat-tab>
-        <mat-tab [label]="'Tabela Desvio Padrão'">
+        <mat-tab [label]="'Tabela com Desvio Padrão'">
           <table mat-table [dataSource]="tabela" id="tabela_dados_dp" class="table mat-elevation-z8">
             <caption>
               Tabela de agrupamento {{Simples ? 'simples' : 'com intervalos'}}<br>
@@ -194,7 +171,35 @@
           </table>
         </mat-tab>
       </mat-tab-group>
-
+      <br>
+      <div class="clr-row">
+        <div class="field clr-col-lg-3 clr-col-sm-6">
+          <label class="label">Somatório Fi * Xi: </label>
+          <div class="control">
+            <input class="input is-medium" readonly type="text"
+              [value]='DadosTabela.SomatorioFrequenciaSimplesVezesOTermo'>
+          </div>
+        </div>
+        <div class="field clr-col-lg-3 clr-col-sm-6">
+          <label class="label">Somatório Fi * Xi²: </label>
+          <div class="control">
+            <input class="input is-medium" readonly type="text"
+              [value]='DadosTabela.SomatorioFrequenciaSimplesVezesOQuadradoDoTermo'>
+          </div>
+        </div>
+        <div class="field clr-col-lg-3 clr-col-sm-6">
+          <label class="label">Desvio padrão da Tabela: </label>
+          <div class="control">
+            <input class="input is-medium" readonly type="text" [value]='DadosTabela.DesvioPadraoTabela'>
+          </div>
+        </div>
+        <div class="field clr-col-lg-3 clr-col-sm-6">
+          <label class="label">Média do Desvio padrão: </label>
+          <div class="control">
+            <input class="input is-medium" readonly type="text" [value]='DadosTabela.MediaDp'>
+          </div>
+        </div>
+      </div>
     </fieldset>
     <div class="clr-row">
       <div class="clr-col-12">
@@ -254,7 +259,7 @@
         <input matNativeControl value="" disabled><br>
         <label class="label" (click)="redirectWithValues('/agrupamento/moda')"><a>Moda: </a></label>
         <div class="control">
-          <input class="input is-medium" readonly type="text" [value]="DadosTabela.Moda['Resultado']">
+          <input class="input is-medium" readonly type="text" [value]="DadosTabela.Moda['Modas']">
         </div>
 
         <button mat-flat-button (click)="openDialog('Moda',DadosTabela.Moda['Passos'].Valor)">Como determinar a moda?</button>
@@ -288,7 +293,6 @@
       </mat-form-field>
     </div>
 
-    <hr>
   </div>
 
   <!-- <clr-accordion>

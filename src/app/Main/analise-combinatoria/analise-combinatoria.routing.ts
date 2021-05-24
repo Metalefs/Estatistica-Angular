@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AnaliseCombinatoriaComponent } from './analise-combinatoria.component';
 import { AnagramasComponent } from './anagramas/anagramas.component';
+import { FatorialComponent } from './fatorial/fatorial.component';
+import { CombinacaoComponent } from './combinacao/combinacao.component';
 
 const routes: Routes = [
     {
@@ -10,6 +12,16 @@ const routes: Routes = [
         {
           path: 'anagramas',
           component: AnagramasComponent,
+          data: { animation:'isUp', title: '' }
+        },
+        {
+          path: 'fatorial',
+          component: FatorialComponent,
+          data: { animation:'isUp', title: '' }
+        },
+        {
+          path: 'combinacao',
+          component: CombinacaoComponent,
           data: { animation:'isUp', title: '' }
         }
       ]

@@ -11,6 +11,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 import { TabelaDadosAgrupadosRoutingModule } from './tabela-dados-agrupados.routing';
 import { TabelaDistrbuicaoComponent } from './tabela-distrbuicao/tabela-distrbuicao.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { TabelaDistrbuicaoComponent } from './tabela-distrbuicao/tabela-distrbui
   imports: [
     CommonModule,
     TabelaDadosAgrupadosRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   exports: []
 })

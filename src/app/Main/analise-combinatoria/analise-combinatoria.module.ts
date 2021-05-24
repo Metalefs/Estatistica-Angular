@@ -5,14 +5,19 @@ import { AnaliseCombinatoriaRoutingModule } from './analise-combinatoria.routing
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from 'src/app/shared/material-module';
 import { AnagramasComponent } from './anagramas/anagramas.component';
+import { FatorialComponent } from './fatorial/fatorial.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CombinacaoComponent } from './combinacao/combinacao.component';
 
 @NgModule({
-  declarations: [AnaliseCombinatoriaComponent, AnagramasComponent],
+  declarations: [AnaliseCombinatoriaComponent, AnagramasComponent, FatorialComponent, CombinacaoComponent],
   imports: [
     CommonModule,
     SharedModule,
     AnaliseCombinatoriaRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports:[
   ]

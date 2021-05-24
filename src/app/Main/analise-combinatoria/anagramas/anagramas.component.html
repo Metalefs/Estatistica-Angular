@@ -11,7 +11,7 @@
     </div>
   </ng-template>
 
-  <div class="pt-2">
+  <div class="">
     <form action="" method="post" [formGroup]="dadosForm">
       <p>
         <mat-form-field appearance="outline">
@@ -24,20 +24,18 @@
       </p>
     </form>
     <div *ngIf="Anagramas">
-      <table id="tabela_dados" class="table ">
-        <caption>
-           Anagramas para {{ valoresAnagrama }}<br>
-           <em><span>{{Anagramas.length}} resultados</span></em>
-        </caption>
-        <thead>
-          <th>Anagrama</th>
-        </thead>
-        <tbody>
-          <tr *ngFor="let anagrama of Anagramas">
-            <td>{{anagrama}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <span>
+         Anagramas para {{ valoresAnagrama }}<br>
+         <em><span>{{Anagramas.length}} resultados</span></em>
+      </span>
+      <div class="clr-row">
+        <div class="clr-col-4"  *ngFor="let anagrama of Anagramas">
+          <div class="card card-block">
+            <a [href]="'https://pt.wikipedia.org/w/index.php?title='+anagrama+'&redirect=no'" target="_blank">{{anagrama}} - Wikipedia</a>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
  </div>

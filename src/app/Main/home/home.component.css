@@ -1,10 +1,19 @@
 .card-media-text{
   text-transform: capitalize;
 }
+.card{
+  transition: all .1s ease;
+}
+.card:hover{
+  background-color:rgba(255, 255, 255, 0.233);
+}
 .card-header{
   background-color: rgb(188 209 255 / 43%);
   font-weight: 400;
 }
-.card-footer{
-  background-color: rgb(232 232 232);
+.permutation{
+  background: repeating-linear-gradient(45deg, #ccc, #ccc 30px, #dbdbdb 30px, #dbdbdb 60px);
+}
+.grouping{
+  background-color: rgb(188 209 255 / 43%);
 }
