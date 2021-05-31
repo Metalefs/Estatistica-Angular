@@ -16,8 +16,8 @@ import { ProjectsService } from './shared/projects.service';
 export class AppComponent {
   linkRef: HTMLLinkElement;
   themes = [
-    { name: 'Light', href: 'https://unpkg.com/clarity-ui/clarity-ui.min.css' },
-    { name: 'Dark', href: 'https://unpkg.com/clarity-ui/clarity-ui-dark.min.css' }
+    { name: 'Modo Claro', href: 'https://unpkg.com/clarity-ui/clarity-ui.min.css' },
+    { name: 'Modo noturno', href: 'https://unpkg.com/clarity-ui/clarity-ui-dark.min.css' }
   ];
   constructor(private projectService: ProjectsService, @Inject(DOCUMENT) private document: Document, @Inject(PLATFORM_ID) private platformId: Object, public linkTracker: LinkTrackerService) {
     linkTracker.links = [

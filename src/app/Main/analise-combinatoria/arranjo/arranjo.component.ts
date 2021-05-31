@@ -25,7 +25,7 @@ export class ArranjoComponent implements OnInit {
     })
     this.Arranjo = JSON.parse(localStorage.getItem('last_Arranjo_result'));
     this.values = JSON.parse(localStorage.getItem('last_Arranjo_search'));
-    this.getWikiSummary("Arranjo matemática");
+    this.getWikiSummary("Arranjo (matemática)");
   }
 
   calcular(valor){

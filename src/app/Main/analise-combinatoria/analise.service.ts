@@ -44,7 +44,7 @@ getArranjo(valor, repeticoes = 0) {
 
 getFactorialLocal(valor, repeticoes = 0){
   var resultado = 1;
-  for (let cont = parseInt(valor); repeticoes > 0 ? cont > valor - repeticoes: cont > 1; cont--)
+  for (let cont = parseInt(valor); repeticoes > 0 ? cont >= valor - repeticoes: repeticoes == 1 ? cont >= valor : cont >= 1; cont--)
   {
       resultado *= cont;
   }
@@ -54,7 +54,14 @@ getFactorialLocal(valor, repeticoes = 0){
 getCombinacaoLocal(valor,combinacao:string[]){
   return this.getFactorialLocal(valor) / (this.getFactorialLocal(valor - parseFloat(combinacao[0])) * this.getFactorialLocal(combinacao));
 }
-
+getPermutacaoComRepeticaoLocal(valor, repeticoes= [0]){
+  let result = this.getFactorialLocal(valor);
+  let denominador;
+  repeticoes.forEach(rep=>{
+    denominador *= this.getFactorialLocal(rep);
+  });
+  return result/denominador;
+}
 getArranjoLocal(valor, repeticoes = 0){
   return this.getFactorialLocal(valor) / this.getFactorialLocal(valor-repeticoes);
 }

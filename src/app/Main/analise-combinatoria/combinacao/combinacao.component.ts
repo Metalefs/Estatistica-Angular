@@ -14,7 +14,7 @@ export class CombinacaoComponent implements OnInit {
   values:number;
   group:string[];
   dadosForm: FormGroup;
-  public wiki:WikiSummary = {extract_html:"<p>Um <b>anagrama</b> é uma espécie de jogo de palavras criado com a reorganização das letras de uma palavra ou expressão para produzir outras palavras ou expressões, utilizando todas as letras originais exatamente uma vez. Exemplos amplamente conhecidos são Iracema e América e amor e Roma. Outro exemplo é o prenome da escritora brasileira Nélida Piñón, anagrama do prenome de seu avô materno Daniel Cuiñas.</p>"};
+  public wiki:WikiSummary = {extract_html:`<p>A <b>combinatória</b> é um ramo da matemática que estuda coleções finitas de elementos que satisfazem critérios específicos determinados e se preocupa, em particular, com a "contagem" de elementos nessas coleções, com decidir se certo objeto "ótimo" existe e com estruturas "algébricas" que esses objetos possam ter.</p>`};
   constructor( protected wikiService: WikiService, private fb:FormBuilder, private analiseService: AnaliseService) {
 
   }
